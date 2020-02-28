@@ -1,0 +1,20 @@
+
+
+.add-button {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  background-color: green($color: #000000);
+}
+
+.mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab {
+  color: white;
+  background-color: #27AE60;
+}
+
+.table-head {
+  width: 99%;
+  height: 68px;
+  background-color: white;
+  border: solid 1px #E5E5E5;
+  margin-bottom: 4px;
+}

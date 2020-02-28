@@ -1,0 +1,28 @@
+<button class="add-button" mat-raised-button color="green" (click)="openDialog()">добавить постояльца</button>
+
+<div class="table-head">
+  <mat-grid-list cols="6" rowHeight="68px">
+    <mat-grid-tile colspan="1">
+      Постоялец
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Владелец </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Телефон</mat-grid-tile>
+    <mat-grid-tile colspan="1"> Денник </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Конюх</mat-grid-tile>
+    <mat-grid-tile colspan="1"> Берейтор </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
+<div *ngFor="let horse of horses">
+  <div class="table-head">
+    <mat-grid-list cols="6" rowHeight="68px">
+      <mat-grid-tile colspan="1">{{horse.name}}</mat-grid-tile>
+      <mat-grid-tile colspan="1">{{horse.owner}}</mat-grid-tile>
+      <mat-grid-tile colspan="1"> {{horse.phone}}</mat-grid-tile>
+      <mat-grid-tile colspan="1"> {{horse.stable}} </mat-grid-tile>
+      <mat-grid-tile colspan="1"> {{horse.groom}}</mat-grid-tile>
+      <mat-grid-tile colspan="1"> {{horse.roughrider}} </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
