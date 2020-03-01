@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { unescapeIdentifier } from '@angular/compiler';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 
 @Component({
@@ -10,10 +11,15 @@ import { unescapeIdentifier } from '@angular/compiler';
 })
 export class AnimalUnitComponent implements OnInit {
 
-  constructor() {}
+  constructor(private router: Router) {}
 
 
   ngOnInit(): void {
   }
 
+
+  mclick(){
+    console.log("awdwa");
+    this.router.navigate(['/system']);
+  }
 }

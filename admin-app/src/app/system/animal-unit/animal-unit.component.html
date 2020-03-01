@@ -2,14 +2,21 @@
 
 <div class="page-title">Содержание лошадей</div>
 
-<mat-tab-group class="tap-group" mat-align-tabs="end" animationDuration="0ms">
+<ul class="menu-main">
+  <a mat-button routerLink=".">Клиенты</a>
+  <a mat-button routerLink=".">Уход</a>
+  <a mat-button routerLink=".">Ветеренария</a>
+  <a mat-button routerLink=".">Выгул</a>
+</ul>
 
-  <mat-tab label="Владельцы">
-    <app-owner-unit></app-owner-unit>
+<mat-tab-group class="tap-group" mat-align-tabs="end" animationDuration="0ms" >
+
+  <mat-tab label="Клиенты" (click)="mclick()">
+    <app-resident-unit></app-resident-unit>
   </mat-tab>
 
-  <mat-tab label="Постояльцы">
-    <app-resident-unit></app-resident-unit>
+  <mat-tab label="Уход">
+
   </mat-tab>
 
   <mat-tab label="Ветеренария">

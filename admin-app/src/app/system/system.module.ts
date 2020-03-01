@@ -1,3 +1,4 @@
+import { OwnerService } from './../shared/owners.service';
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
@@ -11,15 +12,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { ResidentUnitComponent } from './animal-unit/resident-unit/resident-unit.component';
-import { AddHorseDialogComponent } from './animal-unit/resident-unit/add-horse-dialog/add-horse-dialog.component';
-import { OwnerUnitComponent } from './animal-unit/owner-unit/owner-unit.component';
-import { AddOwnerDialogComponent } from './animal-unit/owner-unit/add-owner-dialog/add-owner-dialog.component';
+import { DeleteHorseDialogComponent } from './animal-unit/resident-unit/delete-horse-dialog/delete-horse-dialog.component';
+
 
 
 @NgModule({
   imports: [CommonModule, SharedModule, SystemRoutingModule, MatGridListModule, MatTabsModule, MatButtonModule, MatFormFieldModule],
-  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  AddHorseDialogComponent, ResidentUnitComponent, OwnerUnitComponent, AddOwnerDialogComponent]
-
+  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  DeleteHorseDialogComponent, ResidentUnitComponent],
 })
 
 export class SystemModule {}

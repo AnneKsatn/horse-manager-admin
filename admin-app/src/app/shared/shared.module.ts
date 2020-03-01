@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     ReactiveFormsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule, MatExpansionModule
   ],
   exports: [ FormsModule,
     CommonModule,
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     ReactiveFormsModule,
     BrowserModule,
-    HttpClientModule]
+    HttpClientModule,
+    MatExpansionModule]
 })
 
 export class SharedModule {}

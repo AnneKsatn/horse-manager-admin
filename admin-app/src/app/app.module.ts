@@ -1,3 +1,5 @@
+import { ResidentService } from './shared/resident.service';
+import { OwnerService } from './shared/owners.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,7 +18,7 @@ import { SystemModule } from './system/system.module';
     BrowserAnimationsModule,
     SystemModule
   ],
-  providers: [],
+  providers: [OwnerService, ResidentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

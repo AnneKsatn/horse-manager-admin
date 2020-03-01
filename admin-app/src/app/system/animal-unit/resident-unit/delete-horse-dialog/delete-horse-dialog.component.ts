@@ -14,28 +14,22 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export interface DialogData {
   name: string;
   owner: string;
-  stable: string;
-  groom: string;
-  roughrider: string;
 }
 
 @Component({
-  selector: 'app-add-horse-dialog',
-  templateUrl: './add-horse-dialog.component.html',
-  styleUrls: ['./add-horse-dialog.component.scss']
+  selector: 'app-delete-horse-dialog',
+  templateUrl: './delete-horse-dialog.component.html',
+  styleUrls: ['./delete-horse-dialog.component.scss']
 })
-export class AddHorseDialogComponent implements OnInit {
+export class DeleteHorseDialogComponent implements OnInit {
 
   nameFormControl = new FormControl('', [Validators.required]);
   ownerFormControl = new FormControl('', [Validators.required]);
-  stableFormControl = new FormControl('');
-  groomFormControl = new FormControl('');
-  roughriderFormControl = new FormControl('');
 
   matcher = new MyErrorStateMatcher();
 
   constructor(
-    public dialogRef: MatDialogRef<AddHorseDialogComponent>,
+    public dialogRef: MatDialogRef<DeleteHorseDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

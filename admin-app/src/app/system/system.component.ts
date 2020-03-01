@@ -8,7 +8,8 @@ export interface Tile {
 
 @Component({
   selector: 'app-system',
-  templateUrl: './system.component.html'
+  templateUrl: './system.component.html',
+  styleUrls: ['./system.component.css']
 
 })
 

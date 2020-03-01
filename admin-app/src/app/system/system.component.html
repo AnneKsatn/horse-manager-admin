@@ -1,15 +1,10 @@
 
 
-<div>
-  <mat-grid-list cols="13" rowHeight="100vh">
-    <mat-grid-tile colspan="1">
-      <app-sidebar class="side"></app-sidebar>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="12">
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+<app-sidebar class="side"></app-sidebar>
+
+<div class="content">
+    <router-outlet></router-outlet>
 </div>
+
+
 
