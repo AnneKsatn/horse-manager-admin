@@ -3,29 +3,11 @@
 <div class="page-title">Содержание лошадей</div>
 
 <ul class="menu-main">
-  <a mat-button routerLink=".">Клиенты</a>
+  <a mat-button routerLink="/system/maintenance/clients">Клиенты</a>
   <a mat-button routerLink=".">Уход</a>
-  <a mat-button routerLink=".">Ветеренария</a>
+  <a mat-button routerLink="/system/maintenance/veterenary">Ветеренария</a>
   <a mat-button routerLink=".">Выгул</a>
 </ul>
 
-<mat-tab-group class="tap-group" mat-align-tabs="end" animationDuration="0ms" >
-
-  <mat-tab label="Клиенты" (click)="mclick()">
-    <app-resident-unit></app-resident-unit>
-  </mat-tab>
-
-  <mat-tab label="Уход">
-
-  </mat-tab>
-
-  <mat-tab label="Ветеренария">
-    <button class="add-button" mat-raised-button color="green">добавить данные</button>
-
-   </mat-tab>
-  <mat-tab label="Выгул">
-    <button class="add-button" mat-raised-button color="green">добавить данные</button>
-   </mat-tab>
-</mat-tab-group>
-
+<router-outlet></router-outlet>
 

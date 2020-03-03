@@ -13,12 +13,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { ResidentUnitComponent } from './animal-unit/resident-unit/resident-unit.component';
 import { DeleteHorseDialogComponent } from './animal-unit/resident-unit/delete-horse-dialog/delete-horse-dialog.component';
+import { CareComponent } from './animal-unit/care/care.component';
+import { VeterinaryComponent } from './animal-unit/veterinary/veterinary.component';
 
 
 
 @NgModule({
   imports: [CommonModule, SharedModule, SystemRoutingModule, MatGridListModule, MatTabsModule, MatButtonModule, MatFormFieldModule],
-  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  DeleteHorseDialogComponent, ResidentUnitComponent],
+  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  DeleteHorseDialogComponent, ResidentUnitComponent, CareComponent, VeterinaryComponent],
 })
 
 export class SystemModule {}
