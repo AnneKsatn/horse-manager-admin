@@ -1,1 +1,52 @@
-<p>care works!</p>
+<button class="add-button" mat-raised-button color="green">добавить данные</button>
+
+<div class="table-head">
+  <mat-grid-list cols="6" rowHeight="68px">
+    <mat-grid-tile colspan="2">
+      Услуга    </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Постоялец </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Периодичность </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Исполнитель</mat-grid-tile>
+    <mat-grid-tile colspan="1"> Интервал дня </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let service of services">
+    <mat-expansion-panel-header>
+      <div class="table-row-header">
+        <mat-grid-list cols="6" rowHeight="68px">
+          <mat-grid-tile colspan="2">{{service.title}}</mat-grid-tile>
+          <mat-grid-tile colspan="1">{{service.horse}} </mat-grid-tile>
+          <mat-grid-tile colspan="1"> {{service.perodicity}}</mat-grid-tile>
+          <mat-grid-tile colspan="1"> {{service.perfomer}} </mat-grid-tile>
+          <mat-grid-tile colspan="1"> {{service.period}} </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </mat-expansion-panel-header>
+
+    <div class="table-row-content">
+
+      <div class="first-block">
+
+        <p>Дата начала: 12 декабря 2009</p>
+        <p>Дата окончания: 25 декабря 2009</p>
+
+        <p>Даты оказания услуги</p>
+
+        <p>Точное время: 12:00</p>
+
+        <div class="button-block">
+          <button mat-stroked-button> Приостановить</button>
+        </div>
+      </div>
+      <div class="addition-contacts">
+        <p class="text-center">Подробное описание</p>
+
+        <p class="text-center">{{service.description}}</p>
+      </div>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>

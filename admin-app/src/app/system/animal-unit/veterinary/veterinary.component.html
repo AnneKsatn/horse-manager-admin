@@ -1,4 +1,4 @@
-<button disabled class="add-button" mat-raised-button color="green">добавить постояльца</button>
+<button class="add-button" mat-raised-button color="green">добавить данные</button>
 
 <div class="table-head">
   <mat-grid-list cols="7" rowHeight="68px">
@@ -7,7 +7,8 @@
     </mat-grid-tile>
     <mat-grid-tile colspan="1"> Дата </mat-grid-tile>
     <mat-grid-tile colspan="1">  Ветеринар </mat-grid-tile>
-    <mat-grid-tile colspan="2">  </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Статус  </mat-grid-tile>
+    <mat-grid-tile colspan="1">  </mat-grid-tile>
   </mat-grid-list>
 </div>
 
@@ -20,7 +21,8 @@
           <mat-grid-tile colspan="3">{{procedure.title}}</mat-grid-tile>
           <mat-grid-tile colspan="1">{{procedure.date}} </mat-grid-tile>
           <mat-grid-tile colspan="1"> {{procedure.vet}}</mat-grid-tile>
-          <mat-grid-tile colspan="2">  </mat-grid-tile>
+          <mat-grid-tile colspan="1"> проведена </mat-grid-tile>
+          <mat-grid-tile colspan="1">  </mat-grid-tile>
         </mat-grid-list>
       </div>
     </mat-expansion-panel-header>
@@ -28,21 +30,20 @@
     <div class="table-row-content">
 
       <div class="first-block">
-
-        <p>Дата регистрации: 12 декабря 2009</p>
-        <p>Масть: гнедая</p>
-
-        <div class="button-block">
-          <button mat-stroked-button> Редактировать</button>
-          <button mat-stroked-button class="btn"> Удалить</button>
-        </div>
+        <p class="text-center">Привиты</p>
+        <mat-grid-list class="t"  cols="3" rowHeight="40px" *ngFor="let horse of horses | async">
+          <mat-grid-tile colspan="1">{{horse.name}} </mat-grid-tile>
+          <mat-grid-tile colspan="1">{{horse.owner}}</mat-grid-tile>
+          <mat-grid-tile colspan="1">{{horse.phone}} </mat-grid-tile>
+        </mat-grid-list>
       </div>
+
       <div class="addition-contacts">
-        <p class="text-center">Дополнительные контакты:</p>
-        <mat-grid-list cols="4" rowHeight="40px" *ngFor="let person of horses[0].people">
-          <mat-grid-tile colspan="2">{{person.name}} </mat-grid-tile>
-          <mat-grid-tile colspan="1"> {{person.phone}}</mat-grid-tile>
-          <mat-grid-tile colspan="1">{{person.role}} </mat-grid-tile>
+        <p class="text-center">Пропустили прививку</p>
+        <mat-grid-list  class="t" cols="3" rowHeight="40px" *ngFor="let horse of horses | async">
+          <mat-grid-tile colspan="1">{{horse.name}} </mat-grid-tile>
+          <mat-grid-tile colspan="1"> {{horse.owner}}</mat-grid-tile>
+          <mat-grid-tile colspan="1">{{horse.phone}} </mat-grid-tile>
         </mat-grid-list>
       </div>
     </div>

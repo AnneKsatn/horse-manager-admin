@@ -1,5 +1,4 @@
 
-
 .add-button .mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab{
   margin-top: 3%;
   margin-bottom: 3%;
@@ -9,13 +8,22 @@
 
 .table-head {
   box-sizing: border-box;
-  width: 100%;
+  width: 40%;
   height: 68px;
-  background-color: white;
-  border: solid 1px #E5E5E5;
+  // border-bottom: solid 1px #E5E5E5;
   margin-bottom: 4px;
   padding: 0 18px 0 10px;
 }
+
+.table-head-2 {
+   box-sizing: border-box;
+   width: 98%;
+//   height: 68px;
+  background-color: white;
+   border: solid 1px #E5E5E5;
+   margin-bottom: 2px;
+//   padding: 0 18px 0 10px;
+ }
 
 .table-row-header{
   width: 100%;
@@ -29,10 +37,7 @@
 
 .first-block {
   min-height: 100%;
-  width: 50%;
   border-right: solid 1px #E5E5E5;
-  padding-top: 15px;
-  padding-bottom: 15px;
   text-align: center;
 }
 
@@ -82,3 +87,22 @@
   margin-top: 3px;
   margin-bottom: 3px;
 }
+
+
+.levada-content {
+  width: 100%;
+  height: 100%;
+}
+
+
+.levada-title{
+  width: 60%;
+  border-bottom: solid 1px #E5E5E5;
+  padding-top: 30px
+}
+
+.levada-times {
+  width: 100%;
+  padding-top: 30px;
+}
+

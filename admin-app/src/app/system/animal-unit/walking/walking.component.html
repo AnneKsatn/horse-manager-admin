@@ -1,0 +1,41 @@
+<button class="add-button" mat-raised-button color="green">добавить данные</button>
+
+<div class="table-head">
+  <mat-grid-list cols="3" rowHeight="68px">
+    <mat-grid-tile colspan="1"> Левада </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Постоялец </mat-grid-tile>
+    <mat-grid-tile colspan="1">  Время</mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<!-- <mat-grid-list cols="2">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list> -->
+
+
+  <div class="table-row-header">
+      <mat-grid-list cols="2" rowHeight="210px">
+        <mat-grid-tile *ngFor="let levada of levadas">
+          <div class="levada-content">
+            <div class="levada-title">{{levada.title}}</div>
+            <div class="levada-times">
+              <mat-grid-list class="table-head-2" cols="7" rowHeight="40px" *ngFor="let time of levada.interval">
+
+                <mat-grid-tile class="first-block"colspan="2">
+                    {{time.time}}
+
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan="5">{{time.horses}}</mat-grid-tile>
+
+              </mat-grid-list>
+
+            </div>
+          </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+   </div>
+

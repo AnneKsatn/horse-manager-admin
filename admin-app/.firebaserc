@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "manager-fc68e": {
+      "hosting": {
+        "admin-app": [
+          "manager-fc68e"
+        ]
+      }
+    }
+  }
+}

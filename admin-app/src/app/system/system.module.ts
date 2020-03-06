@@ -15,12 +15,15 @@ import { ResidentUnitComponent } from './animal-unit/resident-unit/resident-unit
 import { DeleteHorseDialogComponent } from './animal-unit/resident-unit/delete-horse-dialog/delete-horse-dialog.component';
 import { CareComponent } from './animal-unit/care/care.component';
 import { VeterinaryComponent } from './animal-unit/veterinary/veterinary.component';
+import { WalkingComponent } from './animal-unit/walking/walking.component';
+import { WalletComponent } from './wallet/wallet.component';
+import { CurrentMonthComponent } from './wallet/current-month/current-month.component';
 
 
 
 @NgModule({
   imports: [CommonModule, SharedModule, SystemRoutingModule, MatGridListModule, MatTabsModule, MatButtonModule, MatFormFieldModule],
-  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  DeleteHorseDialogComponent, ResidentUnitComponent, CareComponent, VeterinaryComponent],
+  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  DeleteHorseDialogComponent, ResidentUnitComponent, CareComponent, VeterinaryComponent, WalkingComponent, WalletComponent, CurrentMonthComponent],
 })
 
 export class SystemModule {}

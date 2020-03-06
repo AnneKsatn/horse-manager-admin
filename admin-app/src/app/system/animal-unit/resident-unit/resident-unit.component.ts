@@ -3,8 +3,17 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { unescapeIdentifier } from '@angular/compiler';
 import { DeleteHorseDialogComponent } from './delete-horse-dialog/delete-horse-dialog.component';
+import { Observable } from 'rxjs';
 
 
+export interface Horse {
+     name: string;
+     owner: string;
+     stable: string;
+     groom: string;
+     stall: string;
+     people: Person[];
+}
 export interface Person {
   name: string;
   phone: string;
@@ -22,20 +31,12 @@ export class ResidentUnitComponent implements OnInit {
   name: string;
   owner: string;
 
-  horses: {
-    id: string;
-    name: string;
-    owner: string;
-    stable: string;
-    groom: string;
-    stall: string;
-    people: Person[];
-  };
+  horses: Observable<any[]>;
+
 
   ngOnInit(): void {
-    this.residentService.getHorses().subscribe(horses => {
-      this.horses = horses;
-    })
+    this.horses = this.residentService.getHorses();
+    console.log(this.horses)
   }
 
   openDialog(): void {

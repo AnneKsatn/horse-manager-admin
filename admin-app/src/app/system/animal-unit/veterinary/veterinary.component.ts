@@ -1,5 +1,6 @@
 import { ResidentService } from './../../../shared/resident.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 export interface Person {
@@ -21,15 +22,7 @@ export class VeterinaryComponent implements OnInit {
   name: string;
   owner: string;
 
-  horses: {
-    id: string;
-    name: string;
-    owner: string;
-    stable: string;
-    groom: string;
-    stall: string;
-    people: Person[];
-  };
+  horses: Observable<any[]>;
 
   procedures = [
     {
@@ -41,8 +34,6 @@ export class VeterinaryComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    this.residentService.getHorses().subscribe(horses => {
-      this.horses = horses;
-    })
+    this.horses = this.residentService.getHorses();
   }
 }
