@@ -19,12 +19,26 @@ export interface Horse {
 
 @Injectable()
 export class ResidentService{
-   horses: Observable<any[]>;
+
+  id_club = "DyIWkJTo7cCQK6CdFK95";
+
+  residents = [];
+  horses = [];
 
   constructor(private httpClient: HttpClient, private firestore: AngularFirestore){}
 
   getHorses(){
-    return this.firestore.collection('horses').valueChanges();
+    this.firestore.collection('residents', ref => ref.where('id_club', '==', this.id_club)).valueChanges()
+    .subscribe((data: any) => {
+      this.residents = data.map(function(item) {
+        return {
+          "stable": item.stable,
+          "stall": item.stall,
+          "groom": item.groom,
+          "id_horse": item.id_horse
+        }
+      })
+    });
   }
 
   getPeopleById(id: string){
@@ -33,4 +47,10 @@ export class ResidentService{
   });
   }
 
+  getResidents(){
+    this.horses  = this.residents.map(function(item){
+      console.log(item);
+      return this.firestore.collection('horses').doc(item.id_horse).get();
+    })
+  }
 }

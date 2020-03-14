@@ -26,17 +26,24 @@ export interface Person {
   styleUrls: ['./resident-unit.component.scss']
 })
 export class ResidentUnitComponent implements OnInit {
-  constructor(public dialog: MatDialog, private residentService: ResidentService) { }
+  constructor(public dialog: MatDialog, private residentService: ResidentService) {
+    this.residentService.getHorses();
+  }
 
   name: string;
   owner: string;
 
-  horses: Observable<any[]>;
+  horses = [];
 
+  ngDoCheck(): void{
+    console.log("adwd")
+    this.horses = this.residentService.residents;
+    console.log(this.horses);
+  }
 
   ngOnInit(): void {
-    this.horses = this.residentService.getHorses();
-    console.log(this.horses)
+    this.residentService.getResidents();
+    this.horses = this.residentService.residents;
   }
 
   openDialog(): void {

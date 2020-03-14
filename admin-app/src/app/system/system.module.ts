@@ -18,12 +18,13 @@ import { VeterinaryComponent } from './animal-unit/veterinary/veterinary.compone
 import { WalkingComponent } from './animal-unit/walking/walking.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { CurrentMonthComponent } from './wallet/current-month/current-month.component';
+import { HorseRowComponent } from './animal-unit/resident-unit/horse-row/horse-row.component';
 
 
 
 @NgModule({
   imports: [CommonModule, SharedModule, SystemRoutingModule, MatGridListModule, MatTabsModule, MatButtonModule, MatFormFieldModule],
-  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  DeleteHorseDialogComponent, ResidentUnitComponent, CareComponent, VeterinaryComponent, WalkingComponent, WalletComponent, CurrentMonthComponent],
+  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  DeleteHorseDialogComponent, ResidentUnitComponent, CareComponent, VeterinaryComponent, WalkingComponent, WalletComponent, CurrentMonthComponent, HorseRowComponent],
 })
 
 export class SystemModule {}
