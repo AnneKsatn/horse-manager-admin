@@ -21,6 +21,7 @@ import { CurrentMonthComponent } from './wallet/current-month/current-month.comp
 import { HorseRowComponent } from './animal-unit/resident-unit/horse-row/horse-row.component';
 import { MainComponent } from './main/main.component';
 import {MatCardModule} from '@angular/material/card';
+import { JoinHorseDialogComponent } from './main/join-horse-dialog/join-horse-dialog.component';
 
 
 
@@ -45,7 +46,7 @@ import {MatCardModule} from '@angular/material/card';
     WalkingComponent, 
     WalletComponent, 
     CurrentMonthComponent, 
-    HorseRowComponent, MainComponent],
+    HorseRowComponent, MainComponent, JoinHorseDialogComponent],
 })
 
 export class SystemModule {}

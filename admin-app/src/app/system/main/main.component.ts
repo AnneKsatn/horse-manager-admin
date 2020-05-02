@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HorseRegistrarionService } from '../../shared/horse-registrarion.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { JoinHorseDialogComponent } from './join-horse-dialog/join-horse-dialog.component';
+
+export interface DialogData {
+  goom: string;
+  stable: string;
+  stall: string;
+}
 
 @Component({
   selector: 'app-main',
@@ -8,16 +16,18 @@ import { HorseRegistrarionService } from '../../shared/horse-registrarion.servic
 })
 export class MainComponent implements OnInit {
 
-  constructor(private horseRegistarionService: HorseRegistrarionService) { }
+  constructor(
+    private horseRegistarionService: HorseRegistrarionService,
+    public dialog: MatDialog) { }
 
   requestsToJoin = [];
 
   ngOnInit(): void {
-    this.horseRegistarionService.getRequests("adw").subscribe( requests => {
-      this.requestsToJoin = requests.map(function(request: any) {
+    this.horseRegistarionService.getRequests("adw").subscribe(requests => {
+      this.requestsToJoin = requests.map(function (request: any) {
         return {
-          "horse_id":  request.payload.doc.data().horse_id,
-          "id":  request.payload.doc.id,
+          "horse_id": request.payload.doc.data().horse_id,
+          "id": request.payload.doc.id,
         }
       })
 
@@ -27,12 +37,25 @@ export class MainComponent implements OnInit {
         this.horseRegistarionService.getHorseName(request.horse_id).subscribe(
           (horse: any) => {
             request.horse_name = horse.data().name
-        })
+          })
       })
     })
   }
 
-  acceptRequest(request: any){
-    this.horseRegistarionService.acceptRequest(request);
-    }
+  acceptRequest(request: any) {
+    //this.horseRegistarionService.acceptRequest(request);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(JoinHorseDialogComponent, {
+      width: '250px',
+      data: { groom: "", stable: "", stall: "" }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result)
+    });
+  }
+
 }

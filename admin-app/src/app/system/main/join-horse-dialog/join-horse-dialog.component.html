@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Принять запрос</h1>
+<div mat-dialog-content>
+    <p>Внесите данные:</p>
+    <mat-form-field>
+        <mat-label>Конюх</mat-label>
+        <input matInput [(ngModel)]="data.groom">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Конюшня</mat-label>
+        <input matInput [(ngModel)]="data.stable">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Денник</mat-label>
+        <input matInput [(ngModel)]="data.stall">
+    </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">потом</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>принять</button>
+</div>
