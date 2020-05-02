@@ -19,12 +19,33 @@ import { WalkingComponent } from './animal-unit/walking/walking.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { CurrentMonthComponent } from './wallet/current-month/current-month.component';
 import { HorseRowComponent } from './animal-unit/resident-unit/horse-row/horse-row.component';
+import { MainComponent } from './main/main.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
 @NgModule({
-  imports: [CommonModule, SharedModule, SystemRoutingModule, MatGridListModule, MatTabsModule, MatButtonModule, MatFormFieldModule],
-  declarations: [AnimalUnitComponent, SystemComponent, SidebarComponent,  DeleteHorseDialogComponent, ResidentUnitComponent, CareComponent, VeterinaryComponent, WalkingComponent, WalletComponent, CurrentMonthComponent, HorseRowComponent],
+  imports: [CommonModule, 
+    SharedModule, 
+    SystemRoutingModule, 
+    MatGridListModule, 
+    MatTabsModule, 
+    MatButtonModule, 
+    MatFormFieldModule,
+    MatCardModule],
+    
+  declarations: 
+  [AnimalUnitComponent, 
+    SystemComponent, 
+    SidebarComponent,  
+    DeleteHorseDialogComponent, 
+    ResidentUnitComponent, 
+    CareComponent, 
+    VeterinaryComponent, 
+    WalkingComponent, 
+    WalletComponent, 
+    CurrentMonthComponent, 
+    HorseRowComponent, MainComponent],
 })
 
 export class SystemModule {}

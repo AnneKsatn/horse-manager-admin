@@ -13,6 +13,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -20,7 +21,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatInputModule,
     ReactiveFormsModule,
     BrowserModule,
-    HttpClientModule, MatExpansionModule, MatListModule, MatIconModule, MatCheckboxModule
+    HttpClientModule, 
+    MatExpansionModule, 
+    MatListModule, 
+    MatIconModule, 
+    MatCheckboxModule,
+    MatCardModule
   ],
   exports: [ FormsModule,
     CommonModule,
@@ -31,7 +37,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
-    MatExpansionModule, MatListModule, MatIconModule, MatCheckboxModule, MatDatepickerModule]
+    MatExpansionModule, 
+    MatListModule, 
+    MatIconModule, 
+    MatCheckboxModule, 
+    MatDatepickerModule,
+    MatCardModule]
 })
 
 export class SharedModule {}

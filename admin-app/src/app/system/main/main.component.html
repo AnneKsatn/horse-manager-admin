@@ -1,0 +1,17 @@
+<div class="main-content">
+
+<div class="request-card" *ngFor="let request of requestsToJoin">
+    <mat-card>
+
+        <mat-card-header>
+            <mat-card-title>{{request.horse_name}}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-actions>
+            <button mat-button (click)="acceptRequest(request)">принять</button>
+            <button mat-button>отклонить</button>
+          </mat-card-actions>
+    </mat-card>
+</div>
+
+</div>

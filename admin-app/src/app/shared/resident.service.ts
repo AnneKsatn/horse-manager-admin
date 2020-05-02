@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 // import * as firebase from 'firebase/app'
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
+import { firestore } from 'firebase';
 
 export interface Horse {
     id: number,
@@ -23,34 +24,40 @@ export class ResidentService{
   id_club = "DyIWkJTo7cCQK6CdFK95";
 
   residents = [];
-  horses = [];
 
   constructor(private httpClient: HttpClient, private firestore: AngularFirestore){}
 
   getHorses(){
-    this.firestore.collection('residents', ref => ref.where('id_club', '==', this.id_club)).valueChanges()
-    .subscribe((data: any) => {
-      this.residents = data.map(function(item) {
+    let req_adress = 'residents/' + this.id_club + '/horses'
+
+    this.firestore.collection(req_adress).snapshotChanges()
+    .subscribe((horses: any) => {
+
+      this.residents = horses.map(function(horse) {      
         return {
-          "stable": item.stable,
-          "stall": item.stall,
-          "groom": item.groom,
-          "id_horse": item.id_horse
+          "stable": horse.payload.doc.data().stable,
+          "stall": horse.payload.doc.data().stall,
+          "groom": horse.payload.doc.data().groom,
+          "id": horse.payload.doc.id,
         }
       })
+
+      this.getHorseInfo();
     });
   }
+
+  getHorseInfo(){
+    this.residents.forEach(horse => {
+      this.firestore.collection('horses').doc(horse.id).get().subscribe( (doc: any) => {
+        horse.name =  doc.data().name;
+      })
+    })
+  }
+
 
   getPeopleById(id: string){
     return this.httpClient.get('http://192.168.1.39:3000/horses', {
       params: new HttpParams().set('id', id)
   });
-  }
-
-  getResidents(){
-    this.horses  = this.residents.map(function(item){
-      console.log(item);
-      return this.firestore.collection('horses').doc(item.id_horse).get();
-    })
   }
 }

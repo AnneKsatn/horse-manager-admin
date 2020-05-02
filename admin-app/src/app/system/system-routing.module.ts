@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { SystemComponent } from './system.component';
 import { AnimalUnitComponent } from './animal-unit/animal-unit.component';
+import { MainComponent } from './main/main.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
     ]},
     {path: 'wallet', component: WalletComponent, children: [
       {path: 'current', component: CurrentMonthComponent}
-    ]}
+    ]},
+    {path: 'main', component: MainComponent}
   ]}
 ];
 

@@ -19,7 +19,6 @@ export class AnimalUnitComponent implements OnInit {
 
 
   mclick(){
-    console.log("awdwa");
     this.router.navigate(['/system']);
   }
 }

@@ -22,7 +22,7 @@ export class VeterinaryComponent implements OnInit {
   name: string;
   owner: string;
 
-  horses: Observable<any[]>;
+  horses: any;
 
   procedures = [
     {
@@ -34,6 +34,6 @@ export class VeterinaryComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    this.horses = this.residentService.getHorses();
+    this.horses = this.residentService.residents;
   }
 }

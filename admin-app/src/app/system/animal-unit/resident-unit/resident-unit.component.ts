@@ -36,13 +36,10 @@ export class ResidentUnitComponent implements OnInit {
   horses = [];
 
   ngDoCheck(): void{
-    console.log("adwd")
     this.horses = this.residentService.residents;
-    console.log(this.horses);
   }
 
   ngOnInit(): void {
-    this.residentService.getResidents();
     this.horses = this.residentService.residents;
   }
 
