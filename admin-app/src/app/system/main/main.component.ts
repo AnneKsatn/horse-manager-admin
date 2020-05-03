@@ -4,9 +4,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { JoinHorseDialogComponent } from './join-horse-dialog/join-horse-dialog.component';
 
 export interface DialogData {
-  goom: string;
+  groom: string;
   stable: string;
   stall: string;
+  category: string
 }
 
 @Component({
@@ -49,7 +50,7 @@ export class MainComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(JoinHorseDialogComponent, {
       width: '250px',
-      data: { groom: "", stable: "", stall: "" }
+      data: { groom: "", stable: "", stall: ""}
     });
 
     dialogRef.afterClosed().subscribe(result => {

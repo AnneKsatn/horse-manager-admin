@@ -22,6 +22,9 @@ import { HorseRowComponent } from './animal-unit/resident-unit/horse-row/horse-r
 import { MainComponent } from './main/main.component';
 import {MatCardModule} from '@angular/material/card';
 import { JoinHorseDialogComponent } from './main/join-horse-dialog/join-horse-dialog.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CategoryCardComponent } from './dashboard/category-card/category-card.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -33,7 +36,8 @@ import { JoinHorseDialogComponent } from './main/join-horse-dialog/join-horse-di
     MatTabsModule, 
     MatButtonModule, 
     MatFormFieldModule,
-    MatCardModule],
+    MatCardModule,
+    MatSelectModule],
     
   declarations: 
   [AnimalUnitComponent, 
@@ -46,7 +50,7 @@ import { JoinHorseDialogComponent } from './main/join-horse-dialog/join-horse-di
     WalkingComponent, 
     WalletComponent, 
     CurrentMonthComponent, 
-    HorseRowComponent, MainComponent, JoinHorseDialogComponent],
+    HorseRowComponent, MainComponent, JoinHorseDialogComponent, DashboardComponent, CategoryCardComponent],
 })
 
 export class SystemModule {}
