@@ -14,8 +14,7 @@ export class HorseRegistrarionService {
 
     club_id = "DyIWkJTo7cCQK6CdFK95";
 
-    return this.firestore.collection('joining_application', ref => 
-    ref.where('club_id', '==', club_id)
+    return this.firestore.collection('joining_application', ref => ref.where('club_id', '==', club_id)
     .where('status', '==', "active")).snapshotChanges();
   }
 
@@ -42,6 +41,17 @@ export class HorseRegistrarionService {
 
     this.firestore.collection('joining_application').doc(request.request_id).update({
       status: "accepted"
+    })
+  }
+
+  deleteHorse(horse_id: string){
+
+    let req_adress = 'residents/' + this.id_club + '/horses'
+    this.firestore.collection(req_adress).doc(horse_id).delete();
+
+    this.firestore.collection("horses").doc(horse_id).update({
+      isResident: "false",
+      club_id: ""
     })
   }
 }

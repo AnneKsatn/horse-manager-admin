@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { unescapeIdentifier } from '@angular/compiler';
 import { DeleteHorseDialogComponent } from './delete-horse-dialog/delete-horse-dialog.component';
 import { Observable } from 'rxjs';
+import { HorseRegistrarionService } from '../../../shared/horse-registrarion.service';
 
 
 export interface Horse {
@@ -26,7 +27,10 @@ export interface Person {
   styleUrls: ['./resident-unit.component.scss']
 })
 export class ResidentUnitComponent implements OnInit {
-  constructor(public dialog: MatDialog, private residentService: ResidentService) {
+  constructor(public dialog: MatDialog, 
+    private residentService: ResidentService,
+    private horseRegistrationService: HorseRegistrarionService
+    ) {
     this.residentService.getHorses();
   }
 
@@ -43,13 +47,14 @@ export class ResidentUnitComponent implements OnInit {
     this.horses = this.residentService.residents;
   }
 
-  openDialog(): void {
+  openDialog(horse_id: string): void {
     const dialogRef = this.dialog.open(DeleteHorseDialogComponent, {
       width: '450px',
       data: { name: this.name, owner: this.owner}
     })
 
     dialogRef.afterClosed().subscribe(result => {
+      this.horseRegistrationService.deleteHorse(horse_id)
       // if (result !== undefined) {
       //   if (result.name !== undefined) {
       //     this.horses.push({
@@ -71,7 +76,7 @@ export class ResidentUnitComponent implements OnInit {
 
   delete(id: string){
     console.log(id);
-    this.openDialog();
+    this.openDialog(id);
   }
 
 }
