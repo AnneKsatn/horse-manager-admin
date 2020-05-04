@@ -9,55 +9,70 @@ import 'firebase/firestore';
 import { firestore } from 'firebase';
 
 export interface Horse {
-    id: number,
-    name: string,
-    owner: string,
-    phone: string,
-    stable: string,
-    groom: string,
-    stall: string,
+  id: number,
+  name: string,
+  owner: string,
+  phone: string,
+  stable: string,
+  groom: string,
+  stall: string,
+  category: string
 }
 
 @Injectable()
-export class ResidentService{
+export class ResidentService {
 
   id_club = "DyIWkJTo7cCQK6CdFK95";
 
   residents = [];
 
-  constructor(private httpClient: HttpClient, private firestore: AngularFirestore){}
+  constructor(private httpClient: HttpClient, private firestore: AngularFirestore) { }
 
-  getHorses(){
+  getHorses() {
     let req_adress = 'residents/' + this.id_club + '/horses'
 
     this.firestore.collection(req_adress).snapshotChanges()
-    .subscribe((horses: any) => {
+      .subscribe((horses: any) => {
 
-      this.residents = horses.map(function(horse) {      
-        return {
-          "stable": horse.payload.doc.data().stable,
-          "stall": horse.payload.doc.data().stall,
-          "groom": horse.payload.doc.data().groom,
-          "id": horse.payload.doc.id,
-        }
-      })
+        this.residents = horses.map(function (horse) {
+          return {
+            "stable": horse.payload.doc.data().stable,
+            "stall": horse.payload.doc.data().stall,
+            "groom": horse.payload.doc.data().groom,
+            "id": horse.payload.doc.id,
+            "category": horse.payload.doc.data().category,
+            "owner": horse.payload.doc.data().owner
+          }
+        })
 
-      this.getHorseInfo();
-    });
+        this.getHorseInfo();
+        this.getCategoryInfo();
+      });
   }
 
-  getHorseInfo(){
+  getHorseInfo() {
     this.residents.forEach(horse => {
-      this.firestore.collection('horses').doc(horse.id).get().subscribe( (doc: any) => {
-        horse.name =  doc.data().name;
+      this.firestore.collection('horses').doc(horse.id).get().subscribe((doc: any) => {
+        horse.name = doc.data().name;
       })
     })
   }
 
+  getCategoryInfo() {
+    this.residents.forEach(horse => {
 
-  getPeopleById(id: string){
+      let req_adress = '/horse_clubs/' + this.id_club + '/categories';
+      console.log(horse)
+      this.firestore.collection(req_adress).doc(horse.category).get().subscribe((doc: any) => {
+        horse.category = doc.data().title;
+      })
+    })
+}
+
+
+  getPeopleById(id: string) {
     return this.httpClient.get('http://192.168.1.39:3000/horses', {
       params: new HttpParams().set('id', id)
-  });
+    });
   }
 }

@@ -9,11 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SystemModule } from './system/system.module';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire'
-import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AuthComponent } from './auth/auth.component'
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'
     BrowserAnimationsModule,
     SystemModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    SharedModule
+  ],
+  exports: [
+    SharedModule
   ],
   providers: [OwnerService, ResidentService],
   bootstrap: [AppComponent]

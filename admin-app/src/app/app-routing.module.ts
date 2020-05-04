@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthComponent } from './auth/auth.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'system/maintenance', pathMatch: 'full'}
+  {path: 'auth', redirectTo: 'system/maintenance', pathMatch: 'full'},
+
+  {path: '', component: AuthComponent}
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ export interface Horse {
      groom: string;
      stall: string;
      people: Person[];
+     category: string;
 }
 export interface Person {
   name: string;
