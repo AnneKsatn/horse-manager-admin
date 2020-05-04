@@ -23,15 +23,8 @@ interface Animal {
 })
 export class JoinHorseDialogComponent {
 
-  animalControl = new FormControl('', Validators.required);
-  selectFormControl = new FormControl('', Validators.required);
-  animals: Animal[] = [
-    {name: 'Dog', sound: 'Woof!'},
-    {name: 'Cat', sound: 'Meow!'},
-    {name: 'Cow', sound: 'Moo!'},
-    {name: 'Fox', sound: 'Wa-pa-pa-pa-pa-pa-pow!'},
-  ];
 
+  selectFormControl = new FormControl('', Validators.required);
   categories = [];
 
   constructor(
@@ -41,14 +34,14 @@ export class JoinHorseDialogComponent {
       this.horseClubService.getCategories().subscribe((categories: any) => {
         this.categories = categories.map(category => {
           return {
-            title: category.payload.doc.data().title
+            title: category.payload.doc.data().title,
+            id: category.payload.doc.id
           }
         })
       })
     }
 
 
-  
   onNoClick(): void {
     this.dialogRef.close();
   }

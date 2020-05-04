@@ -43,19 +43,17 @@ export class MainComponent implements OnInit {
     })
   }
 
-  acceptRequest(request: any) {
-    //this.horseRegistarionService.acceptRequest(request);
-  }
-
-  openDialog(): void {
+  openDialog(horse_id: string, request_id: string): void {
+    console.log(horse_id)
     const dialogRef = this.dialog.open(JoinHorseDialogComponent, {
       width: '250px',
       data: { groom: "", stable: "", stall: ""}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result)
+      result.horse_id = horse_id
+      result.request_id = request_id
+      this.horseRegistarionService.acceptRequest(result);
     });
   }
 

@@ -2,38 +2,33 @@
 <div mat-dialog-content>
     <p>Внесите данные:</p>
     <mat-form-field>
-        <mat-label>Конюх</mat-label>
-        <input matInput [(ngModel)]="data.groom">
+        <mat-label>конюх</mat-label>
+        <input matInput [(ngModel)]="data.groom" required>
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Конюшня</mat-label>
-        <input matInput [(ngModel)]="data.stable">
+        <mat-label>конюшня</mat-label>
+        <input matInput [(ngModel)]="data.stable" required>
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Денник</mat-label>
-        <input matInput [(ngModel)]="data.stall">
+        <mat-label>денник</mat-label>
+        <input matInput [(ngModel)]="data.stall" required>
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Favorite animal</mat-label>
+        <mat-label>категория постоя</mat-label>
 
-        <mat-select [(ngModel)]="data.category" required>
-            <mat-option *ngFor="let category of categories" [value]="category">
+        <mat-select [(ngModel)]="data.category" required [formControl]="selectFormControl">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
               {{category.title}}
             </mat-option>
         </mat-select>
         
-        <!-- <mat-select [(ngModel)]="data.category" ngDefaultControl required>
-          <mat-option>--</mat-option>
-          <mat-option *ngFor="let animal of animals" [value]="animal">
-            {{animal.name}}
-          </mat-option>
-        </mat-select> -->
+        <mat-error *ngIf="selectFormControl.hasError('required')">
+          This field is required
+        </mat-error>
 
-       <!-- <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
-        <mat-hint>{{animalControl.value?.sound}}</mat-hint>  -->
      </mat-form-field> 
 
 </div>

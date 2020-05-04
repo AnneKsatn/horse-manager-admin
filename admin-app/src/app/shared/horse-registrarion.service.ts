@@ -24,10 +24,15 @@ export class HorseRegistrarionService {
   }
 
   acceptRequest(request: any){
+    
+    console.log(request.horse_id);
     let req_adress = 'residents/' + this.id_club + '/horses'
 
     this.firestore.collection(req_adress).doc(request.horse_id).set({
-      // сделать окно добавления лошади
+      groom: request.groom,
+      stable: request.stable,
+      stall: request.stall,
+      category: request.category
     })
 
     this.firestore.collection("horses").doc(request.horse_id).update({
@@ -35,7 +40,7 @@ export class HorseRegistrarionService {
       club_id: this.id_club
     })
 
-    this.firestore.collection('joining_application').doc(request.id).update({
+    this.firestore.collection('joining_application').doc(request.request_id).update({
       status: "accepted"
     })
   }
