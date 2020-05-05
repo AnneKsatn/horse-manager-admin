@@ -11,18 +11,19 @@ import { SystemComponent } from './system.component';
 import { AnimalUnitComponent } from './animal-unit/animal-unit.component';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 
 const routes: Routes = [
-  {path: 'system', component: SystemComponent, children: [
-    {path: 'maintenance', component: AnimalUnitComponent, children: [
+  {path: '', component: SystemComponent,  children: [
+    {path: 'maintenance', component: AnimalUnitComponent,  children: [
       {path: 'clients', component: ResidentUnitComponent},
       {path: 'veterenary', component: VeterinaryComponent},
       {path: 'care', component: CareComponent},
       {path: 'walking', component: WalkingComponent}
     ]},
-    {path: 'wallet', component: WalletComponent, children: [
-      {path: 'current', component: CurrentMonthComponent}
+    {path: 'wallet', component: WalletComponent , children: [
+      {path: 'current', component: CurrentMonthComponent},
     ]},
     {path: 'main', component: MainComponent},
     {path: 'dashboard', component: DashboardComponent}

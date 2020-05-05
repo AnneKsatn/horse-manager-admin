@@ -1,0 +1,43 @@
+
+      <div class="login-conent">
+
+      <div class="auth-title">Авторизация</div>
+
+      <form [formGroup]="form" (ngSubmit)="onLogin()" class="example-form">
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input 
+            matInput 
+            formControlName="email" 
+            placeholder="pat@example.com">
+
+            <!-- <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+              введите корректный адрес
+            </mat-error>
+            <mat-error *ngIf="email.hasError('required')">
+              введите email
+            </mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+              <mat-label>Пароль</mat-label>
+              <input 
+              matInput 
+              formControlName="password" 
+              placeholder="*******">
+<!-- 
+              <mat-error *ngIf="password.hasError('required')">
+                введите пароль
+              </mat-error> -->
+            </mat-form-field>
+      
+  
+      <div class="btn-block">
+        <button mat-button type="submit" [disabled]="!form.valid"> войти </button>
+      </div>
+
+    </form> 
+
+    <button mat-button (click)="goToRegistration()"> зарегистрироваться</button>
+  </div>

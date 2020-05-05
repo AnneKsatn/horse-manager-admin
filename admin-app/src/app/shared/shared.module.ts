@@ -6,7 +6,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
@@ -19,7 +18,6 @@ import {MatCardModule} from '@angular/material/card';
   imports: [ FormsModule, CommonModule, MatDialogModule, MatFormFieldModule, MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
-    BrowserModule,
     HttpClientModule, 
     MatExpansionModule, 
     MatListModule, 
@@ -34,7 +32,6 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
-    BrowserModule,
     HttpClientModule,
     MatExpansionModule, 
     MatListModule, 

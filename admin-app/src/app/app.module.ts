@@ -1,6 +1,5 @@
 import { ResidentService } from './shared/resident.service';
 import { OwnerService } from './shared/owners.service';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,25 +11,32 @@ import { AngularFireModule } from '@angular/fire'
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AuthComponent } from './auth/auth.component'
 import { SharedModule } from './shared/shared.module';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { RegistrationComponent } from './auth/registration/registration.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SystemModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    SharedModule
+    SharedModule,
+    // BrowserModule
   ],
   exports: [
     SharedModule
   ],
-  providers: [OwnerService, ResidentService],
+  providers: [OwnerService, ResidentService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
