@@ -15,6 +15,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export interface DialogData {
   hour: number;
   minutes: string;
+  title: string;
 }
 
 @Component({

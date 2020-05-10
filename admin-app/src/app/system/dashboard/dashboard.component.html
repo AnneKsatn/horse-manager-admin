@@ -1,7 +1,6 @@
-
 <div class="page-title">КСК "Авалон"</div>
 
-<div class="subtitle"> 
+<div class="subtitle">
   Информация о КСК
 </div>
 
@@ -9,38 +8,26 @@
 <div>Специализированные дни</div>
 <div>Норма сена</div>
 
-<div class="subtitle"> 
-    Категории постоя
+<div class="subtitle">
+  Категории постоя
 </div>
 
 <button mat-raised-button class="add-category">Добавить</button>
 
-  <div class="card-row">
-      <div *ngFor="let category of categories">
-        <app-category-card [category] = "category"></app-category-card>
-      </div>
+<div class="card-row">
+  <div *ngFor="let category of categories">
+    <app-category-card [category]="category"></app-category-card>
+  </div>
 </div>
 
 
-<div class="subtitle"> 
+<div class="subtitle">
   Кормление
 </div>
 
 <div class="card-row">
   <mat-card class="example-card">
-
-    <mat-card-header>
-      <mat-card-title>Режим кормления</mat-card-title>
-      <mat-card-subtitle>Основная конюшня</mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-      <app-feeding-time></app-feeding-time>
-    </mat-card-content>
-
-    <mat-card-actions>
-      <button mat-button>ДОБАВИТЬ</button>
-    </mat-card-actions>
+    <app-feeding-time></app-feeding-time>
   </mat-card>
 
   <mat-card class="example-card">
@@ -51,11 +38,11 @@
     </mat-card-header>
 
     <mat-card-content>
-        <div>8.00 - 4 кг</div>
-        <div>12.00 - 3 кг</div>
-        <div>15.00 - 3 кг</div>
-        <div>18.00 - 2 кг</div>
-        <div>21.00 - 4 кг</div>
+      <div>8.00 - 4 кг</div>
+      <div>12.00 - 3 кг</div>
+      <div>15.00 - 3 кг</div>
+      <div>18.00 - 2 кг</div>
+      <div>21.00 - 4 кг</div>
     </mat-card-content>
 
     <mat-card-actions>
@@ -66,6 +53,6 @@
 </div>
 
 
-<div class="subtitle"> 
+<div class="subtitle">
   Дополнительные услуги КСК
 </div>

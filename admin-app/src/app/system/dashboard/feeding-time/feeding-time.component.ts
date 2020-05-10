@@ -16,9 +16,9 @@ export interface Horse {
   category: string;
 }
 export interface Person {
-name: string;
-phone: string;
-role: string;
+  name: string;
+  phone: string;
+  role: string;
 }
 
 
@@ -31,12 +31,12 @@ export class FeedingTimeComponent implements OnInit {
 
   public feedings;
 
-  constructor(public dialog: MatDialog, 
+  constructor(public dialog: MatDialog,
     private horseClubService: HorseClubService) { }
 
   ngOnInit(): void {
-    this.horseClubService.getFeedingTimes().subscribe((data: any)=> {
-      this.feedings = data.map(function(item: any){
+    this.horseClubService.getFeedingTimes().subscribe((data: any) => {
+      this.feedings = data.map(function (item: any) {
         return {
           hour: item.payload.doc.data().hour,
           minutes: item.payload.doc.data().minutes,
@@ -49,23 +49,38 @@ export class FeedingTimeComponent implements OnInit {
     })
   }
 
-  deleteFeeding(){
-    console.log("DELETE")
+  deleteFeeding(feeding_id: string) {
+    this.horseClubService.deleteFeeding(feeding_id);
   }
 
-  editFeeding(feeding_id: string){
+  editFeeding(feeding_id: string) {
     console.log("edit");
   }
 
   openEditDialog(feeding_id: string, hour: number, minutes: string): void {
     const dialogRef = this.dialog.open(EditTimeComponent, {
       width: '450px',
-      data: { hour: hour, minutes: minutes}
+      data: { hour: hour, minutes: minutes, title: "Редактировать время" }
     })
 
-     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-       this.horseClubService.editFeedingTime(feeding_id, Number(result.hour), result.minutes);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
+        this.horseClubService.editFeedingTime(feeding_id, Number(result.hour), result.minutes);
+      }
+    });
+  }
+
+  openCreateDialog(): void {
+
+    const dialogRef = this.dialog.open(EditTimeComponent, {
+      width: '450px',
+      data: { hour: 11, minutes: "00", title: "Добавить кормление" }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
+        this.horseClubService.createFeeding(Number(result.hour), result.minutes);
+      }
     });
   }
 
