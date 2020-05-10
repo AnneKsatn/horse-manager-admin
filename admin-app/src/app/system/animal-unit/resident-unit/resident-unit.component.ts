@@ -30,7 +30,7 @@ export interface Person {
 export class ResidentUnitComponent implements OnInit {
   constructor(public dialog: MatDialog, 
     private residentService: ResidentService,
-    private horseRegistrationService: HorseRegistrarionService
+    private horseRegistrationService: HorseRegistrarionService,
     ) {
     this.residentService.getHorses();
   }

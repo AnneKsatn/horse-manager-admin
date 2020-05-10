@@ -1,9 +1,13 @@
 {
+  "projects": {
+    "default": "manager-fc68e",
+    "admin": "manager-fc68e"
+  },
   "targets": {
     "manager-fc68e": {
       "hosting": {
-        "admin-app": [
-          "manager-fc68e"
+        "client": [
+          "dist"
         ]
       }
     }

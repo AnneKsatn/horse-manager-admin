@@ -17,7 +17,7 @@
   box-sizing: border-box;
 }
 
-.icon-wallet, .icon-horse{
+.icon-wallet, .icon-horse, .icon-notification, .icon-home{
   width: 100%;
   height: 100%;
   background-size: contain;
@@ -26,3 +26,7 @@
 
 .icon-wallet {background-image: url(../../../../../assets/wallet.svg);}
 .icon-horse {background-image: url(../../../../../assets/horse.svg);}
+
+.icon-notification {background-image: url(../../../../../assets/notification.svg);}
+
+.icon-home {background-image: url(../../../../../assets/home.svg);}

@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "feed",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "horse_ID",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "hour",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

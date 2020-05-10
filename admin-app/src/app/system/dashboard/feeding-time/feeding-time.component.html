@@ -1,0 +1,21 @@
+<div class="care-row" *ngFor="let feeding of feedings">
+  <div class="care-title">
+    {{feeding.title}}
+  </div>
+  <div class="care-time">
+    {{feeding.hour}}.{{feeding.minutes}}
+  </div>
+
+  <div class="care-info">
+
+    <mat-icon mat-list-icon (click)="openEditDialog(feeding.id, feeding.hour, feeding.minutes)"> edit </mat-icon>
+
+  </div>
+
+  <div class="care-info">
+
+    <mat-icon mat-list-icon (click)="deleteFeeding()"> delete </mat-icon>
+    
+  </div>
+
+</div>

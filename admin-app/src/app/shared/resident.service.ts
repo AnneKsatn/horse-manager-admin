@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 // import * as firebase from 'firebase/app'
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
-import { firestore } from 'firebase';
+
 
 export interface Horse {
   id: number,
@@ -74,5 +74,12 @@ export class ResidentService {
     return this.httpClient.get('http://192.168.1.39:3000/horses', {
       params: new HttpParams().set('id', id)
     });
+  }
+
+  getHorseFeeding(horse_id: string, feeding_id: string){
+
+    let request = "/feeding/" + feeding_id + "/horses/" + horse_id + "/consist"
+    return this.firestore.collection(request).valueChanges();
+
   }
 }

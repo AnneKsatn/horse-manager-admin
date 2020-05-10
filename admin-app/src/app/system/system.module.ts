@@ -25,6 +25,10 @@ import { JoinHorseDialogComponent } from './main/join-horse-dialog/join-horse-di
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryCardComponent } from './dashboard/category-card/category-card.component';
 import {MatSelectModule} from '@angular/material/select';
+import { FeedingTimeComponent } from './dashboard/feeding-time/feeding-time.component';
+import { EditTimeComponent } from './dashboard/feeding-time/edit-time/edit-time.component';
+import { HorseProfileComponent } from './animal-unit/horse-profile/horse-profile.component';
+import { FeedingComponent } from './animal-unit/horse-profile/feeding/feeding.component';
 
 
 
@@ -50,7 +54,7 @@ import {MatSelectModule} from '@angular/material/select';
     WalkingComponent, 
     WalletComponent, 
     CurrentMonthComponent, 
-    HorseRowComponent, MainComponent, JoinHorseDialogComponent, DashboardComponent, CategoryCardComponent],
+    HorseRowComponent, MainComponent, JoinHorseDialogComponent, DashboardComponent, CategoryCardComponent, FeedingTimeComponent, EditTimeComponent, HorseProfileComponent, FeedingComponent],
 })
 
 export class SystemModule {}

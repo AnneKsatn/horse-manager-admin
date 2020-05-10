@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { AuthService } from '../auth.service';
+import { AuthService, AuthResponseData } from '../auth.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -45,9 +46,24 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    // console.log(this.form.value.email)
-    this.authService.login(this.form.value.email, this.form.value.password)
-    this.router.navigateByUrl("/system/maintenance");
+
+      let authObs: Observable<AuthResponseData>;
+      authObs = this.authService.login(this.form.value.email, this.form.value.password);
+      
+
+      authObs.subscribe(resData => {
+        console.log(resData);
+        this.router.navigateByUrl("/system/maintenance/clients");
+      }, errRes => {
+
+        const code = errRes.error.error.message;
+        let message = 'Не получилось зрагитрироваться, попробуйте еще раз';
+         if (code === 'EMAIL_NOT_FOUND') {
+          message = 'Данные адрес не зарегистрирован'
+        } else if (code === 'INVALID_PASSWORD') {
+          message = 'Неправильный пароль'
+        }
+      });
   }
 
   goToRegistration(){

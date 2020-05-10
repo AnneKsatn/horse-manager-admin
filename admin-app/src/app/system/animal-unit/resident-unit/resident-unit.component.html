@@ -37,7 +37,11 @@
         <p>Масть: гнедая</p>
 
         <div class="button-block">
-          <button mat-stroked-button (click)="edit(horse.id)"> Редактировать</button>
+          <button mat-stroked-button 
+          [routerLink]="['/system/maintenance/profile']"
+          [queryParams]="{horse_id: horse.id}"
+          > Профиль
+        </button>
           <button mat-stroked-button (click)="delete(horse.id)" class="btn"> Удалить</button>
         </div>
       </div>
