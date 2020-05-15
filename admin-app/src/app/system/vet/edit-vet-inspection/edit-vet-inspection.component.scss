@@ -1,0 +1,30 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    padding-top: 1%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .create-vet-procedure-consist{
+    padding-top: 2%;
+  }
+
+  
+
+.add-button .mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab{
+  margin-top: 3%;
+  margin-bottom: 3%;
+  color: white;
+  background-color: #27AE60;
+}
+
+.delete-button .mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    color: white;
+    background-color: #27AE60;
+  }

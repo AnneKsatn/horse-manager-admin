@@ -1,0 +1,86 @@
+
+<div class="subtitle">
+    Информация о плановом осмотре
+  </div>
+  
+  
+  <form [formGroup]="form" (ngSubmit)="onEditInspection()" >
+    <div class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Название процедуры</mat-label>
+      <input
+      
+      matInput
+      formControlName = "title"
+      placeholder="привика от сибирской язвы"
+      [(ngModel)]="inspection_info.title"
+      
+      >
+      <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error> -->
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Дата</mat-label>
+      <input 
+      matInput 
+      formControlName = "date"
+      placeholder="27 января 2019"
+
+      [(ngModel)]="inspection_info.date"
+      >
+      
+      <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error> -->
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Ветеринар</mat-label>
+      <input 
+      matInput
+      formControlName = "veterinar"
+      placeholder="Сухова Н.В"
+
+      [(ngModel)]="inspection_info.vet"
+      >
+      <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error> -->
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Цена</mat-label>
+      <input 
+      matInput
+      formControlName = "price"
+      placeholder="2 500"
+      [(ngModel)]="inspection_info.price"
+      >
+      <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error> -->
+    </mat-form-field>
+  </div>
+
+  
+<button type="submit" [disabled]="!form.valid" class="add-button" mat-raised-button color="green">сохранить</button>
+
+</form>
+  
+
+
+<button mat-flat-button color="warn" (click)="deleteInspection(inspection_id)">удалить</button>

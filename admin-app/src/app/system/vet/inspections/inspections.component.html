@@ -1,0 +1,22 @@
+<button class="add-button" mat-raised-button color="green" routerLink="/system/vet/create">добавить данные</button>
+
+<div class="table-head">
+  <mat-grid-list cols="7" rowHeight="68px">
+    <mat-grid-tile colspan="3">
+      Процедура
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Дата </mat-grid-tile>
+    <mat-grid-tile colspan="1">  Ветеринар </mat-grid-tile>
+    <mat-grid-tile colspan="1"> Цена  </mat-grid-tile>
+    <mat-grid-tile colspan="1">  </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
+<mat-accordion>
+  
+  <div *ngFor="let procedure of procedures" class="procedure-card">
+    <app-procedure-card [procedure] = "procedure"> </app-procedure-card>
+  </div>
+  
+</mat-accordion>

@@ -14,7 +14,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ResidentUnitComponent } from './animal-unit/resident-unit/resident-unit.component';
 import { DeleteHorseDialogComponent } from './animal-unit/resident-unit/delete-horse-dialog/delete-horse-dialog.component';
 import { CareComponent } from './animal-unit/care/care.component';
-import { VeterinaryComponent } from './animal-unit/veterinary/veterinary.component';
 import { WalkingComponent } from './animal-unit/walking/walking.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { CurrentMonthComponent } from './wallet/current-month/current-month.component';
@@ -29,6 +28,17 @@ import { FeedingTimeComponent } from './dashboard/feeding-time/feeding-time.comp
 import { EditTimeComponent } from './dashboard/feeding-time/edit-time/edit-time.component';
 import { HorseProfileComponent } from './animal-unit/horse-profile/horse-profile.component';
 import { FeedingComponent } from './animal-unit/horse-profile/feeding/feeding.component';
+import { VetComponent } from './vet/vet.component';
+import { InspectionsComponent } from './vet/inspections/inspections.component';
+import { ResidentProcedureBaseComponent } from './vet/resident-procedure-base/resident-procedure-base.component';
+import { ProcedureCardComponent } from './vet/inspections/procedure-card/procedure-card.component';
+import { CreateVetInspectionComponent } from './vet/create-vet-inspection/create-vet-inspection.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { EditVetInspectionComponent } from './vet/edit-vet-inspection/edit-vet-inspection.component';
+import { InfoVetInspectionComponent } from './vet/info-vet-inspection/info-vet-inspection.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -41,7 +51,8 @@ import { FeedingComponent } from './animal-unit/horse-profile/feeding/feeding.co
     MatButtonModule, 
     MatFormFieldModule,
     MatCardModule,
-    MatSelectModule],
+    MatSelectModule,
+    DragDropModule, MatTableModule, MatSortModule, MatCheckboxModule],
     
   declarations: 
   [AnimalUnitComponent, 
@@ -49,12 +60,18 @@ import { FeedingComponent } from './animal-unit/horse-profile/feeding/feeding.co
     SidebarComponent,  
     DeleteHorseDialogComponent, 
     ResidentUnitComponent, 
-    CareComponent, 
-    VeterinaryComponent, 
+    CareComponent,  
     WalkingComponent, 
     WalletComponent, 
     CurrentMonthComponent, 
-    HorseRowComponent, MainComponent, JoinHorseDialogComponent, DashboardComponent, CategoryCardComponent, FeedingTimeComponent, EditTimeComponent, HorseProfileComponent, FeedingComponent],
+    HorseRowComponent, MainComponent, 
+    JoinHorseDialogComponent, DashboardComponent, 
+    CategoryCardComponent, FeedingTimeComponent, 
+    EditTimeComponent, HorseProfileComponent, 
+    FeedingComponent, VetComponent,
+    InspectionsComponent, ResidentProcedureBaseComponent,
+    ProcedureCardComponent, CreateVetInspectionComponent,
+    EditVetInspectionComponent, InfoVetInspectionComponent],
 })
 
 export class SystemModule {}

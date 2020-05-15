@@ -1,0 +1,117 @@
+
+
+
+<div class="subtitle">
+  Информация о плановом осмотре
+</div>
+
+
+<form [formGroup]="form" (ngSubmit)="onCreateInspection()" >
+  <div class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Название процедуры</mat-label>
+    <input 
+    matInput
+    formControlName = "title"
+    placeholder="привика от сибирской язвы"
+    >
+    <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Дата</mat-label>
+    <input 
+    matInput 
+    formControlName = "date"
+    placeholder="27 января 2019">
+    <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Ветеринар</mat-label>
+    <input 
+    matInput
+    formControlName = "veterinar"
+    placeholder="Сухова Н.В">
+    <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Цена</mat-label>
+    <input 
+    matInput
+    formControlName = "price"
+    placeholder="2 500">
+    <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+</div>
+
+
+
+<div class="create-vet-procedure-consist">
+  <div class="example-container">
+    <h2>Не привиты</h2>
+  
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneList, paiedList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.name}}</div>
+    </div>
+  </div>
+  
+  <div class="example-container">
+    <h2>Не оплачено</h2>
+  
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList, paiedList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.name}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Оплачено</h2>
+  
+    <div
+      cdkDropList
+      #paiedList="cdkDropList"
+      [cdkDropListData]="paied"
+      [cdkDropListConnectedTo]="[doneList, todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of paied" cdkDrag>{{item.name}}</div>
+    </div>
+  </div>
+</div>
+
+<button type="submit" [disabled]="!form.valid" class="add-button" mat-raised-button color="green">создать</button>
+
+</form>

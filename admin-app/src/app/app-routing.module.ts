@@ -5,7 +5,6 @@ import { AuthGuard } from './auth/auth.guard';
 import { SystemComponent } from './system/system.component';
 import { AnimalUnitComponent } from './system/animal-unit/animal-unit.component';
 import { ResidentUnitComponent } from './system/animal-unit/resident-unit/resident-unit.component';
-import { VeterinaryComponent } from './system/animal-unit/veterinary/veterinary.component';
 import { CareComponent } from './system/animal-unit/care/care.component';
 import { WalkingComponent } from './system/animal-unit/walking/walking.component';
 import { WalletComponent } from './system/wallet/wallet.component';

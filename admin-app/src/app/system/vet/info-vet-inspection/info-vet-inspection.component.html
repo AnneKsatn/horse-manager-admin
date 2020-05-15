@@ -1,0 +1,69 @@
+<div class="subtitle">
+  Информация о плановом осмотре
+</div>
+
+
+<div class="example-form">
+  <mat-list role="list">
+    <mat-list-item role="listitem">Название процедуры: {{inspection_info.title}}</mat-list-item>
+    <mat-list-item role="listitem">Дата: {{inspection_info.date}}</mat-list-item>
+    <mat-list-item role="listitem">Ветеринар: {{inspection_info.vet}}</mat-list-item>
+    <mat-list-item role="listitem">Цена: {{inspection_info.price}}</mat-list-item>
+  </mat-list>
+</div>
+
+
+
+<button class="add-button" mat-raised-button color="green" routerLink="/system/vet/edit" [queryParams]="{id: inspection_id}">Редактировать</button>
+
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="progress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Статус </th>
+      <td mat-cell *matCellDef="let row">
+
+        <div class="status">
+          <div class="status-text"> {{row.status == "missed" ? "пропуск" : "ОК"}}</div>
+
+          <mat-icon mat-list-icon (click)="changeStatus(row.procedure_id, row.status)"> swap_horiz </mat-icon>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Имя </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Оплата </th>
+
+      <td mat-cell *matCellDef="let row" [style.color]="row.color">
+        <div class="payment">
+          <div class="payment-text"> {{row.payment}}</div>
+
+
+          <mat-checkbox *ngIf="row.status != 'missed'" class="example-margin" [(ngModel)]="row.checked"
+            (click)="changePayment(row.procedure_id, row.status)">
+          </mat-checkbox>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+</div>

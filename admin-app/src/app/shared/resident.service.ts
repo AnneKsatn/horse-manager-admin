@@ -58,11 +58,14 @@ export class ResidentService {
     })
   }
 
+  getHorseName(horse_id: string){
+    return this.firestore.collection('horses').doc(horse_id).get();
+  }
+
   getCategoryInfo() {
     this.residents.forEach(horse => {
 
       let req_adress = '/horse_clubs/' + this.id_club + '/categories';
-      console.log(horse)
       this.firestore.collection(req_adress).doc(horse.category).get().subscribe((doc: any) => {
         horse.category = doc.data().title;
       })
@@ -81,5 +84,73 @@ export class ResidentService {
     let request = "/feeding/" + feeding_id + "/horses/" + horse_id + "/consist"
     return this.firestore.collection(request).valueChanges();
 
+  }
+
+
+  getVets(){
+    return this.firestore.collection("/vet_procedure_info", ref => ref.where('club_id', '==',this.id_club)).snapshotChanges();
+  }
+
+  getOkProcedureHorses(procedure_id: string){
+    return this.firestore.collection("/vets", ref => ref.where('vet_id', '==', procedure_id).where('status', 'in', ['paid', 'notpaid'])).snapshotChanges();
+  }
+
+  getMissedProcedureHorses(procedure_id: string){
+    return this.firestore.collection("/vets", ref => ref.where('vet_id', '==', procedure_id).where('status', '==', "missed")).snapshotChanges();
+  }
+
+  changeVetVisionStatus(id_vision: string, status: string){
+
+    this.firestore.collection("vets").doc(id_vision).update({
+      status: status,
+    })
+  }
+
+  fillInspectionConsist(procedutreConsist: any, procedure_id: string){
+    console.log(procedutreConsist);
+    this.firestore.collection("vet_procedure_consist").doc(procedure_id)
+    .set(procedutreConsist);
+  }
+
+  
+  fillInspectionConsist_2(procedutreConsist: Array<any>, procedure_id: string) {
+    console.log(procedutreConsist);
+
+    // this.firestore.collection("vet_procedure_consist").doc(procedure_id)
+    //   .set(procedutreConsist);
+    let batch = this.firestore.firestore.batch();
+
+    procedutreConsist.forEach( procedure => {
+      procedure.vet_id = procedure_id;
+      let nycRef = this.firestore.firestore.collection('vets').doc();
+      batch.set(nycRef, procedure)
+    })
+
+    return batch.commit().then(function () {
+      console.log("done");
+    });
+  }
+
+
+
+  createInspection(title: string,
+    veterinar: string,
+    price: string,
+    date: string,
+    procedutreConsist: any
+  ) {
+
+    var func = this.fillInspectionConsist_2.bind(this);
+
+    this.firestore.collection("vet_procedure_info").add({
+      title: title,
+      vet: veterinar,
+      price: price,
+      date: date,
+      club_id: this.id_club
+    })
+      .then(function (docRef) {
+        func(procedutreConsist, docRef.id);
+      })
   }
 }

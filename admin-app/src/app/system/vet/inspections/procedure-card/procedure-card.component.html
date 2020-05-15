@@ -1,0 +1,16 @@
+<div class="table-head-2">
+  <mat-grid-list cols="7" rowHeight="68px">
+    <mat-grid-tile colspan="3">{{procedure.title}}</mat-grid-tile>
+    <mat-grid-tile colspan="1">{{procedure.date}} </mat-grid-tile>
+    <mat-grid-tile colspan="1"> {{procedure.vet}}</mat-grid-tile>
+    <mat-grid-tile colspan="1">{{procedure.price}} </mat-grid-tile>
+    <mat-grid-tile colspan="1">  <button mat-stroked-button 
+      [routerLink]="['/vet/info']"
+      [queryParams]="{id: procedure.id}"
+      > Информация
+      </button>
+    
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</div>
