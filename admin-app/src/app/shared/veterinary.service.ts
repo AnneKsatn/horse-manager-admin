@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../auth/auth.service';
+import { take, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VeterinaryService {
 
-  id_club = "DyIWkJTo7cCQK6CdFK95";
+  constructor(private firestore: AngularFirestore, private authService: AuthService) {
 
-  constructor(private firestore: AngularFirestore) { }
+  }
 
   getVetInspections() {
-    return this.firestore.collection("/vet_procedure_info", ref => ref.where('club_id', '==', this.id_club)).snapshotChanges();
+
+    return this.authService.userId.pipe(take(1), switchMap(userID => {
+      return this.firestore.collection("/vet_procedure_info", ref => ref.where('club_id', '==', userID)).snapshotChanges();
+    }))
   }
 
   getVetInspectionInfo(inspection_id) {
@@ -55,18 +60,24 @@ export class VeterinaryService {
     horseProcedures: any
   ) {
 
+    console.log("CREATE")
     var func = this.addInspectionParticipants.bind(this);
 
-    this.firestore.collection("vet_procedure_info").add({
-      title: title,
-      vet: veterinar,
-      price: price,
-      date: date,
-      club_id: this.id_club
-    })
-      .then(function (docRef) {
-        func(horseProcedures, docRef.id);
+    this.authService.userId.subscribe(userID => {
+
+      console.log(userID)
+
+      this.firestore.collection("vet_procedure_info").add({
+        title: title,
+        vet: veterinar,
+        price: price,
+        date: date,
+        club_id: userID
       })
+        .then(function (docRef) {
+          func(horseProcedures, docRef.id);
+        })
+    })
   }
 
   updateInspectionInfo(title: string, veterinar: string, price: string, date: string, id: string) {

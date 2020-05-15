@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 // import * as firebase from 'firebase/app'
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
+import { AuthService } from '../auth/auth.service';
+import { take } from 'rxjs/operators';
 
 
 export interface Horse {
@@ -19,14 +21,20 @@ export interface Horse {
   category: string
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ResidentService {
 
-  id_club = "DyIWkJTo7cCQK6CdFK95";
+  id_club: string;
 
   residents = [];
 
-  constructor(private httpClient: HttpClient, private firestore: AngularFirestore) { }
+  constructor(private httpClient: HttpClient, private firestore: AngularFirestore, private authService: AuthService) {
+    this.authService.userId.pipe(take(1)).subscribe( (userID: string) =>{
+      this.id_club = userID;
+    })
+   }
 
   getHorses() {
     let req_adress = 'residents/' + this.id_club + '/horses'
@@ -131,26 +139,4 @@ export class ResidentService {
     });
   }
 
-
-
-  createInspection(title: string,
-    veterinar: string,
-    price: string,
-    date: string,
-    procedutreConsist: any
-  ) {
-
-    var func = this.fillInspectionConsist_2.bind(this);
-
-    this.firestore.collection("vet_procedure_info").add({
-      title: title,
-      vet: veterinar,
-      price: price,
-      date: date,
-      club_id: this.id_club
-    })
-      .then(function (docRef) {
-        func(procedutreConsist, docRef.id);
-      })
-  }
 }

@@ -3,6 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { ResidentService } from '../../../shared/resident.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VeterinaryService } from '../../../shared/veterinary.service';
 
 @Component({
   selector: 'app-create-vet-inspection',
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CreateVetInspectionComponent implements OnInit {
 
-  constructor(private residentService: ResidentService, private router: Router) { }
+  constructor(private residentService: ResidentService, private router: Router, private veterinaryService: VeterinaryService) { }
 
   form: FormGroup;
 
@@ -90,7 +91,7 @@ export class CreateVetInspectionComponent implements OnInit {
       })
     })
 
-    this.residentService.createInspection(title, veterinar, price, date, listOfProcedures)
+    this.veterinaryService.createInspection(title, veterinar, price, date, listOfProcedures)
 
     this.router.navigateByUrl("/system/vet/inspection")
 

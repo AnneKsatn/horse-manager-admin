@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResidentService } from './../../../shared/resident.service';
+import { VeterinaryService } from '../../../shared/veterinary.service';
+import { AuthService } from '../../../auth/auth.service';
 
 
 @Component({
@@ -9,7 +11,7 @@ import { ResidentService } from './../../../shared/resident.service';
 })
 export class InspectionsComponent implements OnInit {
 
-  constructor(private residentService: ResidentService){}
+  constructor(private residentService: ResidentService, private veterinaryService: VeterinaryService, private authService: AuthService){}
 
   name: string;
   owner: string;
@@ -18,7 +20,8 @@ export class InspectionsComponent implements OnInit {
   procedures = [];
 
   ngOnInit(): void {
-    this.residentService.getVets().subscribe( data => {
+
+    this.veterinaryService.getVetInspections().subscribe( data => {
 
       this.procedures = data.map(function(procedure: any) {
         return {
@@ -31,16 +34,6 @@ export class InspectionsComponent implements OnInit {
       })
       
       this.residentService.getHorses();
-
-      // this.procedures.forEach(item => {
-      //   item.done = [];
-
-      //   this.residentService.getOkProcedureHorses(item.id).subscribe( (data: any) => {
-      //     item.done.push(data.payload.doc.data().date)
-      //   });
-      // })
-
-      // console.log(this.procedures);
     })
   }
 }

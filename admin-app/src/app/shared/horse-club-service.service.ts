@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,11 @@ export class HorseClubService {
 
   club_id = "DyIWkJTo7cCQK6CdFK95";
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private authService: AuthService) {
+    this.authService.userId.subscribe( (userID: string) =>{
+      this.club_id = userID;
+    })
+   }
 
   getCategories(){
     let request = "horse_clubs/" + this.club_id + "/categories"
