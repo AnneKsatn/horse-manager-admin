@@ -7,13 +7,17 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HorseClubService {
 
-  club_id = "DyIWkJTo7cCQK6CdFK95";
+  club_id: string
 
   constructor(private firestore: AngularFirestore, private authService: AuthService) {
     this.authService.userId.subscribe( (userID: string) =>{
       this.club_id = userID;
     })
    }
+
+  /********************/
+  /* Категории постоя */
+  /********************/
 
   getCategories(){
     let request = "horse_clubs/" + this.club_id + "/categories"
@@ -24,6 +28,20 @@ export class HorseClubService {
     let request = "services-in-category/" + category_id + "/services"
     return this.firestore.collection(request).snapshotChanges();
   }
+
+  createCategory(price: string, title: string){
+    
+    let request = "horse_clubs/" + this.club_id + "/categories";
+    this.firestore.collection(request).add({
+      price: price,
+      title: title
+    })
+  }
+
+
+  /*****************************/
+  /* Кормление грубыми кормами */
+  /*****************************/
 
   getFeedingTimes(){
     let request = "horse_clubs/" + this.club_id + "/feedings";

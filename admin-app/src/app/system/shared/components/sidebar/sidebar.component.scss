@@ -2,7 +2,9 @@
   width: 100%;
   height: 100%;
   background-color: #222A32;
-  padding-top: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   box-sizing: border-box;
 }
 
@@ -11,13 +13,13 @@
   height: 100px;
   padding-left: 25%;
   padding-right: 25%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
   display: block;
   box-sizing: border-box;
 }
 
-.icon-wallet, .icon-horse, .icon-notification, .icon-home{
+.icon-wallet, .icon-horse, .icon-notification, .icon-home, .icon-vet{
   width: 100%;
   height: 100%;
   background-size: contain;
@@ -30,3 +32,4 @@
 .icon-notification {background-image: url(../../../../../assets/notification.svg);}
 
 .icon-home {background-image: url(../../../../../assets/home.svg);}
+.icon-vet {background-image: url(../../../../../assets/veterinarian.svg);}
