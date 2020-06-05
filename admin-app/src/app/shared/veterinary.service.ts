@@ -1,22 +1,35 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from '../auth/auth.service';
-import { take, switchMap } from 'rxjs/operators';
+import { take, switchMap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { HttpResponse, HttpClient } from '@angular/common/http';
+import { IStableVetInfo } from './model/stable-vet-info.model';
+
+
+type EntityResponseType = HttpResponse<IStableVetInfo>;
+type EntityArrayResponseType = HttpResponse<IStableVetInfo[]>;
 
 @Injectable({
   providedIn: 'root'
 })
 export class VeterinaryService {
 
-  constructor(private firestore: AngularFirestore, private authService: AuthService) {
+  constructor(private firestore: AngularFirestore, private authService: AuthService, protected http: HttpClient) {
 
   }
+
+  public resourceUrl = 'http://localhost:8080/' + 'api/stable-vet-infos';
 
   getVetInspections() {
 
     return this.authService.userId.pipe(take(1), switchMap(userID => {
       return this.firestore.collection("/vet_procedure_info", ref => ref.where('club_id', '==', userID)).snapshotChanges();
     }))
+  }
+
+  get(): Observable<EntityArrayResponseType> {
+    return this.http.get<IStableVetInfo[]>(this.resourceUrl, { observe: 'response' });
   }
 
   getVetInspectionInfo(inspection_id) {

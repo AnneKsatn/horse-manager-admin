@@ -46,27 +46,27 @@ export class RegistrationComponent implements OnInit {
 
   authenticate(email: string, password: string, title: string){
 
-      let authObs: Observable<AuthResponseData>;
-      console.log(email, password);
-      authObs = this.authService.signup(email, password);
+      // let authObs: Observable<AuthResponseData>;
+      // console.log(email, password);
+      // authObs = this.authService.signup(email, password);
 
-      authObs.subscribe(resData => {
-        console.log(resData);
-        this.authService.addClubDoc(resData.localId, title);
-        this.router.navigateByUrl('/system/dashboard');
-      }, errRes => {
+      // authObs.subscribe(resData => {
+      //   console.log(resData);
+      //   this.authService.addClubDoc(resData.localId, title);
+      //   this.router.navigateByUrl('/system/dashboard');
+      // }, errRes => {
       
-        const code = errRes.error.error.message;
-        let message = 'Не получилось зрагитрироваться, попробуйте еще раз';
-        if( code === 'EMAIL_EXISTS') {
-          message = 'Этот адрес уже зарегистрирован'
-        } else if (code === 'EMAIL_NOT_FOUND') {
-          message = 'Данные адрес не зарегистрирован'
-        } else if (code === 'INVALID_PASSWORD') {
-          message = 'Неправильный пароль'
-        }
-        console.log(message);
-      });
+      //   const code = errRes.error.error.message;
+      //   let message = 'Не получилось зрагитрироваться, попробуйте еще раз';
+      //   if( code === 'EMAIL_EXISTS') {
+      //     message = 'Этот адрес уже зарегистрирован'
+      //   } else if (code === 'EMAIL_NOT_FOUND') {
+      //     message = 'Данные адрес не зарегистрирован'
+      //   } else if (code === 'INVALID_PASSWORD') {
+      //     message = 'Неправильный пароль'
+      //   }
+      //   console.log(message);
+      // });
   }
 
 

@@ -21,6 +21,10 @@ export class InspectionsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.veterinaryService.get().subscribe (data => {
+      console.log(data);
+    })
+    
     this.veterinaryService.getVetInspections().subscribe( data => {
 
       this.procedures = data.map(function(procedure: any) {
