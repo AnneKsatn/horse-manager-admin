@@ -5,6 +5,7 @@ import { take, switchMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpResponse, HttpClient } from '@angular/common/http';
 import { IStableVetInfo } from './model/stable-vet-info.model';
+import * as moment from 'moment/moment';
 
 
 type EntityResponseType = HttpResponse<IStableVetInfo>;
@@ -28,9 +29,32 @@ export class VeterinaryService {
     }))
   }
 
-  get(): Observable<EntityArrayResponseType> {
-    return this.http.get<IStableVetInfo[]>(this.resourceUrl, { observe: 'response' });
+  get(req?: any): Observable<EntityArrayResponseType> {
+    return this.http
+      .get<IStableVetInfo[]>(this.resourceUrl, {observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
+
+  find(id: string): Observable<EntityResponseType> {
+    return this.http
+      .get<IStableVetInfo>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  update(stableVetInfo: IStableVetInfo): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(stableVetInfo);
+
+    console.log(copy)
+    return this.http
+      .put<IStableVetInfo>(this.resourceUrl, copy, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+
+  delete(id: number): Observable<HttpResponse<{}>> {
+    return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
 
   getVetInspectionInfo(inspection_id) {
     return this.firestore.collection("/vet_procedure_info").doc(inspection_id).get();
@@ -106,5 +130,28 @@ export class VeterinaryService {
 
   deleteInspection(inspection_id) {
     this.firestore.collection('vet_procedure_info').doc(inspection_id).delete();
+  }
+
+  protected convertDateFromClient(stableVetInfo: IStableVetInfo): IStableVetInfo {
+    const copy: IStableVetInfo = Object.assign({}, stableVetInfo, {
+      date: stableVetInfo.date ? stableVetInfo.date.toJSON() : undefined,
+    });
+    return copy;
+  }
+
+  protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
+    if (res.body) {
+      res.body.date = res.body.date ? moment(res.body.date).toDate() : undefined;
+    }
+    return res;
+  }
+
+  protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+    if (res.body) {
+      res.body.forEach((stableVetInfo: IStableVetInfo) => {
+        stableVetInfo.date = stableVetInfo.date ? moment(stableVetInfo.date).toDate() : undefined;
+      });
+    }
+    return res;
   }
 }

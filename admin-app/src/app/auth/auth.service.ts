@@ -6,19 +6,26 @@ import { User } from './user.model';
 import { map, tap } from 'rxjs/operators';
 import { Plugins } from '@capacitor/core'
 import { AngularFirestore } from '@angular/fire/firestore';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 export interface AuthResponseData {
-  // kind: string;
-  // idToken: string;
-  // email: string;
-  // refreshToken: string;
-  // localId: string;
-  // expiresIn: string;
-  // registered?: boolean;
+  kind: string;
+  idToken: string;
+  email: string;
+  refreshToken: string;
+  localId: string;
+  expiresIn: string;
+  registered?: boolean;
 }
 
+
+
 export class Login {
-  constructor(public username: string, public password: string, public rememberMe: boolean) {}
+  constructor(
+    public username: string, 
+    public password: string, 
+    public rememberMe: boolean, 
+    ) {}
 }
 
 type JwtToken = {
@@ -33,7 +40,9 @@ export class AuthService {
 
   private _user = new BehaviorSubject<User>(null);
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) { }
+  constructor(private http: HttpClient, private firestore: AngularFirestore, 
+    private $localStorage: LocalStorageService, 
+    private $sessionStorage: SessionStorageService) { }
 
   // Достает из хранилища данные и проверяет токен
   autoLogin() {
@@ -98,7 +107,10 @@ export class AuthService {
   login(username: string, password: string, rememberMe = false): Observable<void> {
     return this.http
       .post<JwtToken>('http://localhost:8080/' + 'api/authenticate', {username, password, rememberMe})
-      .pipe(map(this.setUserData.bind(this)));
+      .pipe(map(
+        this.setUserData.bind(this)
+        ));
+
   }
 
 
@@ -131,7 +143,26 @@ export class AuthService {
         ));
   }
 
+  get userToken(){
+    return this._user.asObservable()
+      .pipe(map(user => {
+        if(user) {
+          return user.token;
+        } else {
+          return null;
+        }}
+        ));
+  }
+
   private setUserData(userData: JwtToken) {
+
+    let rememberMe = false;
+    const jwt = userData.id_token;
+    if (rememberMe) {
+      this.$localStorage.store('authenticationToken', jwt);
+    } else {
+      this.$sessionStorage.store('authenticationToken', jwt);
+    }
 
     console.log("Set DATA")
     console.log(userData)

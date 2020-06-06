@@ -31,7 +31,6 @@ import { FeedingComponent } from './animal-unit/horse-profile/feeding/feeding.co
 import { VetComponent } from './vet/vet.component';
 import { InspectionsComponent } from './vet/inspections/inspections.component';
 import { ResidentProcedureBaseComponent } from './vet/resident-procedure-base/resident-procedure-base.component';
-import { ProcedureCardComponent } from './vet/inspections/procedure-card/procedure-card.component';
 import { CreateVetInspectionComponent } from './vet/create-vet-inspection/create-vet-inspection.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { EditVetInspectionComponent } from './vet/edit-vet-inspection/edit-vet-inspection.component';
@@ -70,7 +69,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     EditTimeComponent, HorseProfileComponent, 
     FeedingComponent, VetComponent,
     InspectionsComponent, ResidentProcedureBaseComponent,
-    ProcedureCardComponent, CreateVetInspectionComponent,
+    CreateVetInspectionComponent,
     EditVetInspectionComponent, InfoVetInspectionComponent],
 })
 

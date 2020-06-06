@@ -16,6 +16,9 @@ import { AuthService } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,23 @@ import { LoginComponent } from './auth/login/login.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     SharedModule,
+    NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-' }),
     // BrowserModule
   ],
   exports: [
     SharedModule
   ],
-  providers: [OwnerService, ResidentService, AuthGuard, AuthService],
+  providers: [
+    OwnerService, 
+    ResidentService, 
+    AuthGuard, 
+    AuthService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
