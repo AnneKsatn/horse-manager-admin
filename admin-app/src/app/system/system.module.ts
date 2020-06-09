@@ -38,6 +38,9 @@ import { InfoVetInspectionComponent } from './vet/info-vet-inspection/info-vet-i
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { CreateCategoryComponent } from './dashboard/create-category/create-category.component';
+import { EditCategoryComponent } from './dashboard/edit-category/edit-category.component';
+import { CreateCategoryServiceComponent } from './dashboard/create-category-service/create-category-service.component';
 
 
 
@@ -70,7 +73,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FeedingComponent, VetComponent,
     InspectionsComponent, ResidentProcedureBaseComponent,
     CreateVetInspectionComponent,
-    EditVetInspectionComponent, InfoVetInspectionComponent],
+    EditVetInspectionComponent, InfoVetInspectionComponent, CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent],
 })
 
 export class SystemModule {}

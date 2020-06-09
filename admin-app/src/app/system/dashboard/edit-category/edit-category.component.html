@@ -1,0 +1,40 @@
+<p>edit-category works!</p>
+
+<!-- <mat-list>
+
+  <mat-list-item *ngFor="let service of services">
+
+    <mat-icon matListIcon>delete</mat-icon>
+     <h3>  {{service.title}} </h3> 
+    <p>
+      <span> {{service.title}} </span>
+      <span class="demo-2"> {{service.title}} </span>
+    </p> 
+  </mat-list-item>
+
+</mat-list> -->
+
+<mat-list>
+  <div class="subtitle">
+    <div> Услуги </div>
+  
+    <div class="add-icon"><mat-icon class="add-icon" (click)="addServiceInCategory()">add_circle_outline</mat-icon></div>
+  </div>
+  
+
+  <!-- <button mat-raised-button (click)="addServiceInCategory()">Добавить услугу</button>  -->
+
+
+  <mat-list-item *ngFor="let service of services">
+     <mat-icon matListIcon (click)="deleteService(service.id)">delete</mat-icon>
+     <h4 matLine>{{service.title}}</h4>
+     <mat-divider></mat-divider>
+  </mat-list-item>
+  <!-- <mat-divider></mat-divider> -->
+</mat-list>
+  
+
+<button class="delete-btn" mat-raised-button (click)="delete()"> Удалить категорию </button>
+  <!-- <p>
+    Options selected: {{shoes.selectedOptions.selected.length}}
+  </p> -->

@@ -59,7 +59,7 @@ export class EditVetInspectionComponent implements OnInit {
     return {
       ...new StableVetInfo(),
       id: parseInt(this.inspection_id),
-      stableID: this.inspection_info.stableID,
+      stableId: this.inspection_info.stableId,
       date: this.form.value.date,
       title: this.form.value.title,
       price:  this.form.value.price,

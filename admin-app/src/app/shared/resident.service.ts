@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import { AngularFirestore} from '@angular/fire/firestore'
 // import { AngularFireAuth} from '@angular/fire/auth'
@@ -7,7 +7,13 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
 import { AuthService } from '../auth/auth.service';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
+import { SERVER_API_URL } from '../app.constants';
+import { IResident } from './model/resident.model';
+import * as moment from 'moment';
+
+type EntityResponseType = HttpResponse<IResident>;
+type EntityArrayResponseType = HttpResponse<IResident[]>;
 
 
 export interface Horse {
@@ -28,64 +34,23 @@ export class ResidentService {
 
   id_club: string;
 
+  public resourceUrl = SERVER_API_URL + 'api/residents';
+
   residents = [];
 
-  constructor(private httpClient: HttpClient, private firestore: AngularFirestore, private authService: AuthService) {
+  constructor(private httpClient: HttpClient, private firestore: AngularFirestore, private authService: AuthService, private http: HttpClient) {
     this.authService.userId.pipe(take(1)).subscribe( (userID: string) =>{
       this.id_club = userID;
     })
    }
 
-  getHorses() {
-    let req_adress = 'residents/' + this.id_club + '/horses'
-
-    this.firestore.collection(req_adress).snapshotChanges()
-      .subscribe((horses: any) => {
-
-        this.residents = horses.map(function (horse) {
-          return {
-            "stable": horse.payload.doc.data().stable,
-            "stall": horse.payload.doc.data().stall,
-            "groom": horse.payload.doc.data().groom,
-            "id": horse.payload.doc.id,
-            "category": horse.payload.doc.data().category,
-            "owner": horse.payload.doc.data().owner
-          }
-        })
-
-        this.getHorseInfo();
-        this.getCategoryInfo();
-      });
+    query(): Observable<EntityArrayResponseType> {
+    // const options = createRequestOption(req); params: options,
+    return this.http
+        .get<IResident[]>(this.resourceUrl, { observe: 'response' })
+        .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
-  getHorseInfo() {
-    this.residents.forEach(horse => {
-      this.firestore.collection('horses').doc(horse.id).get().subscribe((doc: any) => {
-        horse.name = doc.data().name;
-      })
-    })
-  }
-
-  getHorseName(horse_id: string){
-    return this.firestore.collection('horses').doc(horse_id).get();
-  }
-
-  getCategoryInfo() {
-    this.residents.forEach(horse => {
-
-      let req_adress = '/horse_clubs/' + this.id_club + '/categories';
-      this.firestore.collection(req_adress).doc(horse.category).get().subscribe((doc: any) => {
-        horse.category = doc.data().title;
-      })
-    })
-}
-
-
-  getPeopleById(id: string) {
-    return this.httpClient.get('http://192.168.1.39:3000/horses', {
-      params: new HttpParams().set('id', id)
-    });
-  }
 
   getHorseFeeding(horse_id: string, feeding_id: string){
 
@@ -137,6 +102,65 @@ export class ResidentService {
     return batch.commit().then(function () {
       console.log("done");
     });
+
+    
+    // create(horse: IHorse): Observable<EntityResponseType> {
+    //   const copy = this.convertDateFromClient(horse);
+    //   return this.http
+    //     .post<IHorse>(this.resourceUrl, copy, { observe: 'response' })
+    //     .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+    // }
+  
+    // update(horse: IHorse): Observable<EntityResponseType> {
+    //   const copy = this.convertDateFromClient(horse);
+    //   return this.http
+    //     .put<IHorse>(this.resourceUrl, copy, { observe: 'response' })
+    //     .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+    // }
+  
+    // // find(id: number): Observable<EntityResponseType> {
+    // //   return this.http
+    // //     .get<IHorse>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+    // //     .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+    // // }
+  
+  
+    // query(req?: any): Observable<EntityArrayResponseType> {
+    //   const options = createRequestOption(req);
+    //   return this.http
+    //     .get<IHorse[]>(this.resourceUrl, { params: options, observe: 'response' })
+    //     .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+    // }
+  
+    // delete(id: number): Observable<HttpResponse<{}>> {
+    //   return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    // }
+  
+    // protected convertDateFromClient(horse: IHorse): IHorse {
+    //   const copy: IHorse = Object.assign({}, horse, {
+    //     birth: horse.birth && horse.birth.isValid() ? horse.birth.toJSON() : undefined,
+    //   });
+    //   return copy;
+    // }
+  
+    // protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
+    //   if (res.body) {
+    //     res.body.birth = res.body.birth ? moment(res.body.birth) : undefined;
+    //   }
+    //   return res;
+    // }
+
+  
+  
+  }
+
+  protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+    if (res.body) {
+      res.body.forEach((horse: IResident) => {
+        horse.date = horse.date ? moment(horse.date) : undefined;
+      });
+    }
+    return res;
   }
 
 }

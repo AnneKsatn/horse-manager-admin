@@ -2,17 +2,12 @@ import {Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { HorseClubService } from '../../../shared/horse-club-service.service';
+import { CategoryService } from 'src/app/shared/service/category.service';
+import { IStandingCategogy } from 'src/app/shared/model/categogy.model';
 
 export interface DialogData {
-  groom: string;
-  stable: string;
-  stall: string;
+  stall: number;
   category: string;
-}
-
-interface Animal {
-  name: string;
-  sound: string;
 }
 
 
@@ -25,22 +20,17 @@ export class JoinHorseDialogComponent {
 
 
   selectFormControl = new FormControl('', Validators.required);
-  categories = [];
+  categories: IStandingCategogy[];
 
   constructor(
     public dialogRef: MatDialogRef<JoinHorseDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private horseClubService: HorseClubService) {
-      this.horseClubService.getCategories().subscribe((categories: any) => {
-        this.categories = categories.map(category => {
-          return {
-            title: category.payload.doc.data().title,
-            id: category.payload.doc.id
-          }
-        })
+    private categoryService: CategoryService) {
+      
+      this.categoryService.query().subscribe( response => {
+        this.categories = response.body || [];
       })
     }
-
 
   onNoClick(): void {
     this.dialogRef.close();

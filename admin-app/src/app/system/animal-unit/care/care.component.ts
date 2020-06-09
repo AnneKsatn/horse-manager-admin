@@ -56,7 +56,7 @@ export class CareComponent implements OnInit {
   };
 
   ngOnInit(): void {
-     this.residentService.getHorses()
+    //  this.residentService.getHorses()
     //.subscribe(horses => {
     //   this.horses = horses;
     // })

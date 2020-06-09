@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Категория</h1>
+<div mat-dialog-content>
+    <p>Внесите данные:</p>
+    <mat-form-field>
+        <mat-label>цена</mat-label>
+        <input matInput [(ngModel)]="data.price" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>название</mat-label>
+      <input matInput [(ngModel)]="data.title" required>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data">создать</button>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial>отмена</button>
+</div>

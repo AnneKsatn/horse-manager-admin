@@ -1,0 +1,21 @@
+.delete-btn {
+    margin-top: 5%;
+   float: right;
+}
+
+
+.subtitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .add-icon{
+    font-size: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+    color: green;
+  }

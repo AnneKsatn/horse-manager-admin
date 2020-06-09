@@ -18,6 +18,7 @@ import { ResidentProcedureBaseComponent } from './vet/resident-procedure-base/re
 import { CreateVetInspectionComponent } from './vet/create-vet-inspection/create-vet-inspection.component';
 import { EditVetInspectionComponent } from './vet/edit-vet-inspection/edit-vet-inspection.component';
 import { InfoVetInspectionComponent } from './vet/info-vet-inspection/info-vet-inspection.component';
+import { EditCategoryComponent } from './dashboard/edit-category/edit-category.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
       {path: 'create', component: CreateVetInspectionComponent},
       {path: 'edit', component: EditVetInspectionComponent},
       {path: 'info', component: InfoVetInspectionComponent}
-    ]}
+    ]},
+    {path: 'category', component: EditCategoryComponent}
   ]}
 ];
 

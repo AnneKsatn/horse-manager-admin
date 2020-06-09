@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpResponse, HttpClient } from '@angular/common/http';
 import { IStableVetInfo } from './model/stable-vet-info.model';
 import * as moment from 'moment/moment';
+import { SERVER_API_URL } from '../app.constants';
 
 
 type EntityResponseType = HttpResponse<IStableVetInfo>;
@@ -20,7 +21,7 @@ export class VeterinaryService {
 
   }
 
-  public resourceUrl = 'http://localhost:8080/' + 'api/stable-vet-infos';
+  public resourceUrl = SERVER_API_URL + 'api/stable-vet-infos';
 
   getVetInspections() {
 

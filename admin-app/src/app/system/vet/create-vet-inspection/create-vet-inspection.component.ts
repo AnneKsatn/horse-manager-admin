@@ -39,7 +39,7 @@ export class CreateVetInspectionComponent implements OnInit {
       ])
     })
 
-    this.residentService.getHorses();
+    // this.residentService.getHorses();
     this.setHorses();
   };
 

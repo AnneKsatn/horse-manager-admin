@@ -5,6 +5,7 @@ import { unescapeIdentifier } from '@angular/compiler';
 import { DeleteHorseDialogComponent } from './delete-horse-dialog/delete-horse-dialog.component';
 import { Observable } from 'rxjs';
 import { HorseRegistrarionService } from '../../../shared/horse-registrarion.service';
+import { IResident } from '../../../shared/model/resident.model';
 
 
 export interface Horse {
@@ -32,43 +33,43 @@ export class ResidentUnitComponent implements OnInit {
     private residentService: ResidentService,
     private horseRegistrationService: HorseRegistrarionService,
     ) {
-    this.residentService.getHorses();
+
   }
 
   name: string;
   owner: string;
 
-  horses = [];
+  horses: IResident[];
 
-  ngDoCheck(): void{
-    this.horses = this.residentService.residents;
-  }
 
   ngOnInit(): void {
-    this.horses = this.residentService.residents;
+    this.residentService.query().subscribe( result => {
+      this.horses = result.body || [];
+      console.log(this.horses)
+    })
   }
 
   openDialog(horse_id: string): void {
-    const dialogRef = this.dialog.open(DeleteHorseDialogComponent, {
-      width: '450px',
-      data: { name: this.name, owner: this.owner}
-    })
+    // const dialogRef = this.dialog.open(DeleteHorseDialogComponent, {
+    //   width: '450px',
+    //   data: { name: this.name, owner: this.owner}
+    // })
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.horseRegistrationService.deleteHorse(horse_id)
-      // if (result !== undefined) {
-      //   if (result.name !== undefined) {
-      //     this.horses.push({
-      //       name: result.name,
-      //       owner: result.owner,
-      //       phone: "+79215673724",
-      //       stable: result.stable,
-      //       groom: result.groom,
-      //       stall: result.stall
-      //     })
-      //   }
-      // }
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.horseRegistrationService.deleteHorse(horse_id)
+    //   // if (result !== undefined) {
+    //   //   if (result.name !== undefined) {
+    //   //     this.horses.push({
+    //   //       name: result.name,
+    //   //       owner: result.owner,
+    //   //       phone: "+79215673724",
+    //   //       stable: result.stable,
+    //   //       groom: result.groom,
+    //   //       stall: result.stall
+    //   //     })
+    //   //   }
+    //   // }
+    // });
   }
 
   edit(id: string){
