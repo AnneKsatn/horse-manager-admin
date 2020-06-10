@@ -23,10 +23,10 @@ export interface AuthResponseData {
 
 export class Login {
   constructor(
-    public username: string, 
-    public password: string, 
-    public rememberMe: boolean, 
-    ) {}
+    public username: string,
+    public password: string,
+    public rememberMe: boolean,
+  ) { }
 }
 
 type JwtToken = {
@@ -41,162 +41,59 @@ export class AuthService {
 
   public resourceUrl = SERVER_API_URL + 'api/authenticate';
 
-  private _user = new BehaviorSubject<User>(null);
-
-  constructor(private http: HttpClient, private firestore: AngularFirestore, 
-    private $localStorage: LocalStorageService, 
+  constructor(private http: HttpClient,
+    private $localStorage: LocalStorageService,
     private $sessionStorage: SessionStorageService) { }
 
-  // Достает из хранилища данные и проверяет токен
-  autoLogin() {
-    return from(Plugins.Storage.get({key: 'authData'}))
-            .pipe(map(storedData => {
-              if (!storedData || !storedData.value) {
-                return null;
-              }
-              const parsedData = JSON.parse(storedData.value) as {
-                token: string; 
-                // tokenExpirationDate: string;
-                userId: string,
-                // email: string
-              };
-              // const expirationTime = new Date(parsedData.tokenExpirationDate);
-              // if(expirationTime <= new Date()) {
-              //   return null;
-              // }
 
-              const user = new User(
-                parsedData.userId,
-                // parsedData.email,
-                parsedData.token,
-                // expirationTime
-              );
-              return user;
-            }), 
-            tap(user => {
-              if (user) {
-                this._user.next(user);
-              }
-            }),
-            map(user => {
-              return !!user;
-            })
-            );
-  }
-
-  signup(email: string, password: string){
+  signup(email: string, password: string) {
     return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${
       environment.firebaseConfig.apiKey
-    }`, {email: email, password: password, returnSecureToken: true})
-    .pipe(tap(this.setUserData.bind(this)))
+      }`, { email: email, password: password, returnSecureToken: true })
+      .pipe(tap(this.setUserData.bind(this)))
   }
 
-  addClubDoc(club_id, title){
-    this.firestore.collection("horse_clubs").doc(club_id).set({
-      title: title
-    })
-  }
-
-  // login(email: string, password: string) {
-  //   return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${
-  //     environment.firebaseConfig.apiKey
-  //   }`, {email: email, password: password, returnSecureToken: true})
-  //   .pipe(tap(
-  //     this.setUserData.bind(this)))
-  // }
-
-  
 
   login(username: string, password: string, rememberMe = false): Observable<void> {
     return this.http
-      .post<JwtToken>(this.resourceUrl, {username, password, rememberMe})
+      .post<JwtToken>(this.resourceUrl, { username, password, rememberMe })
       .pipe(map(
         this.setUserData.bind(this)
-        ));
-
+      ));
   }
 
 
-  logout(){
-    this._user.next(null);
-    Plugins.Storage.remove({
-      key: 'authData'
-    })
+  logout() {
+    return new Observable(observer => {
+      this.$localStorage.clear('authenticationToken');
+      this.$sessionStorage.clear('authenticationToken');
+
+      this.$localStorage.clear('user');
+      this.$sessionStorage.clear('user');
+      observer.complete();
+    });
   }
 
-  get userIsIsAuthenticated() {
-    return this._user.asObservable()
-      .pipe(map(user => {
-        if(user) {
-          return !!user.token
-        } else {
-          return false;
-        }
-      }));
+  getToken(): string {
+    return this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken') || '';
   }
 
-  get userId(){
-    return this._user.asObservable()
-      .pipe(map(user => {
-        if(user) {
-          return user.id;
-        } else {
-          return null;
-        }}
-        ));
-  }
-
-  get userToken(){
-    return this._user.asObservable()
-      .pipe(map(user => {
-        if(user) {
-          return user.token;
-        } else {
-          return null;
-        }}
-        ));
+  getUserID(): number {
+    return this.$localStorage.retrieve('user') || this.$sessionStorage.retrieve('user') || '';
   }
 
   private setUserData(userData: JwtToken) {
 
     let rememberMe = false;
     const jwt = userData.id_token;
+    const id = userData.id_user;
+
     if (rememberMe) {
       this.$localStorage.store('authenticationToken', jwt);
+      this.$localStorage.store('user', id);
     } else {
       this.$sessionStorage.store('authenticationToken', jwt);
+      this.$sessionStorage.store('user', id);
     }
-
-    console.log("Set DATA")
-    console.log(userData)
-    // const expirationTime = new Date(new Date().getTime() + (+userData.expiresIn * 1000));
-    this._user.next(new User(
-      userData.id_user,
-      // userData.email,
-      userData.id_token,
-      // expirationTime
-    ));
-
-    this.storeAuthData(
-      userData.id_user,
-      userData.id_token
-      // expirationTime.toISOString(),
-      // userData.email
-      )
-  }
-
-  private storeAuthData(
-    userId: string,
-    token: string,
-    // tokenExpirationDate: string,
-    // email: string
-  ) {
-    const data = JSON.stringify({
-      userId: userId,
-      token: token,
-      // tokenExpirationDate: tokenExpirationDate,
-      // email: email
-    })
-    Plugins.Storage.set({ key: 'authData', value: data })
   }
 }

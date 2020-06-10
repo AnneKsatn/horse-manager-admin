@@ -25,9 +25,9 @@ export class VeterinaryService {
 
   getVetInspections() {
 
-    return this.authService.userId.pipe(take(1), switchMap(userID => {
-      return this.firestore.collection("/vet_procedure_info", ref => ref.where('club_id', '==', userID)).snapshotChanges();
-    }))
+    // return this.authService.userId.pipe(take(1), switchMap(userID => {
+    //   return this.firestore.collection("/vet_procedure_info", ref => ref.where('club_id', '==', userID)).snapshotChanges();
+    // }))
   }
 
   get(req?: any): Observable<EntityArrayResponseType> {
@@ -98,24 +98,24 @@ export class VeterinaryService {
     horseProcedures: any
   ) {
 
-    console.log("CREATE")
-    var func = this.addInspectionParticipants.bind(this);
+    // console.log("CREATE")
+    // var func = this.addInspectionParticipants.bind(this);
 
-    this.authService.userId.subscribe(userID => {
+    // this.authService.userId.subscribe(userID => {
 
-      console.log(userID)
+    //   console.log(userID)
 
-      this.firestore.collection("vet_procedure_info").add({
-        title: title,
-        vet: veterinar,
-        price: price,
-        date: date,
-        club_id: userID
-      })
-        .then(function (docRef) {
-          func(horseProcedures, docRef.id);
-        })
-    })
+    //   this.firestore.collection("vet_procedure_info").add({
+    //     title: title,
+    //     vet: veterinar,
+    //     price: price,
+    //     date: date,
+    //     club_id: userID
+    //   })
+    //     .then(function (docRef) {
+    //       func(horseProcedures, docRef.id);
+    //     })
+    // })
   }
 
   updateInspectionInfo(title: string, veterinar: string, price: string, date: string, id: string) {

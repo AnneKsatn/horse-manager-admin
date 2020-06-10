@@ -1,67 +1,38 @@
-<button disabled class="add-button" mat-raised-button color="green">добавить постояльца</button>
-
 <div class="table-head">
   <mat-grid-list cols="7" rowHeight="68px">
-    <mat-grid-tile colspan="1">
+    <mat-grid-tile colspan="2">
       Постоялец
     </mat-grid-tile>
-    <mat-grid-tile colspan="2"></mat-grid-tile>
+    <mat-grid-tile colspan="1"></mat-grid-tile>
     <mat-grid-tile colspan="1"> Категория </mat-grid-tile>
-    <mat-grid-tile colspan="1"> Конюшня</mat-grid-tile>
+    <mat-grid-tile colspan="1"> </mat-grid-tile>
     <mat-grid-tile colspan="1"> Денник №</mat-grid-tile>
-    <mat-grid-tile colspan="1"> Конюх</mat-grid-tile>
+    <mat-grid-tile colspan="1"> </mat-grid-tile>
   </mat-grid-list>
 </div>
 
 
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let horse of horses">
-    <mat-expansion-panel-header>
-      <div class="table-row-header">
-        <mat-grid-list cols="7" rowHeight="68px">
-          <mat-grid-tile colspan="1">
-            <!-- коб. {{horse.name}} -->
-          </mat-grid-tile>
-          <mat-grid-tile colspan="2">
-            <!-- {{horse.owner}}  -->
-          </mat-grid-tile>
-          <mat-grid-tile colspan="1"> {{horse.category}}</mat-grid-tile>
-          <mat-grid-tile colspan="1"> 
-            <!-- {{horse.stable}}  -->
-          </mat-grid-tile>
-          <mat-grid-tile colspan="1"> {{horse.stall}}</mat-grid-tile>
-          <mat-grid-tile colspan="1"> 
-            <!-- {{horse.groom}}  -->
-          </mat-grid-tile>
-        </mat-grid-list>
-      </div>
-    </mat-expansion-panel-header>
+  <div *ngFor="let horse of horses" class="procedure-card">
+    <div class="table-head">
 
-    <div class="table-row-content">
-
-      <div class="first-block">
-
-        <p>Дата регистрации: 12 декабря 2009</p>
-        <p>Масть: гнедая</p>
-
-        <div class="button-block">
-          <button mat-stroked-button 
-          [routerLink]="['/system/maintenance/profile']"
-          [queryParams]="{horse_id: horse.id}"
-          > Профиль
-        </button>
-          <button mat-stroked-button (click)="delete(horse.id)" class="btn"> Удалить</button>
-        </div>
-      </div>
-      <div class="addition-contacts">
-        <p class="text-center">Дополнительные контакты:</p>
-        <mat-grid-list cols="4" rowHeight="40px" *ngFor="let person of horse.people">
-          <mat-grid-tile colspan="2">{{person.name}} </mat-grid-tile>
-          <mat-grid-tile colspan="1"> {{person.phone}}</mat-grid-tile>
-          <mat-grid-tile colspan="1">{{person.role}} </mat-grid-tile>
-        </mat-grid-list>
-      </div>
+      <mat-grid-list cols="7" rowHeight="68px">
+        <mat-grid-tile colspan="2"> {{horse.name}} </mat-grid-tile>
+        <mat-grid-tile colspan="1">
+          <!-- {{horse.owner}}   -->
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1"> {{horse.categoryTitle}}</mat-grid-tile>
+        <mat-grid-tile colspan="1">
+          <!-- {{horse.stable}}  -->
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1"> {{horse.stall}}</mat-grid-tile>
+        <mat-grid-tile colspan="1">
+          <button mat-stroked-button [routerLink]="['/system/maintenance/profile']"
+            [queryParams]="{horse_id: horse.id}"> Профиль
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      
     </div>
-
-  </mat-expansion-panel>
+  </div>
 </mat-accordion>

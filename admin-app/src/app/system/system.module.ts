@@ -41,8 +41,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CreateCategoryComponent } from './dashboard/create-category/create-category.component';
 import { EditCategoryComponent } from './dashboard/edit-category/edit-category.component';
 import { CreateCategoryServiceComponent } from './dashboard/create-category-service/create-category-service.component';
-
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   imports: [CommonModule, 
@@ -54,7 +54,7 @@ import { CreateCategoryServiceComponent } from './dashboard/create-category-serv
     MatFormFieldModule,
     MatCardModule,
     MatSelectModule,
-    DragDropModule, MatTableModule, MatSortModule, MatCheckboxModule],
+    DragDropModule, MatTableModule, MatSortModule, MatCheckboxModule, MatSidenavModule, MatTreeModule],
     
   declarations: 
   [AnimalUnitComponent, 

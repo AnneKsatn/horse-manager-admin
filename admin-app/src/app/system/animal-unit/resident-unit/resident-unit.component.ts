@@ -5,7 +5,10 @@ import { unescapeIdentifier } from '@angular/compiler';
 import { DeleteHorseDialogComponent } from './delete-horse-dialog/delete-horse-dialog.component';
 import { Observable } from 'rxjs';
 import { HorseRegistrarionService } from '../../../shared/horse-registrarion.service';
-import { IResident } from '../../../shared/model/resident.model';
+import { CategoryService } from '../../../shared/service/category.service';
+import { IResident, IResidentInfo } from '../../../shared/model/resident.model';
+import { IStandingCategogy } from '../../../shared/model/categogy.model';
+import { HttpResponse } from '@angular/common/http';
 
 
 export interface Horse {
@@ -32,6 +35,7 @@ export class ResidentUnitComponent implements OnInit {
   constructor(public dialog: MatDialog, 
     private residentService: ResidentService,
     private horseRegistrationService: HorseRegistrarionService,
+    private categoryService: CategoryService
     ) {
 
   }
@@ -39,13 +43,12 @@ export class ResidentUnitComponent implements OnInit {
   name: string;
   owner: string;
 
-  horses: IResident[];
+  horses: IResidentInfo[];
 
 
   ngOnInit(): void {
     this.residentService.query().subscribe( result => {
       this.horses = result.body || [];
-      console.log(this.horses)
     })
   }
 

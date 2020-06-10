@@ -20,3 +20,15 @@ export interface IResident {
         ) {}
   }
   
+
+
+export interface IResidentInfo {
+    id?: number;
+    stableId?: number;
+    date?: Moment;
+    horseId?: number;
+    categoryId?: number;
+    stall?: number;
+    name?: string;
+    categoryTitle?: string;
+  }

@@ -9,7 +9,7 @@ import 'firebase/firestore';
 import { AuthService } from '../auth/auth.service';
 import { take, map } from 'rxjs/operators';
 import { SERVER_API_URL } from '../app.constants';
-import { IResident } from './model/resident.model';
+import { IResident, IResidentInfo } from './model/resident.model';
 import * as moment from 'moment';
 
 type EntityResponseType = HttpResponse<IResident>;
@@ -32,23 +32,20 @@ export interface Horse {
 })
 export class ResidentService {
 
-  id_club: string;
+  id_club: number;
 
   public resourceUrl = SERVER_API_URL + 'api/residents';
 
   residents = [];
 
   constructor(private httpClient: HttpClient, private firestore: AngularFirestore, private authService: AuthService, private http: HttpClient) {
-    this.authService.userId.pipe(take(1)).subscribe( (userID: string) =>{
-      this.id_club = userID;
-    })
+    this.id_club = this.authService.getUserID();
    }
 
-    query(): Observable<EntityArrayResponseType> {
-    // const options = createRequestOption(req); params: options,
+  query(): Observable<HttpResponse<IResidentInfo[]>> {
     return this.http
-        .get<IResident[]>(this.resourceUrl, { observe: 'response' })
-        .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+      .get<IResidentInfo[]>(this.resourceUrl, { observe: 'response' })
+      .pipe(map((res: HttpResponse<IResidentInfo[]>) => this.convertDateArrayFromServer(res)));
   }
 
 

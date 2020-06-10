@@ -9,11 +9,13 @@ export interface Tile {
 @Component({
   selector: 'app-system',
   templateUrl: './system.component.html',
-  styleUrls: ['./system.component.css']
-
+  styleUrls: ['../../assets/css/theme-default.css']
 })
 
 export class SystemComponent {
+
+  showFiller = false;
+  
   tiles: Tile[] = [
     {text: 'One', cols: 1, color: 'lightblue'},
     {text: 'Two', cols: 11, color: 'lightgreen'},

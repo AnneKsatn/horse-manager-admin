@@ -6,6 +6,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { IStandingCategogy, StandingCategogy } from 'src/app/shared/model/categogy.model';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -16,7 +18,9 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private horseClubService: HorseClubService, private categotyService: CategoryService, public dialog: MatDialog) { }
+  constructor(private horseClubService: HorseClubService, private categotyService: CategoryService, public dialog: MatDialog, 
+    public authService: AuthService,
+    private router: Router) { }
 
   categories: IStandingCategogy[];
 
@@ -32,6 +36,14 @@ export class DashboardComponent implements OnInit {
 
   addCategory(){
     
+  }
+
+
+  logout() {
+    this.authService.logout().subscribe(null, null, () => {
+      this.router.navigateByUrl('/auth/login');
+    }
+    );
   }
 
   openDialog(): void {

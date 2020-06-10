@@ -16,15 +16,13 @@ type EntityArrayResponseType = HttpResponse<IResident[]>;
 })
 export class HorseRegistrarionService {
 
-  club_id: string;
+  club_id: number;
   public resourceUrl = SERVER_API_URL + 'api/residents';
 
-  constructor(private firestore: AngularFirestore, 
-    private authService: AuthService, 
+  constructor(private firestore: AngularFirestore,
+    private authService: AuthService,
     private http: HttpClient) {
-    this.authService.userId.subscribe((userID: string) => {
-      this.club_id = userID;
-    })
+    this.club_id = this.authService.getUserID();
   }
 
   getRequests() {
