@@ -19,6 +19,7 @@ import { CreateVetInspectionComponent } from './vet/create-vet-inspection/create
 import { EditVetInspectionComponent } from './vet/edit-vet-inspection/edit-vet-inspection.component';
 import { InfoVetInspectionComponent } from './vet/info-vet-inspection/info-vet-inspection.component';
 import { EditCategoryComponent } from './dashboard/edit-category/edit-category.component';
+import { CategoryComponent } from './category/category.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
       {path: 'edit', component: EditVetInspectionComponent},
       {path: 'info', component: InfoVetInspectionComponent}
     ]},
-    {path: 'category', component: EditCategoryComponent}
+    {path: 'edit-category', component: EditCategoryComponent},
+    {path: 'category', component: CategoryComponent}
   ]}
 ];
 

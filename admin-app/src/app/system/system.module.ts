@@ -43,6 +43,7 @@ import { EditCategoryComponent } from './dashboard/edit-category/edit-category.c
 import { CreateCategoryServiceComponent } from './dashboard/create-category-service/create-category-service.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTreeModule} from '@angular/material/tree';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   imports: [CommonModule, 
@@ -73,7 +74,7 @@ import {MatTreeModule} from '@angular/material/tree';
     FeedingComponent, VetComponent,
     InspectionsComponent, ResidentProcedureBaseComponent,
     CreateVetInspectionComponent,
-    EditVetInspectionComponent, InfoVetInspectionComponent, CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent],
+    EditVetInspectionComponent, InfoVetInspectionComponent, CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent],
 })
 
 export class SystemModule {}

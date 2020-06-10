@@ -9,7 +9,7 @@ export interface Tile {
 @Component({
   selector: 'app-system',
   templateUrl: './system.component.html',
-  styleUrls: ['../../assets/css/theme-default.css']
+  styleUrls: ['../../assets/css/theme-blue.css']
 })
 
 export class SystemComponent {
