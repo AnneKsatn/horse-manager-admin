@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 3%;
+    padding-top: 1%;
 }
 
 .add-category {
@@ -11,7 +13,7 @@
 }
 
 .card {
-width: 430px;
+width: 400px;
 padding-right: 2%;
 margin-bottom: 3%;
 }

@@ -12,10 +12,13 @@ export class CategoryComponent implements OnInit {
   constructor(private categoryService: CategoryService) { }
 
   categories: IStandingCategogy[];
+  category: IStandingCategogy
 
   ngOnInit(): void {
     this.categoryService.query().subscribe( result => {
       this.categories = result.body || [];
+      this.category = this.categories[0] || {};
+      console.log(this.category)
     })
   }
 }

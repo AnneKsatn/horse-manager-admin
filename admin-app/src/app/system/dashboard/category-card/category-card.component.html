@@ -1,31 +1,18 @@
 
-<div class="example-card-1" 
-[routerLink]="['/system/category']"
-[queryParams]="{id: category.id}">
-<mat-card>
+<div class="panel panel-default">
 
-    <mat-card-header>
-      <mat-card-title>{{category.title}}: {{category.price}} руб./мес.</mat-card-title>
-    </mat-card-header>
+  <div class="panel-heading">
+    <h3 class="panel-title">{{category.title}}: {{category.price}} руб./мес</h3>
+    <ul class="panel-controls">
+      <li><a [routerLink]="['/system/category']" [queryParams]="{id: category.id}" class="panel-fullscreen"><span
+            class="fa fa-cog"></span></a></li>
+      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+    </ul>
+  </div>
 
-    <mat-card-content class="card-content">
-
-      <div class="service"  *ngFor="let service of services">
-
-        <mat-icon mat-list-icon> grade</mat-icon>
-        <div class="service-title"> {{service.title}} </div>
-
-      </div>
-<!-- 
-        <mat-list role="list">
-            <mat-list-item class="list-item"
-            role="listitem"
-            *ngFor="let service of services">
-                <mat-icon mat-list-icon> grade</mat-icon>
-                {{service.title}}
-            </mat-list-item>
-        </mat-list> -->
-    </mat-card-content>
-  
-  </mat-card>
+  <div class="panel-body list-group list-group-contacts">
+    <a class="list-group-item" *ngFor="let service of services">
+      <p>{{service.title}}</p>
+    </a>
+  </div>
 </div>
