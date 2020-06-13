@@ -1,7 +1,7 @@
 .page-title {
   font-size: 36px;
   padding-top: 5%;
-  margin-bottom: 2%;
+  margin-bottom: 7%;
 }
 .isDisabled {
   color: currentColor;
@@ -34,6 +34,7 @@
 .menu-main {
   list-style: none;
   text-align: left;
+  margin-top: 80px;
 }
 
 .menu-main li:last-child:after {content: none;}

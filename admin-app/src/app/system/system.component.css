@@ -69,6 +69,10 @@
   box-sizing: border-box;
 }
 
+.content-frame {
+  padding: 4%;
+  padding-top: 2%;
+}
 
 /* .icon-wallet, .icon-horse, .icon-notification, .icon-home, .icon-vet{
   width: 100%;

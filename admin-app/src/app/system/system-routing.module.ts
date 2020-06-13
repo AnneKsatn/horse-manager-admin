@@ -14,7 +14,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { HorseProfileComponent } from './animal-unit/horse-profile/horse-profile.component';
 import { InspectionsComponent } from './vet/inspections/inspections.component';
-import { ResidentProcedureBaseComponent } from './vet/resident-procedure-base/resident-procedure-base.component';
 import { CreateVetInspectionComponent } from './vet/create-vet-inspection/create-vet-inspection.component';
 import { EditVetInspectionComponent } from './vet/edit-vet-inspection/edit-vet-inspection.component';
 import { InfoVetInspectionComponent } from './vet/info-vet-inspection/info-vet-inspection.component';
@@ -37,7 +36,6 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'vet', component: VetComponent, children: [
       {path: 'inspection', component: InspectionsComponent},
-      {path: 'base', component: ResidentProcedureBaseComponent},
       {path: 'create', component: CreateVetInspectionComponent},
       {path: 'edit', component: EditVetInspectionComponent},
       {path: 'info', component: InfoVetInspectionComponent}

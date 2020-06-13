@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 export interface Tile {
   color: string;
@@ -9,15 +11,30 @@ export interface Tile {
 @Component({
   selector: 'app-system',
   templateUrl: './system.component.html',
-  styleUrls: ['../../assets/css/theme-blue.css']
+  styleUrls: ['../../assets/css/theme-blue.css', './system.component.scss']
 })
 
-export class SystemComponent {
+export class SystemComponent implements OnInit {
 
   showFiller = false;
-  
+
   tiles: Tile[] = [
-    {text: 'One', cols: 1, color: 'lightblue'},
-    {text: 'Two', cols: 11, color: 'lightgreen'},
+    { text: 'One', cols: 1, color: 'lightblue' },
+    { text: 'Two', cols: 11, color: 'lightgreen' },
   ];
+
+  constructor(private authService: AuthService, private router: Router) {
+
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  logout() {
+    this.authService.logout().subscribe(null, null, () => {
+      this.router.navigateByUrl('/auth/login');
+    }
+    );
+  }
 }

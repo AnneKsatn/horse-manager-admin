@@ -1,6 +1,7 @@
 .delete-btn {
     margin-top: 5%;
-   float: right;
+    float: right;
+    height: 30px;
 }
 
 
@@ -18,4 +19,36 @@
     align-items: center;
     padding-left: 15px;
     color: green;
+  }
+
+  // .list-group-item{
+  //   min-height: 60px;
+  // }
+
+  .cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 100%;
+    min-width: 100%;
+    justify-content: space-between;
+  }
+
+  .title{
+    width: 90%;
+  }
+
+
+  .row-input{
+    margin-right: 40px;
+    width: 250px;
+  }
+
+  .save-btn {
+    margin-top: 1%;
+    margin-bottom: 3%;
+    color: white;
+    background-color: #1caf9a;
+    height: 35px;
+    width: 120px;
   }

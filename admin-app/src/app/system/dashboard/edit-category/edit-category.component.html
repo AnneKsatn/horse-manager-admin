@@ -1,40 +1,51 @@
-<p>edit-category works!</p>
 
-<!-- <mat-list>
+<div>
+ 
+    <mat-form-field class="row-input"  appearance="outline">
+      <mat-label>Название</mat-label>
+      <input 
+      matInput
+       placeholder="Placeholder"
+       [(ngModel)]="category.title"
+       >  
+    </mat-form-field>
 
-  <mat-list-item *ngFor="let service of services">
-
-    <mat-icon matListIcon>delete</mat-icon>
-     <h3>  {{service.title}} </h3> 
-    <p>
-      <span> {{service.title}} </span>
-      <span class="demo-2"> {{service.title}} </span>
-    </p> 
-  </mat-list-item>
-
-</mat-list> -->
-
-<mat-list>
-  <div class="subtitle">
-    <div> Услуги </div>
+ 
+    <mat-form-field  class="row-input"  appearance="outline">
+      <mat-label>Цена</mat-label>
+      <input 
+      matInput
+       placeholder="Placeholder"
+       [(ngModel)]="category.price"
+       >
   
-    <div class="add-icon"><mat-icon class="add-icon" (click)="addServiceInCategory()">add_circle_outline</mat-icon></div>
+    </mat-form-field>
+  
+</div>
+
+<button class="save-btn" mat-raised-button (click)="updateCategory()"> Сохранить </button>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Услуги</h3>
+    <ul class="panel-controls">
+      <li><a (click)="addServiceInCategory()"><span class="fa fa-plus"></span></a></li>
+    </ul>
   </div>
-  
+  <div class="panel-body list-group list-group-contacts">
+    <a class="list-group-item" *ngFor="let service of services">
+      <div class="cont">
+        <div class="title">
+          <p>{{service.title}}</p>
 
-  <!-- <button mat-raised-button (click)="addServiceInCategory()">Добавить услугу</button>  -->
-
-
-  <mat-list-item *ngFor="let service of services">
-     <mat-icon matListIcon (click)="deleteService(service.id)">delete</mat-icon>
-     <h4 matLine>{{service.title}}</h4>
-     <mat-divider></mat-divider>
-  </mat-list-item>
-  <!-- <mat-divider></mat-divider> -->
-</mat-list>
-  
+        </div>
+        <div class="m-icon">
+          <button class="btn btn-primary btn-rounded" (click)="deleteService(service.id)"><span
+              class="fa fa-trash-o"></span></button>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
 
 <button class="delete-btn" mat-raised-button (click)="delete()"> Удалить категорию </button>
-  <!-- <p>
-    Options selected: {{shoes.selectedOptions.selected.length}}
-  </p> -->

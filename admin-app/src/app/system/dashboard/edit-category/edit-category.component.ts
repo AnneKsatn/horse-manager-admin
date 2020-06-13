@@ -8,11 +8,12 @@ import { CategoryConsistService } from 'src/app/shared/service/category-consist.
 import { ICategoryService, CategoryServiceModel } from 'src/app/shared/model/category-service.model';
 import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IStandingCategogy, StandingCategogy } from 'src/app/shared/model/categogy.model';
 
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.scss']
+  styleUrls: ['./edit-category.component.scss', '../../../../assets/css/theme-blue.css']
 })
 export class EditCategoryComponent implements OnInit {
 
@@ -23,8 +24,12 @@ export class EditCategoryComponent implements OnInit {
      private router: Router
      ) { }
 
+  category: IStandingCategogy | null = null;;
   category_id: string;
   services: ICategoryService[];
+
+  title = "I категория"
+  price = 20000;
 
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 
@@ -32,6 +37,10 @@ export class EditCategoryComponent implements OnInit {
     this.category_id = this.activatedRouter.snapshot.queryParams['id']
     this.categoryConsistService.query(parseInt(this.category_id)).subscribe( result => {
       this.services = result.body || [];
+    })
+
+    this.categoryService.find(parseInt(this.category_id)).subscribe(category => {
+      this.category = category.body;
     })
   }
 
@@ -41,6 +50,21 @@ export class EditCategoryComponent implements OnInit {
 
   deleteService(id: number){
     this.subscribeToSaveResponse(this.categoryConsistService.delete(id))
+  }
+
+  updateCategory(){
+    const category = this.createCategory();
+    this.subscribeToSaveResponse(this.categoryService.update(category));
+  }
+  
+  private createCategory(): IStandingCategogy {
+    return {
+      ...new StandingCategogy(),
+      id: parseInt(this.category_id),
+      title: this.category.title,
+      price: this.category.price,
+      stableId: this.category.stableId
+    };
   }
 
   addServiceInCategory(){

@@ -22,7 +22,7 @@ import { MainComponent } from './main/main.component';
 import {MatCardModule} from '@angular/material/card';
 import { JoinHorseDialogComponent } from './main/join-horse-dialog/join-horse-dialog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoryCardComponent } from './dashboard/category-card/category-card.component';
+import { CategoryCardComponent } from './category/category-card/category-card.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FeedingTimeComponent } from './dashboard/feeding-time/feeding-time.component';
 import { EditTimeComponent } from './dashboard/feeding-time/edit-time/edit-time.component';
@@ -30,7 +30,6 @@ import { HorseProfileComponent } from './animal-unit/horse-profile/horse-profile
 import { FeedingComponent } from './animal-unit/horse-profile/feeding/feeding.component';
 import { VetComponent } from './vet/vet.component';
 import { InspectionsComponent } from './vet/inspections/inspections.component';
-import { ResidentProcedureBaseComponent } from './vet/resident-procedure-base/resident-procedure-base.component';
 import { CreateVetInspectionComponent } from './vet/create-vet-inspection/create-vet-inspection.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { EditVetInspectionComponent } from './vet/edit-vet-inspection/edit-vet-inspection.component';
@@ -72,7 +71,7 @@ import { CategoryComponent } from './category/category.component';
     CategoryCardComponent, FeedingTimeComponent, 
     EditTimeComponent, HorseProfileComponent, 
     FeedingComponent, VetComponent,
-    InspectionsComponent, ResidentProcedureBaseComponent,
+    InspectionsComponent, 
     CreateVetInspectionComponent,
     EditVetInspectionComponent, InfoVetInspectionComponent, CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent],
 })

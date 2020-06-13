@@ -4,7 +4,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">{{category.title}}: {{category.price}} руб./мес</h3>
     <ul class="panel-controls">
-      <li><a [routerLink]="['/system/category']" [queryParams]="{id: category.id}" class="panel-fullscreen"><span
+      <li><a [routerLink]="['/system/edit-category']" [queryParams]="{id: category.id}" class="panel-fullscreen"><span
             class="fa fa-cog"></span></a></li>
       <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
     </ul>
