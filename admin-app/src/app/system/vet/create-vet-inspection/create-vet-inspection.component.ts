@@ -39,13 +39,12 @@ export class CreateVetInspectionComponent implements OnInit {
       ])
     })
 
-    // this.residentService.getHorses();
-    this.setHorses();
+    this.residentService.query().subscribe( result => {
+      this.done = result.body || [];
+      console.log(this.done);
+    })
   };
 
-  async setHorses(){
-    this.done = await this.residentService.residents;
-  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
