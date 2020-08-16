@@ -26,6 +26,7 @@ export class HorseRegistrarionService {
   }
 
   getRequests() {
+    console.log(this.club_id)
     return this.firestore.collection('joining_application', ref => ref.where('club_id', '==', this.club_id)
       .where('status', '==', "active")).snapshotChanges();
   }

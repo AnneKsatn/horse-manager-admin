@@ -17,9 +17,9 @@ import { InspectionsComponent } from './vet/inspections/inspections.component';
 import { CreateVetInspectionComponent } from './vet/create-vet-inspection/create-vet-inspection.component';
 import { EditVetInspectionComponent } from './vet/edit-vet-inspection/edit-vet-inspection.component';
 import { InfoVetInspectionComponent } from './vet/info-vet-inspection/info-vet-inspection.component';
-import { EditCategoryComponent } from './dashboard/edit-category/edit-category.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 import { CategoryComponent } from './category/category.component';
-
+import { FeedComponent } from './feed/feed.component';
 
 const routes: Routes = [
   {path: '', component: SystemComponent,  children: [
@@ -41,7 +41,8 @@ const routes: Routes = [
       {path: 'info', component: InfoVetInspectionComponent}
     ]},
     {path: 'edit-category', component: EditCategoryComponent},
-    {path: 'category', component: CategoryComponent}
+    {path: 'category', component: CategoryComponent},
+    {path: 'feed', component: FeedComponent}
   ]}
 ];
 

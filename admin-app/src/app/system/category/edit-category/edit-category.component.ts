@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { CategoryService } from 'src/app/shared/service/category.service';
 
-import {CreateCategoryServiceComponent} from '../create-category-service/create-category-service.component'
+import { CreateCategoryServiceComponent } from '../create-category-service/create-category-service.component'
 import { CategoryConsistService } from 'src/app/shared/service/category-consist.service';
 import { ICategoryService, CategoryServiceModel } from 'src/app/shared/model/category-service.model';
 import { HttpResponse } from '@angular/common/http';
@@ -17,12 +17,12 @@ import { IStandingCategogy, StandingCategogy } from 'src/app/shared/model/catego
 })
 export class EditCategoryComponent implements OnInit {
 
-  constructor(private activatedRouter: ActivatedRoute,  
-    public dialog: MatDialog, 
+  constructor(private activatedRouter: ActivatedRoute,
+    public dialog: MatDialog,
     private categoryService: CategoryService,
-     private categoryConsistService: CategoryConsistService,
-     private router: Router
-     ) { }
+    private categoryConsistService: CategoryConsistService,
+    private router: Router
+  ) { }
 
   category: IStandingCategogy | null = null;;
   category_id: string;
@@ -33,9 +33,9 @@ export class EditCategoryComponent implements OnInit {
 
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 
-  loadData(){
+  loadData() {
     this.category_id = this.activatedRouter.snapshot.queryParams['id']
-    this.categoryConsistService.query(parseInt(this.category_id)).subscribe( result => {
+    this.categoryConsistService.query(parseInt(this.category_id)).subscribe(result => {
       this.services = result.body || [];
     })
 
@@ -48,15 +48,21 @@ export class EditCategoryComponent implements OnInit {
     this.loadData();
   }
 
-  deleteService(id: number){
+  deleteService(id: number) {
     this.subscribeToSaveResponse(this.categoryConsistService.delete(id))
   }
 
-  updateCategory(){
+  updateCategory() {
     const category = this.createCategory();
-    this.subscribeToSaveResponse(this.categoryService.update(category));
+
+    this.categoryService.update(category).subscribe(
+      (resp) => {
+        this.router.navigateByUrl("/system/category")
+      },
+      (err) => { console.log(err) }
+    );
   }
-  
+
   private createCategory(): IStandingCategogy {
     return {
       ...new StandingCategogy(),
@@ -67,7 +73,7 @@ export class EditCategoryComponent implements OnInit {
     };
   }
 
-  addServiceInCategory(){
+  addServiceInCategory() {
     const dialogRef = this.dialog.open(CreateCategoryServiceComponent, {
       width: '500px',
       data: { title: "Постой в большом денике" }
@@ -79,9 +85,9 @@ export class EditCategoryComponent implements OnInit {
     });
   }
 
-  delete(){
-    this.categoryService.delete(parseInt(this.category_id)).subscribe( result => {
-      this.router.navigate(['/system/dashboard']);
+  delete() {
+    this.categoryService.delete(parseInt(this.category_id)).subscribe(result => {
+      this.router.navigateByUrl("/system/category");
     })
   }
 
@@ -95,8 +101,8 @@ export class EditCategoryComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ICategoryService>>): void {
-    result.subscribe( 
-      (resp) => { 
+    result.subscribe(
+      (resp) => {
         console.log("OK");
         this.loadData();
       },

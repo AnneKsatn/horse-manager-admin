@@ -24,8 +24,7 @@ import { JoinHorseDialogComponent } from './main/join-horse-dialog/join-horse-di
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryCardComponent } from './category/category-card/category-card.component';
 import {MatSelectModule} from '@angular/material/select';
-import { FeedingTimeComponent } from './dashboard/feeding-time/feeding-time.component';
-import { EditTimeComponent } from './dashboard/feeding-time/edit-time/edit-time.component';
+import { EditTimeComponent } from './feed/edit-time/edit-time.component';
 import { HorseProfileComponent } from './animal-unit/horse-profile/horse-profile.component';
 import { FeedingComponent } from './animal-unit/horse-profile/feeding/feeding.component';
 import { VetComponent } from './vet/vet.component';
@@ -37,12 +36,13 @@ import { InfoVetInspectionComponent } from './vet/info-vet-inspection/info-vet-i
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { CreateCategoryComponent } from './dashboard/create-category/create-category.component';
-import { EditCategoryComponent } from './dashboard/edit-category/edit-category.component';
-import { CreateCategoryServiceComponent } from './dashboard/create-category-service/create-category-service.component';
+import { CreateCategoryComponent } from './category/create-category/create-category.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
+import { CreateCategoryServiceComponent } from './category/create-category-service/create-category-service.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTreeModule} from '@angular/material/tree';
 import { CategoryComponent } from './category/category.component';
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   imports: [CommonModule, 
@@ -68,12 +68,12 @@ import { CategoryComponent } from './category/category.component';
     CurrentMonthComponent, 
     HorseRowComponent, MainComponent, 
     JoinHorseDialogComponent, DashboardComponent, 
-    CategoryCardComponent, FeedingTimeComponent, 
+    CategoryCardComponent,  
     EditTimeComponent, HorseProfileComponent, 
     FeedingComponent, VetComponent,
     InspectionsComponent, 
     CreateVetInspectionComponent,
-    EditVetInspectionComponent, InfoVetInspectionComponent, CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent],
+    EditVetInspectionComponent, InfoVetInspectionComponent, CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent, FeedComponent],
 })
 
 export class SystemModule {}

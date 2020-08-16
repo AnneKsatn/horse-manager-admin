@@ -2,7 +2,10 @@
     <h2> Категории постоя </h2>
 </div>
 
+<button class="save-btn" mat-raised-button (click)="openDialog()"> добавить </button>
+
 <div class="page-content-wrap">
+
     <div class="card-row">
         <div class="card" *ngFor="let category of categories">
             <app-category-card [category]="category"></app-category-card>
