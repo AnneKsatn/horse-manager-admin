@@ -16,21 +16,39 @@ export class EditVetInspectionComponent implements OnInit {
   inspection_id: string;
   form: FormGroup;
   inspection_info: IStableVetInfo;
+  date: string;
 
   constructor(private route: ActivatedRoute, private veterinaryService: VeterinaryService, private router: Router) { }
 
   ngOnInit(): void {
+
     this.inspection_id = this.route.snapshot.queryParams['id'];
+
+    this.veterinaryService.find(this.inspection_id).subscribe((data: HttpResponse<IStableVetInfo>) => {
+      this.inspection_info = data.body || {}
+      if(data.body){
+        this.date = data.body.date.getFullYear() + "-";
+
+        if (data.body.date.getMonth() < 10){
+          this.date  = this.date + "0"
+        }
+
+        this.date = this.date +  data.body.date.getMonth() + "-"
+
+        if(data.body.date.getUTCDate() < 10) {
+          this.date  = this.date + "0"
+        }
+
+        this.date = this.date + data.body.date.getUTCDate();
+        console.log(this.date); 
+      }
+    })
 
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required]),
       date: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required])
     })
-
-    this.veterinaryService.find(this.inspection_id).subscribe((data: HttpResponse<IStableVetInfo>) => (
-      this.inspection_info = data.body || {}
-    ))
   }
 
   onEditInspection(){
@@ -40,11 +58,9 @@ export class EditVetInspectionComponent implements OnInit {
     console.log(this.form.value);
 
     const stableVetInfo = this.createFromForm();
+    console.log(date)
 
     this.subscribeToSaveResponse(this.veterinaryService.update(stableVetInfo));
-
-    // this.veterinaryService.updateInspectionInfo(title, veterinar, price, date, this.inspection_id)
-    this.router.navigateByUrl("/system/vet/inspection")
   }
 
   delete(inspection_id: string){
@@ -60,7 +76,7 @@ export class EditVetInspectionComponent implements OnInit {
       ...new StableVetInfo(),
       id: parseInt(this.inspection_id),
       stableId: this.inspection_info.stableId,
-      date: this.form.value.date,
+      date: new Date(this.form.value.date),
       title: this.form.value.title,
       price:  this.form.value.price,
     };
@@ -70,7 +86,8 @@ export class EditVetInspectionComponent implements OnInit {
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IStableVetInfo>>): void {
     result.subscribe(
       () => {
-        console.log("OK")
+        console.log("OK");
+        this.router.navigateByUrl("/system/vet/inspection")
       },
       () => {
         console.log("NO")

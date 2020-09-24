@@ -4,6 +4,7 @@ import { ResidentService } from '../../../shared/resident.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VeterinaryService } from '../../../shared/veterinary.service';
+import { IStableVetInfo, StableVetInfo } from '../../../shared/model/stable-vet-info.model';
 
 @Component({
   selector: 'app-create-vet-inspection',
@@ -12,13 +13,9 @@ import { VeterinaryService } from '../../../shared/veterinary.service';
 })
 export class CreateVetInspectionComponent implements OnInit {
 
-  constructor(private residentService: ResidentService, private router: Router, private veterinaryService: VeterinaryService) { }
+  constructor(private router: Router, private veterinaryService: VeterinaryService) { }
 
   form: FormGroup;
-
-  todo = [];
-  done = [];
-  paied = [];
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -38,11 +35,6 @@ export class CreateVetInspectionComponent implements OnInit {
         Validators.required,
       ])
     })
-
-    this.residentService.query().subscribe( result => {
-      this.done = result.body || [];
-      console.log(this.done);
-    })
   };
 
 
@@ -55,44 +47,27 @@ export class CreateVetInspectionComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+  }
 
-    console.log(this.todo)
+  private createInspection(stable_id: number): IStableVetInfo{
+
+    return {
+      ...new StableVetInfo(),
+      id: undefined,
+      title: this.form.value.title,
+      stableId: stable_id,
+      date: new Date(this.form.value.date),
+      price: this.form.value.price,
+    };
   }
 
   onCreateInspection(){
-    const title = this.form.value.title;
-    const veterinar = this.form.value.veterinar;
-    const price = this.form.value.price
-    const date = this.form.value.date
-    
-    console.log("CREATE");
 
-    let listOfProcedures = [];
-
-    this.done.forEach( item => {
-      listOfProcedures.push({
-        horse_id: item.id,
-        status: "notpaid"
-      })
-    })
-
-    this.paied.forEach( item => {
-      listOfProcedures.push({
-        horse_id: item.id,
-        status: "paid"
-      })
-    })
-
-    this.todo.forEach( item => {
-      listOfProcedures.push({
-        horse_id: item.id,
-        status: "missed"
-      })
-    })
-
-    this.veterinaryService.createInspection(title, veterinar, price, date, listOfProcedures)
+    const inspection= this.createInspection(3);
+    this.veterinaryService.create(inspection).subscribe((error) => {
+      console.log(error);
+    });
 
     this.router.navigateByUrl("/system/vet/inspection")
-
   }
 }

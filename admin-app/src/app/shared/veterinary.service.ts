@@ -4,7 +4,7 @@ import { AuthService } from '../auth/auth.service';
 import { take, switchMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpResponse, HttpClient } from '@angular/common/http';
-import { IStableVetInfo } from './model/stable-vet-info.model';
+import { IStableVetInfo, StableVetInfo } from './model/stable-vet-info.model';
 import * as moment from 'moment/moment';
 import { SERVER_API_URL } from '../app.constants';
 
@@ -89,6 +89,14 @@ export class VeterinaryService {
     });
   }
 
+
+  create(vet: IStableVetInfo): Observable<EntityResponseType> {
+
+    const copy = this.convertDateFromClient(vet);
+
+    return this.http
+      .post<IStableVetInfo>(this.resourceUrl, copy, { observe: 'response' })
+  }
 
 
   createInspection(title: string,

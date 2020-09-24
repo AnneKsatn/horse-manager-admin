@@ -1,31 +1,35 @@
 <button class="add-button" mat-raised-button color="green" routerLink="/system/vet/create">добавить данные</button>
 
-<div class="table-head">
-  <mat-grid-list cols="6" rowHeight="68px">
-    <mat-grid-tile colspan="3">
-      Процедура
-    </mat-grid-tile>
-    <mat-grid-tile colspan="1"> Дата </mat-grid-tile>
-    <mat-grid-tile colspan="1"> Цена </mat-grid-tile>
-    <mat-grid-tile colspan="1"> </mat-grid-tile>
-  </mat-grid-list>
-</div>
 
-<mat-accordion>
-  <div *ngFor="let procedure of stableVetInfos" class="procedure-card">
-    <div class="table-head">
-
-      <mat-grid-list cols="6" rowHeight="68px">
-        <mat-grid-tile colspan="3">{{procedure.title}}</mat-grid-tile>
-        <mat-grid-tile colspan="1">{{procedure.date}} </mat-grid-tile>
-        <mat-grid-tile colspan="1">{{procedure.price}} </mat-grid-tile>
-        <mat-grid-tile colspan="1"> <button mat-stroked-button [routerLink]="['/vet/info']"
-            [queryParams]="{id: procedure.id}"> Информация
-          </button>
-        </mat-grid-tile>
-      </mat-grid-list>
-      
-    </div>
+<div class="page-content-wrap">
+  <div class="table-head">
+    <mat-grid-list cols="6" rowHeight="68px">
+      <mat-grid-tile colspan="3">
+        Процедура
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1"> Дата </mat-grid-tile>
+      <mat-grid-tile colspan="1"> Цена </mat-grid-tile>
+      <mat-grid-tile colspan="1"> </mat-grid-tile>
+    </mat-grid-list>
   </div>
 
-</mat-accordion>
+  <mat-accordion>
+    <div *ngFor="let procedure of stableVetInfos" class="procedure-card">
+      <div class="table-head">
+
+        <mat-grid-list cols="6" rowHeight="68px">
+          <mat-grid-tile colspan="3">{{procedure.title}}</mat-grid-tile>
+          <mat-grid-tile colspan="1">{{procedure.date | date:'longDate'}} </mat-grid-tile>
+          <mat-grid-tile colspan="1">{{procedure.price}} </mat-grid-tile>
+          <mat-grid-tile colspan="1"> <button mat-stroked-button [routerLink]="['/system/vet/info']"
+              [queryParams]="{id: procedure.id}"> Информация
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+      </div>
+    </div>
+
+  </mat-accordion>
+
+</div>

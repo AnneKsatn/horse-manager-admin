@@ -4,7 +4,7 @@
   </div>
   
   
-  <form [formGroup]="form" (ngSubmit)="onEditInspection()" >
+  <form [formGroup]="form" (ngSubmit)="onEditInspection()" *ngIf="inspection_info">
     <div class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Название процедуры</mat-label>
@@ -27,11 +27,10 @@
     <mat-form-field class="example-full-width">
       <mat-label>Дата</mat-label>
       <input 
-      matInput 
+      matInput
+      type="date"
       formControlName = "date"
-      placeholder="27 января 2019"
-
-      [(ngModel)]="inspection_info.date"
+      [(ngModel)]="date"
       >
       
       <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -47,8 +46,9 @@
       <mat-label>Цена</mat-label>
       <input 
       matInput
+      type="number"
       formControlName = "price"
-      placeholder="2 500"
+      placeholder="2500"
       [(ngModel)]="inspection_info.price"
       >
       <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">

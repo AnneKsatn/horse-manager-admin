@@ -10,6 +10,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 import { IStableVetInfo } from '../../../shared/model/stable-vet-info.model';
+import { IStableVet, StableVet } from '../../../shared/model/stable-vet.model';
+import { VetParticipantsService } from '../../../shared/service/vet-participants.service';
 
 
 export interface HorseProcedure {
@@ -35,60 +37,38 @@ export class InfoVetInspectionComponent implements OnInit {
   // @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private route: ActivatedRoute, 
-    private residentService: ResidentService, 
-    private veterinaryService: VeterinaryService) { }
+    private veterinaryService: VeterinaryService,
+    private vetParticipantsService: VetParticipantsService
+    ) { }
 
   inspection_id: string;
 
   inspection_info: IStableVetInfo;
   horseProcedures = [];
 
-  ngOnInit(): void {
-
-    this.inspection_id = this.route.snapshot.queryParams['id'];
-
+  getDataFromDB(): void {
     this.veterinaryService.find(this.inspection_id).subscribe((data: HttpResponse<IStableVetInfo>) => (
       this.inspection_info = data.body || {}
     ))
 
+    this.vetParticipantsService.get(this.inspection_id).subscribe((data: HttpResponse<IStableVet[]>) => {
+      console.log(data.body)
+      this.horseProcedures = data.body || []
 
-    // this.veterinaryService.getInspectionHorses(this.inspection_id).subscribe(docs => {
-    //   this.horseProcedures = docs.map(function (doc: any) {
-    //     return {
-    //       status: doc.payload.doc.data().status,
-    //       horse_id: doc.payload.doc.data().horse_id,
-    //       procedure_id: doc.payload.doc.id,
-    //     }
-    //   })
+      this.horseProcedures.forEach((data: IStableVet )=> {
+        if(data.status == "PAID") {
+          data.checked = true;
+        }
+        else  {
+          data.checked = false;
+        }
+      })
+    })
+  }
 
-    //   this.horseProcedures.forEach(horseProcedure => {
-    //     this.residentService.getHorseName(horseProcedure.horse_id).subscribe(data => {
-    //       horseProcedure.name = data.data().name;
-    //     })
-
-    //     if (horseProcedure.status == "missed") {
-    //       horseProcedure.payment = "не требуется"
-    //       horseProcedure.color = "gray"
-    //       horseProcedure.checked = false;
-    //     }
-
-    //     if (horseProcedure.status == "paid") {
-    //       horseProcedure.payment = "ОК"
-    //       horseProcedure.color = "green"
-    //       horseProcedure.checked = true;
-    //     }
-
-    //     if (horseProcedure.status == "notpaid") {
-    //       horseProcedure.payment = "не внесена"
-    //       horseProcedure.color = "red"
-    //       horseProcedure.checked = false;
-    //     }
-
-    //   })
-
-    //   this.dataSource = new MatTableDataSource(this.horseProcedures);
-    //   this.dataSource.sort = this.sort;
-    // })
+  ngOnInit(): void {
+    this.inspection_id = this.route.snapshot.queryParams['id'];
+    this.getDataFromDB();
   }
 
 
@@ -102,14 +82,26 @@ export class InfoVetInspectionComponent implements OnInit {
     }
   }
 
-  changeStatus(procedure_id: string, status: string){
-    let new_status = (status == "missed" ? "notpaid" : "missed");
-    this.veterinaryService.changeVetProcedureStatus(procedure_id, new_status);
+  changeStatus(stableVet: StableVet){
+
+    let updatedRow = stableVet;
+    updatedRow.status = (stableVet.status == "MISSED" ? "NOTPAID" : "MISSED")
+
+    this.vetParticipantsService.update(updatedRow).subscribe(data => {
+      this.getDataFromDB();
+    })
   }
 
-  changePayment(procedure_id: string, status: string){
-    let new_status = (status == "notpaid" ? "paid" : "notpaid");
-    this.veterinaryService.changeVetProcedureStatus(procedure_id, new_status);
+  changePayment(stableVet: StableVet){
+
+    let updatedRow = stableVet;
+    updatedRow.status = (stableVet.status == "NOTPAID" ? "PAID" : "NOTPAID");
+
+    this.vetParticipantsService.update(updatedRow).subscribe(data => {
+      this.vetParticipantsService.get(this.inspection_id).subscribe((data: HttpResponse<IStableVet[]>) => {
+        this.getDataFromDB();
+      })
+    })
   }
 }
 

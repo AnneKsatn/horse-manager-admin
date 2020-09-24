@@ -8,5 +8,13 @@ export interface IStableVetInfo {
 }
 
 export class StableVetInfo implements IStableVetInfo {
-  constructor(public id?: number, public stableId?: number, public date?: Date, public title?: string, public price?: number) {}
+  constructor(
+    public id?: number, 
+    public stableId?: number,
+    public date?: Date, 
+    public title?: string, 
+    public price?: number
+    ) {}
 }
+
+
