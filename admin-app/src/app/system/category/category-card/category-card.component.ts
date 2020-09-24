@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HorseClubService } from "../../../shared/horse-club-service.service"
-import { CategoryConsistService } from 'src/app/shared/service/category-consist.service';
+import { CategoryConsistService } from 'src/app/shared/service/category/category-consist.service';
 
 @Component({
   selector: 'app-category-card',

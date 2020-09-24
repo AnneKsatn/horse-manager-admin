@@ -5,7 +5,7 @@ import { unescapeIdentifier } from '@angular/compiler';
 import { DeleteHorseDialogComponent } from './delete-horse-dialog/delete-horse-dialog.component';
 import { Observable } from 'rxjs';
 import { HorseRegistrarionService } from '../../../shared/horse-registrarion.service';
-import { CategoryService } from '../../../shared/service/category.service';
+import { CategoryService } from '../../../shared/service/category/category.service';
 import { IResident, IResidentInfo } from '../../../shared/model/resident.model';
 import { IStandingCategogy } from '../../../shared/model/categogy.model';
 import { HttpResponse } from '@angular/common/http';

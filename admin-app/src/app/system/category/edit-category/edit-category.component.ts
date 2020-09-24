@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { CategoryService } from 'src/app/shared/service/category.service';
+import { CategoryService } from 'src/app/shared/service/category/category.service';
 
 import { CreateCategoryServiceComponent } from '../create-category-service/create-category-service.component'
-import { CategoryConsistService } from 'src/app/shared/service/category-consist.service';
+import { CategoryConsistService } from 'src/app/shared/service/category/category-consist.service';
 import { ICategoryService, CategoryServiceModel } from 'src/app/shared/model/category-service.model';
 import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';

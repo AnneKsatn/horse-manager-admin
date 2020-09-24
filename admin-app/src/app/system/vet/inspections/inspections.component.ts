@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VeterinaryService } from '../../../shared/veterinary.service';
+import { VeterinaryService } from '../services/veterinary.service';
 import { IStableVetInfo } from '../../../shared/model/stable-vet-info.model';
 import { HttpResponse } from '@angular/common/http';
 import localeRu from '@angular/common/locales/ru';

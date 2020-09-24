@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { HorseClubService } from '../../../shared/horse-club-service.service';
-import { CategoryService } from 'src/app/shared/service/category.service';
+import { CategoryService } from 'src/app/shared/service/category/category.service';
 import { IStandingCategogy } from 'src/app/shared/model/categogy.model';
 
 export interface DialogData {

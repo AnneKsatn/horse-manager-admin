@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICategoryService } from '../model/category-service.model';
-import { SERVER_API_URL } from '../../app.constants';
+import { ICategoryService } from '../../model/category-service.model';
+import { SERVER_API_URL } from '../../../app.constants';
 
 type EntityResponseType = HttpResponse<ICategoryService>;
 type EntityArrayResponseType = HttpResponse<ICategoryService[]>;
@@ -10,8 +10,9 @@ type EntityArrayResponseType = HttpResponse<ICategoryService[]>;
 @Injectable({ providedIn: 'root' })
 
 export class CategoryConsistService {
-  public resourceUrl = SERVER_API_URL  + 'api/category-services';
 
+  public resourceUrl = SERVER_API_URL  + 'api/category-services';
+  
   constructor(protected http: HttpClient) { }
 
   create(categogy: ICategoryService): Observable<EntityResponseType> {

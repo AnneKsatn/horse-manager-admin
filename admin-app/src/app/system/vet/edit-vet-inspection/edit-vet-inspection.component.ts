@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { VeterinaryService } from '../../../shared/veterinary.service';
+import { VeterinaryService } from '../services/veterinary.service';
 import { IStableVetInfo, StableVetInfo } from '../../../shared/model/stable-vet-info.model';
 import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';

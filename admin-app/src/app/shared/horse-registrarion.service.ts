@@ -27,12 +27,8 @@ export class HorseRegistrarionService {
 
   getRequests() {
     console.log(this.club_id)
-    return this.firestore.collection('joining_application', ref => ref.where('club_id', '==', this.club_id)
+    return this.firestore.collection('joining_application', ref => ref.where('club_id', '==', this.club_id.toString())
       .where('status', '==', "active")).snapshotChanges();
-  }
-
-  getHorseName(horse_id: string) {
-    return this.firestore.collection('horses').doc(horse_id).get();
   }
 
   acceptRequest(request_id: string) {
@@ -49,16 +45,6 @@ export class HorseRegistrarionService {
       .post<IResident>(this.resourceUrl, resident, { observe: 'response' })
   }
 
-  deleteHorse(horse_id: string) {
-
-    let req_adress = 'residents/' + this.club_id + '/horses'
-    this.firestore.collection(req_adress).doc(horse_id).delete();
-
-    this.firestore.collection("horses").doc(horse_id).update({
-      isResident: "false",
-      club_id: ""
-    })
-  }
 
   rejectRequest(request_id: string) {
     return this.firestore.collection('joining_application').doc(request_id).delete();

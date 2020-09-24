@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HorseClubService } from "../../shared/horse-club-service.service"
-import { CategoryService } from 'src/app/shared/service/category.service';
+import { CategoryService } from 'src/app/shared/service/category/category.service';
 // import { CreateCategoryComponent } from './create-category/create-category.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { IStandingCategogy, StandingCategogy } from 'src/app/shared/model/categogy.model';

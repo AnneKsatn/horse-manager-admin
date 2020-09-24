@@ -3,7 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { ResidentService } from '../../../shared/resident.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VeterinaryService } from '../../../shared/veterinary.service';
+import { VeterinaryService } from '../services/veterinary.service';
 import { IStableVetInfo, StableVetInfo } from '../../../shared/model/stable-vet-info.model';
 
 @Component({

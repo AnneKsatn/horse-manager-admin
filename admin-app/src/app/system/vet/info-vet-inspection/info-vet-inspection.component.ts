@@ -4,14 +4,14 @@ import { ResidentService } from '../../../shared/resident.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ActivatedRoute } from '@angular/router';
-import { VeterinaryService } from '../../../shared/veterinary.service';
+import { VeterinaryService } from '../services/veterinary.service';
 
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 import { IStableVetInfo } from '../../../shared/model/stable-vet-info.model';
 import { IStableVet, StableVet } from '../../../shared/model/stable-vet.model';
-import { VetParticipantsService } from '../../../shared/service/vet-participants.service';
+import { VetParticipantsService } from '../services/vet-participants.service';
 
 
 export interface HorseProcedure {

@@ -57,48 +57,6 @@ export class ResidentService {
   }
 
 
-  getVets(){
-    return this.firestore.collection("/vet_procedure_info", ref => ref.where('club_id', '==',this.id_club)).snapshotChanges();
-  }
-
-  getOkProcedureHorses(procedure_id: string){
-    return this.firestore.collection("/vets", ref => ref.where('vet_id', '==', procedure_id).where('status', 'in', ['paid', 'notpaid'])).snapshotChanges();
-  }
-
-  getMissedProcedureHorses(procedure_id: string){
-    return this.firestore.collection("/vets", ref => ref.where('vet_id', '==', procedure_id).where('status', '==', "missed")).snapshotChanges();
-  }
-
-  changeVetVisionStatus(id_vision: string, status: string){
-
-    this.firestore.collection("vets").doc(id_vision).update({
-      status: status,
-    })
-  }
-
-  fillInspectionConsist(procedutreConsist: any, procedure_id: string){
-    console.log(procedutreConsist);
-    this.firestore.collection("vet_procedure_consist").doc(procedure_id)
-    .set(procedutreConsist);
-  }
-
-  
-  fillInspectionConsist_2(procedutreConsist: Array<any>, procedure_id: string) {
-    console.log(procedutreConsist);
-
-    // this.firestore.collection("vet_procedure_consist").doc(procedure_id)
-    //   .set(procedutreConsist);
-    let batch = this.firestore.firestore.batch();
-
-    procedutreConsist.forEach( procedure => {
-      procedure.vet_id = procedure_id;
-      let nycRef = this.firestore.firestore.collection('vets').doc();
-      batch.set(nycRef, procedure)
-    })
-
-    return batch.commit().then(function () {
-      console.log("done");
-    });
 
     
     // create(horse: IHorse): Observable<EntityResponseType> {
@@ -149,8 +107,7 @@ export class ResidentService {
 
   
   
-  }
-
+  
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((horse: IResident) => {

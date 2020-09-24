@@ -1,8 +1,8 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SERVER_API_URL } from '../../app.constants';
-import { IStableVet } from '../model/stable-vet.model';
+import { SERVER_API_URL } from '../../../app.constants';
+import { IStableVet } from '../../../shared/model/stable-vet.model';
 
 
 
@@ -22,7 +22,7 @@ export class VetParticipantsService {
 
   get(infoId: string): Observable<EntityArrayResponseType> {
     return this.http
-      .get<IStableVet[]>(this.resourceUrl+ `?vet=${infoId}`, {observe: 'response' })
+      .get<IStableVet[]>(this.resourceUrl + `?vet=${infoId}`, {observe: 'response' })
   }
 
   update(stableVetInfo: IStableVet): Observable<EntityResponseType> {
