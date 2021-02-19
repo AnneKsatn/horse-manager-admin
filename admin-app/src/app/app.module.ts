@@ -19,6 +19,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import {SidebarModule} from 'primeng/sidebar';
+
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     AngularFirestoreModule,
     SharedModule,
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-' }),
+    SidebarModule
     // BrowserModule
   ],
   exports: [

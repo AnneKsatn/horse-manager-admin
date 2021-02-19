@@ -97,3 +97,27 @@
 .page {
   min-height: 100vh;
 }
+
+
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  /* min-width: 220px; */
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+  min-width: 220px;
+}
+
+.sidebar {
+  background-color: white;
+}

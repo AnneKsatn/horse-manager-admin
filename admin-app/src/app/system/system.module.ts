@@ -43,6 +43,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTreeModule} from '@angular/material/tree';
 import { CategoryComponent } from './category/category.component';
 import { FeedComponent } from './feed/feed.component';
+import {SidebarModule} from 'primeng/sidebar';
+
+
 
 @NgModule({
   imports: [CommonModule, 
@@ -54,7 +57,7 @@ import { FeedComponent } from './feed/feed.component';
     MatFormFieldModule,
     MatCardModule,
     MatSelectModule,
-    DragDropModule, MatTableModule, MatSortModule, MatCheckboxModule, MatSidenavModule, MatTreeModule],
+    DragDropModule, MatTableModule, MatSortModule, MatCheckboxModule, MatSidenavModule, MatTreeModule, SidebarModule],
     
   declarations: 
   [AnimalUnitComponent, 
