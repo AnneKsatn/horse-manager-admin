@@ -1,22 +1,47 @@
-<div class="msidebar">
+<ul class="x-navigation">
+  <li class="xn-logo">
+      <a href="index.html"> </a>
+      <a href="#" class="x-navigation-control"></a>
+  </li>
+  <li class="xn-profile">
+      <div class="profile">
+          <div class="profile-data">
+              <div class="profile-data-name">Авалон</div>
+              <div class="profile-data-title">Конно-спортивный клуб</div>
+          </div>
+      </div>
+  </li>
+  <li class="xn-title">Меню</li>
 
-  <!-- <a class="menu-item" routerLink="/system/main">
-    <div class="icon-notification"></div>
-  </a> -->
+  <li class="xn-openable">
+      <a><span class="fa fa-files-o"></span> <span class="xn-text">КСК</span></a>
+      <ul>
+          <li><a routerLink="/system/dashboard"><span class="fa fa-image"></span> Профиль КСК</a></li>
 
-  <a class="menu-item" routerLink="/system/dashboard">
-    <div class="icon-home"></div>
-  </a>
+          <li class="xn-openable">
+              <a href="#"><span class="fa fa-cogs"></span> Настройки </a>
+              <ul>
+                  <li><a routerLink="/system/category"><span class="fa fa-align-center"></span> Категории
+                          постоя </a></li>
+                  <li><a routerLink="/system/feed"><span class="fa fa-align-justify"></span> Рацион </a>
+                  </li>
+              </ul>
+          </li>
 
-  <a class="menu-item" routerLink="/system/maintenance/clients">
-    <div class="icon-horse"></div>
-  </a>
+          <li><a href="pages-calendar.html"><span class="fa fa-calendar"></span> Расписание КСК </a></li>
 
-  <!-- <a class="menu-item" routerLink="/system/wallet/current">
-    <div class="icon-wallet"></div>
-  </a> -->
+      </ul>
+  </li>
 
-  <a class="menu-item" routerLink="/system/vet/inspection">
-    <div class="icon-vet"></div>
-  </a>
-</div>
+  <li class="xn-openable">
+      <a><span class="fa fa-cogs"></span> <span class="xn-text">Содержание лошадей</span></a>
+      <ul>
+          <li><a routerLink="/system/maintenance/clients"><span class="fa fa-heart"></span> Частные
+                  лошади</a></li>
+      </ul>
+  </li>
+
+  <li>
+      <a routerLink="/system/vet/inspection"><span class="fa fa-map-marker"></span> <span
+              class="xn-text">Ветеринария</span></a>
+  </li>

@@ -18,9 +18,7 @@ export class SystemComponent implements OnInit {
 
   showFiller = false;
 
-  display1 = true;
-
-  display;
+  display = false;
 
   tiles: Tile[] = [
     { text: 'One', cols: 1, color: 'lightblue' },

@@ -14,7 +14,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 
+
+import {ToolbarModule} from 'primeng/toolbar';
+import {ButtonModule} from 'primeng/button';
 import {PanelModule} from 'primeng/panel';
+import {SplitButtonModule} from 'primeng/splitbutton';
 
 @NgModule({
   imports: [ FormsModule, CommonModule, MatDialogModule, MatFormFieldModule, MatButtonModule,
@@ -26,7 +30,10 @@ import {PanelModule} from 'primeng/panel';
     MatIconModule, 
     MatCheckboxModule,
     MatCardModule,
-    PanelModule
+    PanelModule,
+    ToolbarModule,
+    ButtonModule,
+    SplitButtonModule
   ],
   exports: [ FormsModule,
     CommonModule,
@@ -42,7 +49,10 @@ import {PanelModule} from 'primeng/panel';
     MatCheckboxModule, 
     MatDatepickerModule,
     MatCardModule,
-    PanelModule
+    PanelModule,
+    ToolbarModule,
+    ButtonModule,
+    SplitButtonModule
   ]
 })
 
