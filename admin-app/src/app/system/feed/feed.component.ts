@@ -7,7 +7,7 @@ import { EditTimeComponent } from './edit-time/edit-time.component';
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.scss', '../../../assets/css/theme-blue.css']
+  styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent implements OnInit {
 

@@ -13,7 +13,7 @@ import { IStandingCategogy, StandingCategogy } from 'src/app/shared/model/catego
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.scss', '../../../../assets/css/theme-blue.css']
+  styleUrls: ['./edit-category.component.scss']
 })
 export class EditCategoryComponent implements OnInit {
 

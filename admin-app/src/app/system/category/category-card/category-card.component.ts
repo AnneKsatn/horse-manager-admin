@@ -5,7 +5,7 @@ import { CategoryConsistService } from 'src/app/shared/service/category/category
 @Component({
   selector: 'app-category-card',
   templateUrl: './category-card.component.html',
-  styleUrls: ['./category-card.component.scss', '../../../../assets/css/theme-blue.css']
+  styleUrls: ['./category-card.component.scss']
 })
 export class CategoryCardComponent implements OnInit {
 

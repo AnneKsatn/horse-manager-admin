@@ -9,7 +9,7 @@ import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss', '../../../assets/css/theme-blue.css']
+  styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
 
