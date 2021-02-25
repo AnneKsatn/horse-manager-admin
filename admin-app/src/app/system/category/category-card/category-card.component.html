@@ -1,17 +1,18 @@
 
-<div class="panel panel-default">
 
-  <div class="panel-heading">
-    <h3 class="panel-title">{{category.title}}: {{category.price}} руб./мес</h3>
-    <ul class="panel-controls">
-      <li><a [routerLink]="['/system/edit-category']" [queryParams]="{id: category.id}" class="panel-fullscreen"><span
-            class="fa fa-cog"></span></a></li>
-    </ul>
-  </div>
 
-  <div class="panel-body list-group list-group-contacts">
-    <a class="list-group-item" *ngFor="let service of services">
-      <p>{{service.title}}</p>
-    </a>
-  </div>
-</div>
+<p-panel header="{{category.title}}: {{category.price}} руб./мес" [toggleable]="true">
+
+  <ng-template pTemplate="icons">
+    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-panel-header-icon"
+      [routerLink]="['/system/edit-category']" [queryParams]="{id: category.id}"></button>
+  </ng-template>
+
+  <p-table [value]="services" [rowHover]="true">
+    <ng-template pTemplate="body" let-service>
+      <tr>
+        <td>{{service.title}}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>

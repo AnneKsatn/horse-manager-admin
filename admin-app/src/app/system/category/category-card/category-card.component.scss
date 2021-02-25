@@ -1,38 +1,5 @@
-  .mat-list-icon {
-    color: rgba(0, 0, 0, 0.54);
-  }
 
-  .list-item {
-    padding-bottom: 10px;
-  }
 
-  .example-card-1{
-    cursor:  pointer;
-  }
-
-  .service{
-    padding-left: 10px;
-    padding-bottom: 4%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .service-title{
-    padding-left: 5%;
-    width: 100%;
-  }
-
-  .card-content{
-    padding-top: 5%;
-  }
-
-  .reight{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .panel .panel-default {
-    cursor:  pointer;
-  }
+:host ::ng-deep .p-panel .p-panel-content {
+  padding: 0;
+}

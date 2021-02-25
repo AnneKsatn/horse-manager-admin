@@ -36,3 +36,12 @@
 
 
 
+:host ::ng-deep .p-menu {
+  min-width: 100%;
+  margin-top: 30%;
+}
+
+.sidebar-menu {
+  min-width: 100%;
+  min-height: 100vh;
+}
