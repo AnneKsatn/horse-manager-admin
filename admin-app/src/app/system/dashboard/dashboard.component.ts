@@ -4,11 +4,10 @@ import { CategoryService } from 'src/app/shared/service/category/category.servic
 // import { CreateCategoryComponent } from './create-category/create-category.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { IStandingCategogy, StandingCategogy } from 'src/app/shared/model/categogy.model';
-import { Observable } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
-
+import axios from 'axios'
+import google from 'google'
 
 
 @Component({
@@ -44,5 +43,42 @@ export class DashboardComponent implements OnInit {
       this.router.navigateByUrl('/auth/login');
     }
     );
+  }
+
+  showUserLocationOnTheMap(latitude, longitude) {
+    let map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: new google.maps.LatLng(latitude, longitude),
+      mapTypeOs: google.maps.MapTypeId.ROADMAP
+    }) 
+
+    new google.maps.Marker({
+      position: new google.maps.LatLng(latitude, longitude),
+      map: map
+    })
+  }
+
+  locatorButtonPressed() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.getAddressFrom(position.coords.latitude, position.coords.longitude)
+          console.log(position.coords.latitude)
+          console.log(position.coords.longitude)
+        }
+      );
+    } else {
+      console.log("Your brouser does not support geolocation")
+    }
+  }
+
+  getAddressFrom(lat, long) {
+    axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&key=AIzaSyDcaXmX9DOD7ocoi8Jgci5pi-JNyHzFMPo").then(response => {
+      if(response.data.error_message) {
+        console.log(response.data.error_message);
+      } else {
+        console.log(response.data.results[0].formatted_address)
+      }
+    })
   }
 }

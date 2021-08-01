@@ -6,7 +6,7 @@
   
   .example-full-width {
     width: 100%;
-    padding-bottom: 8%;
+    padding-bottom: 2%;
   }
 
   .auth-title{
@@ -17,6 +17,8 @@
   .btn-block{
     display: flex;
     justify-content: center;
+    padding-top: 5%;
+    padding-bottom: 2%;
   }
 
 .login-conent {
@@ -25,4 +27,8 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+}
+
+.btn-full-width {
+  width: 100%;
 }

@@ -6,3 +6,7 @@
     padding-left: 10%;
     padding-right: 10%;
 }
+
+:host ::ng-deep .p-sidebar {
+    padding: 0rem;
+}

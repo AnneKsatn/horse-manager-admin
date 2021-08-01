@@ -4,13 +4,31 @@
       <div class="auth-title">Авторизация</div>
 
       <form [formGroup]="form" (ngSubmit)="onLogin()" class="example-form">
+      
+        <div class="example-full-width">
+          <span class="p-input-icon-left">
+            <i class="pi pi-envelope"></i>
+            <input type="text" pInputText formControlName="email" placeholder="pat@example.com" />
+          </span>
+        </div>
+      
+      
+      
+        <div class="example-full-width">
+          <span class="p-input-icon-left">
+            <i class="pi pi-lock"></i>
+            <input type="password" pInputText formControlName="password" placeholder="********" />
+          </span>
+        </div>
 
-          <mat-form-field class="example-full-width">
+
+
+          <!-- <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
             <input 
             matInput 
             formControlName="email" 
-            placeholder="pat@example.com">
+            placeholder="pat@example.com"> -->
 
             <!-- <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
               введите корректный адрес
@@ -18,26 +36,26 @@
             <mat-error *ngIf="email.hasError('required')">
               введите email
             </mat-error> -->
-          </mat-form-field>
+          <!-- </mat-form-field> -->
 
-          <mat-form-field class="example-full-width">
+          <!-- <mat-form-field class="example-full-width">
               <mat-label>Пароль</mat-label>
               <input 
               matInput 
               formControlName="password" 
-              placeholder="*******">
+              placeholder="*******"> -->
 <!-- 
               <mat-error *ngIf="password.hasError('required')">
                 введите пароль
               </mat-error> -->
-            </mat-form-field>
+            <!-- </mat-form-field> -->
       
   
       <div class="btn-block">
-        <button mat-button type="submit" [disabled]="!form.valid"> войти </button>
+        <button pButton pRipple type="button" label="вход" class="p-button-outlined p-button-success btn-full-width" type="submit" [disabled]="!form.valid"></button>
       </div>
 
     </form> 
 
-    <button mat-button (click)="goToRegistration()"> зарегистрироваться</button>
+    <button pButton pRipple type="button" label="регистрация" class="p-button-outlined p-button-secondary btn-full-width" (click)="goToRegistration()"></button>
   </div>
