@@ -76,6 +76,11 @@ export class SidebarComponent implements OnInit {
         label: 'Настройки',
         items: [
           {
+            label: 'Инфраструктура',
+            icon: 'pi pi-upload',
+            routerLink: '/system/infrastructure'
+          },
+          {
             label: 'Категории постоя',
             icon: 'pi pi-upload',
             routerLink: '/system/category'

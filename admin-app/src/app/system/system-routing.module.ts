@@ -20,6 +20,8 @@ import { InfoVetInspectionComponent } from './vet/info-vet-inspection/info-vet-i
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 import { CategoryComponent } from './category/category.component';
 import { FeedComponent } from './feed/feed.component';
+import { InfrastructureComponent } from './infrastructure/infrastructure.component';
+import { CreateStableComponent } from './infrastructure/create-stable/create-stable.component';
 
 const routes: Routes = [
   {path: '', component: SystemComponent,  children: [
@@ -42,7 +44,10 @@ const routes: Routes = [
     ]},
     {path: 'edit-category', component: EditCategoryComponent},
     {path: 'category', component: CategoryComponent},
-    {path: 'feed', component: FeedComponent}
+    {path: 'feed', component: FeedComponent},
+    {path: 'infrastructure', component: InfrastructureComponent, children: [
+      {path: 'create-stable', component: CreateStableComponent}
+    ]}
   ]}
 ];
 

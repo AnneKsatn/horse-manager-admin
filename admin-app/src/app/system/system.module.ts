@@ -10,6 +10,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 
 import { ResidentUnitComponent } from './animal-unit/resident-unit/resident-unit.component';
 import { DeleteHorseDialogComponent } from './animal-unit/resident-unit/delete-horse-dialog/delete-horse-dialog.component';
@@ -44,7 +45,10 @@ import {MatTreeModule} from '@angular/material/tree';
 import { CategoryComponent } from './category/category.component';
 import { FeedComponent } from './feed/feed.component';
 import {SidebarModule} from 'primeng/sidebar';
-
+import { InfrastructureComponent } from './infrastructure/infrastructure.component';
+import { CreateStableComponent } from './infrastructure/create-stable/create-stable.component';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -57,7 +61,9 @@ import {SidebarModule} from 'primeng/sidebar';
     MatFormFieldModule,
     MatCardModule,
     MatSelectModule,
-    DragDropModule, MatTableModule, MatSortModule, MatCheckboxModule, MatSidenavModule, MatTreeModule, SidebarModule],
+    DragDropModule, MatTableModule, MatSortModule, MatCheckboxModule, MatSidenavModule, MatTreeModule, SidebarModule, DropdownModule,
+    FormsModule,
+     InputNumberModule],
     
   declarations: 
   [AnimalUnitComponent, 
@@ -76,7 +82,8 @@ import {SidebarModule} from 'primeng/sidebar';
     FeedingComponent, VetComponent,
     InspectionsComponent, 
     CreateVetInspectionComponent,
-    EditVetInspectionComponent, InfoVetInspectionComponent, CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent, FeedComponent],
+    EditVetInspectionComponent, InfoVetInspectionComponent, 
+    CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent, FeedComponent, InfrastructureComponent, CreateStableComponent],
 })
 
 export class SystemModule {}

@@ -1,0 +1,96 @@
+<div class="content">
+    <div>Добавить конюшню</div>
+
+
+
+        <div class="input-block">
+            <label class="input-label">Тип конюшни</label>
+            <p-dropdown styleClass="input-field" [options]="cities" inputId="basic" [(ngModel)]="selectedCityCode"
+                optionLabel="title" optionValue="id"></p-dropdown>
+            <p-dropdown [options]="material" [(ngModel)]="selectedCityCode" optionLabel="title" optionValue="id">
+            </p-dropdown>
+        </div>
+
+        <div class="input-block">
+
+            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-text"></button>
+            <label class="input-label">Типы денников</label>
+
+
+
+            <!-- <div class="input-with-label">
+                <label for="integeronly">Integer Only</label>
+                <p-inputNumber [(ngModel)]="val" mode="decimal"></p-inputNumber>
+            </div> -->
+
+            <div class="stalls">
+
+
+
+                <div class="input-block">
+
+
+
+                    <span class="p-float-label">
+                        <p-inputNumber [(ngModel)]="val" mode="decimal" id="inputtext"></p-inputNumber>
+                        <label for="inputtext">длина</label>
+                    </span>
+
+                    <span class="p-float-label">
+                        <p-inputNumber [(ngModel)]="val" mode="decimal" id="inputtext"></p-inputNumber>
+                        <label for="inputtext">ширина</label>
+                    </span>
+
+                    <span class="p-float-label">
+                        <p-inputNumber [(ngModel)]="val" mode="decimal" id="inputtext"></p-inputNumber>
+                        <label for="inputtext">количество</label>
+                    </span>
+
+
+                    <button pButton pRipple type="button" icon="pi pi-minus"
+                        class="p-button-rounded p-button-text"></button>
+                </div>
+
+
+                <div class="input-block">
+
+
+
+                    <span class="p-float-label">
+                        <p-inputNumber [(ngModel)]="val" mode="decimal" id="inputtext"></p-inputNumber>
+                        <label for="inputtext">длина</label>
+                    </span>
+
+                    <span class="p-float-label">
+                        <p-inputNumber [(ngModel)]="val" mode="decimal" id="inputtext"></p-inputNumber>
+                        <label for="inputtext">ширина</label>
+                    </span>
+
+                    <span class="p-float-label">
+                        <p-inputNumber [(ngModel)]="val" mode="decimal" id="inputtext"></p-inputNumber>
+                        <label for="inputtext">количество</label>
+                    </span>
+
+
+                    <button pButton pRipple type="button" icon="pi pi-minus"
+                        class="p-button-rounded p-button-text"></button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    <!-- <p-dropdown [options]="material" [(ngModel)]="selectedCityCode" optionLabel="title" optionValue="id"></p-dropdown> -->
+
+    <!-- <div>Денники</div>
+
+    К-во + размер
+
+    <p-inputNumber [(ngModel)]="val" mode="decimal"></p-inputNumber>
+
+
+    <div>Добавить фото конюшни</div> -->
+
+</div>
