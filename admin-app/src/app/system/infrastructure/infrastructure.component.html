@@ -4,12 +4,19 @@
 </div>
 
 
-<div class="subtitle">
-    Конюшни
-</div>
 
-  
-<button class="save-btn" mat-raised-button (click)="addStabe()"> добавить </button>
+
+<p-tabView>
+    <p-tabPanel header="Общее">
+       Общее
+    </p-tabPanel>
+    <p-tabPanel header="Конюшни">
+       <app-stables></app-stables>
+    </p-tabPanel>
+    <p-tabPanel header="Манежи">
+       Манежи
+    </p-tabPanel>
+</p-tabView>
 
 <!-- <div class="page-content-wrap">
 
@@ -20,6 +27,3 @@
     </div>
 
 </div> -->
-
-
-<router-outlet></router-outlet>

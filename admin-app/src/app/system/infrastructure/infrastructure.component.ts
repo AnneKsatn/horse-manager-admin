@@ -14,8 +14,4 @@ export class InfrastructureComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  addStabe() {
-    this.router.navigateByUrl('system/infrastructure/create-stable')
-  }
 }

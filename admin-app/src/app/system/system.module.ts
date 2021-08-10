@@ -49,6 +49,12 @@ import { InfrastructureComponent } from './infrastructure/infrastructure.compone
 import { CreateStableComponent } from './infrastructure/create-stable/create-stable.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {CheckboxModule} from 'primeng/checkbox';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
+import {TabViewModule} from 'primeng/tabview';
+import { StablesComponent } from './infrastructure/stables/stables.component';
+import { StableListComponent } from './infrastructure/stables/stable-list/stable-list.component';
 
 
 @NgModule({
@@ -61,9 +67,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
     MatFormFieldModule,
     MatCardModule,
     MatSelectModule,
-    DragDropModule, MatTableModule, MatSortModule, MatCheckboxModule, MatSidenavModule, MatTreeModule, SidebarModule, DropdownModule,
+    DragDropModule, MatTableModule, MatSortModule, MatSidenavModule, MatTreeModule, SidebarModule, DropdownModule,
     FormsModule,
-     InputNumberModule],
+     InputNumberModule, CheckboxModule, MatCheckboxModule, FileUploadModule, HttpClientModule, TabViewModule],
     
   declarations: 
   [AnimalUnitComponent, 
@@ -83,7 +89,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
     InspectionsComponent, 
     CreateVetInspectionComponent,
     EditVetInspectionComponent, InfoVetInspectionComponent, 
-    CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent, FeedComponent, InfrastructureComponent, CreateStableComponent],
+    CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent, FeedComponent, InfrastructureComponent, CreateStableComponent, StablesComponent, StableListComponent],
 })
 
 export class SystemModule {}

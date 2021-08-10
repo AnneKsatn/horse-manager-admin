@@ -45,9 +45,8 @@ const routes: Routes = [
     {path: 'edit-category', component: EditCategoryComponent},
     {path: 'category', component: CategoryComponent},
     {path: 'feed', component: FeedComponent},
-    {path: 'infrastructure', component: InfrastructureComponent, children: [
-      {path: 'create-stable', component: CreateStableComponent}
-    ]}
+    {path: 'create-stable', component: CreateStableComponent},
+    {path: 'infrastructure', component: InfrastructureComponent}
   ]}
 ];
 
