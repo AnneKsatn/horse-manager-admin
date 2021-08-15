@@ -1,0 +1,139 @@
+<div>
+
+    <div class="page-title">
+        <h2> Добавить рабочую площадку</h2>
+    </div>
+
+    <form [formGroup]="manegeForm">
+
+        <section class="section">
+            <h3>Основное</h3>
+
+            <div class="input-block">
+                <label class="input-label">Тип рабочей площадки</label>
+                <p-dropdown [options]="manegeTypes" optionLabel="title" optionValue="id" formControlName="type"></p-dropdown>
+                <p-dropdown [options]="material" optionLabel="title" optionValue="id" formControlName="material"></p-dropdown>
+                <p-dropdown [options]="cover" optionLabel="title" optionValue="id" formControlName="cover"></p-dropdown>
+            </div>
+
+            <div class="input-block">
+                <label class="input-label">Грунт</label>
+                <p-dropdown [options]="ground" optionLabel="title" optionValue="id" formControlName="ground"></p-dropdown>
+            </div>
+
+            <div class="input-block">
+                <label class="input-label">Специализации манежа</label>
+                <p>Конкур</p>
+                <p-checkbox formControlName="ground2" [binary]="true"></p-checkbox>
+                <p>Выездка</p>
+                <p-checkbox formControlName="ground3" [binary]="true"></p-checkbox>
+                <p>Работа на корде</p>
+                <p-checkbox formControlName="ground5" [binary]="true"></p-checkbox>
+                <p>Установка шпринта</p>
+                <p-checkbox formControlName="ground4" [binary]="true"></p-checkbox>
+            </div>
+
+            <div class="input-block">
+                <label class="input-label">Тренировки учебных смен в манеже</label>
+                <p-dropdown [options]="tasks" optionLabel="title" optionValue="id" formControlName="ground"></p-dropdown>
+            </div>
+
+            <h3>Дополнительно</h3>
+            
+            <div class="input-block">
+                <label class="input-label">Отопление манежа</label>
+                <p-checkbox formControlName="ground2" [binary]="true"></p-checkbox>
+            </div>
+
+            <div class="input-block">
+                <label class="input-label">Окна и естественное освещение</label>
+                <p-checkbox formControlName="ground2" [binary]="true"></p-checkbox>
+            </div>
+            
+            <div class="input-block">
+                <label class="input-label">Искуственное осещение</label>
+                <p-checkbox formControlName="ground2" [binary]="true"></p-checkbox>
+            </div>
+
+            <div class="input-block">
+                <label class="input-label">Наличие комплекта препядствий</label>
+                <p-checkbox formControlName="ground2" [binary]="true"></p-checkbox>
+            </div>
+
+            <div class="input-block">
+                <label class="input-label">Расписание</label>
+                <p-checkbox formControlName="ground2" [binary]="true"></p-checkbox>
+            </div>
+
+            
+            <div class="input-block">
+                <label class="input-label">Доступ открыт для</label>
+                <p-checkbox formControlName="ground2" [binary]="true"></p-checkbox>
+            </div>
+
+
+        </section>
+
+
+
+        <section class="section">
+            <h3>Фотографии</h3>
+            <div class="images-input">
+                <p-fileUpload name="demo[]" [multiple]="true" [showUploadButton]="false" [showCancelButton]="false"
+                    url="./upload.php" accept="image/*" (onUpload)="onBasicUpload($event)"></p-fileUpload>
+            </div>
+        </section>
+
+        <!-- <section class="section">
+            <h3>Оснащение КСК</h3>
+            <div class="card">
+                <p-table [value]="customers" dataKey="title">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th colspan="1"></th>
+                            <th colspan="6" style="text-align:center"></th>
+                            <th colspan="1" style="text-align:center">Наличие</th>
+                            <th colspan="2" style="text-align:center">Фото</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowIndex="rowIndex" let-customer let-expanded="expanded">
+                        <tr *ngIf="rowGroupMetadata[customer.groupTitle].index === rowIndex">
+                            <td colspan="10">
+                                <h3>{{customer.groupTitle}}</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" pButton pRipple [pRowToggler]="customer"
+                                    class="p-button-text p-button-rounded p-button-plain"
+                                    [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                            </td>
+                            <td colspan="6">
+                                {{customer.title}}
+                            </td>
+                            <td style="text-align:center">
+                                <p-checkbox [formControlName]=customer.formControlName></p-checkbox>
+                            </td>
+                            <td colspan="2" style="text-align:center">
+                                не загружено
+                            </td>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="rowexpansion" let-customer>
+                        <tr>
+                            <td colspan="10">
+                                <div class="p-p-3">
+                                    <p-fileUpload name="demo[]" [multiple]="false" [showUploadButton]="false"
+                                        [showCancelButton]="false" url="./upload.php" accept="image/*"
+                                        (onUpload)="onBasicUpload($event)"></p-fileUpload>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+
+                </p-table>
+            </div>
+        </section> -->
+    </form>
+</div>
