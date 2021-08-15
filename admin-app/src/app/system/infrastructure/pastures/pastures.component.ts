@@ -12,4 +12,8 @@ export class PasturesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addManege() {
+    
+  }
+
 }
