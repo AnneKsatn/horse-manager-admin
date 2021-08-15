@@ -1,0 +1,38 @@
+
+<div class="subtitle">
+    Левады
+</div>
+
+
+<button class="save-btn" mat-raised-button (click)="addManege()"> добавить </button>
+<div class="stable-list">
+
+    <p-card header="Тип №1" [style]="{width: '360px'}" styleClass="p-card-shadow" class="p-card-shadow">
+        <ng-template pTemplate="header">
+            <img alt="Card" src="https://i1.wp.com/moykon.ru/wp-content/uploads/2016/07/Levadyi-dlya-loshadey.jpg">
+        </ng-template>
+        <p>40 х 60</p>
+        <p>30 штук</p>
+        <p>Используется для выгула жеребцов и осенью / летом</p>
+        <p>Доступ: все конюшни</p>
+        <ng-template pTemplate="footer">
+            <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+            <p-button label="Настройки" icon="pi pi-cog" styleClass="p-button-secondary"></p-button>
+        </ng-template>
+    </p-card>
+
+
+    <p-card header="Тип №2" [style]="{width: '360px'}" styleClass="p-card-shadow" class="p-card-shadow">
+        <ng-template pTemplate="header">
+            <img alt="Card" src="https://www.molnet.ru/mos/image?objectId=212013">
+        </ng-template>
+        <p>2 ГА</p>
+        <p>1</p>
+        <p>Используется для выгула табуна летом</p>
+        <p>Доступ: все конюшни</p>
+        <ng-template pTemplate="footer">
+            <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+            <p-button label="Настройки" icon="pi pi-cog" styleClass="p-button-secondary"></p-button>
+        </ng-template>
+    </p-card>
+</div>
