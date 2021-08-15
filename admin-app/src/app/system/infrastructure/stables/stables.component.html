@@ -1,7 +1,35 @@
-
 <div class="subtitle">
     Конюшни
 </div>
 
-  
+
 <button class="save-btn" mat-raised-button (click)="addStabe()"> добавить </button>
+<div class="stable-list">
+
+    <p-card header="Конюшня №1" [style]="{width: '360px'}" styleClass="p-card-shadow" class="p-card-shadow">
+        <ng-template pTemplate="header">
+            <img alt="Card" src="https://www.equestrian.ru/photos/user_photo/2020/5657312b.jpg">
+        </ng-template>
+        <p>Стационарная</p>
+        <p>Деревянная</p>
+        <p>Доступна только частникам</p>
+        <ng-template pTemplate="footer">
+            <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+            <p-button label="Настройки" icon="pi pi-cog" styleClass="p-button-secondary"></p-button>
+        </ng-template>
+    </p-card>
+
+
+    <p-card header="Конюшня №2" [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+            <img alt="Card" src="https://i.pinimg.com/originals/36/9e/49/369e493b68239aec6ee61d4bd4c39181.jpg">
+        </ng-template>
+        <p>Летняя</p>
+        <p>Деревянная</p>
+        <p>Доступна только частникам</p>
+        <ng-template pTemplate="footer">
+            <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+            <p-button label="Настройки" icon="pi pi-cog" styleClass="p-button-secondary"></p-button>
+        </ng-template>
+    </p-card>
+</div>

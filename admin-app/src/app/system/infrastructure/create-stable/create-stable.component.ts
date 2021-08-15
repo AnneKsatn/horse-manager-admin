@@ -138,4 +138,8 @@ export class CreateStableComponent implements OnInit {
 
     // this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
+
+  onBasicUpload($event) {
+    
+  }
 }
