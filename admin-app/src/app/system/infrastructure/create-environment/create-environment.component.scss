@@ -1,0 +1,51 @@
+.section {
+    padding-bottom: 3%;
+}
+
+
+.input-block {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.input-label {
+    min-width: 20%;
+    max-width: 20%;
+}
+
+.input-stall-block{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding-bottom: 10px;
+}
+
+:host ::ng-deep .p-dropdown {
+    width: 250px;
+    margin-right: 10px;
+}
+
+:host ::ng-deep .p-inputnumber-input {
+    width: 200px;
+    margin-right: 10px;
+}
+
+:host ::ng-deep .p-datatable {
+    border: 1px solid #dee2e6;
+}
+
+.card {
+    width: 90%;
+}
+
+.page-title {
+    text-align: left;
+    width: 100%;
+    padding-top: 3%;
+}
+
+.images-input {
+    width: 90%;
+}
