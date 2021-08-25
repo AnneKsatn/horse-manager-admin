@@ -11,14 +11,25 @@
 
             <div class="input-block">
                 <label class="input-label">Тип конюшни</label>
-                <p-dropdown [options]="stableTypes" optionLabel="title" optionValue="id" formControlName="type"></p-dropdown>
+                <p-dropdown [options]="stableTypes" optionLabel="title" optionValue="id" formControlName="type">
+                </p-dropdown>
                 <p-dropdown [options]="material" optionLabel="title" optionValue="id" formControlName="material">
                 </p-dropdown>
             </div>
 
             <div class="input-block">
-                <label class="input-label">Тип конюшни</label>
-                <p-dropdown [options]="stableTypesP" optionLabel="title" optionValue="id" formControlName="type"></p-dropdown>
+                <label class="input-label">Постояльцы</label>
+                <p-dropdown [options]="stableTypesP" optionLabel="title" optionValue="id" formControlName="type">
+                </p-dropdown>
+            </div>
+
+            <div class="input-block">
+                <label class="input-label">Ширина прохода</label>
+                <span class="p-float-label">
+                    <p-inputNumber formControlName="bal" mode="decimal">
+                    </p-inputNumber>
+                    <label for="inputtext">ширина</label>
+                </span>
             </div>
 
             <div class="input-block">
@@ -45,7 +56,7 @@
                             </p-inputNumber>
                             <label for="inputtext">количество</label>
                         </span>
-                        
+
                         <button *ngIf="i == stableForm.controls.stalls['controls'].length-1" pButton pRipple
                             type="button" icon="pi pi-plus" class="p-button-rounded p-button-text"
                             (click)="addStallType()"></button>
@@ -61,7 +72,7 @@
 
 
         <section class="section">
-            <h3>Фотографии</h3>
+            <h3>Фотографии КСК</h3>
             <div class="images-input">
                 <p-fileUpload name="demo[]" [multiple]="true" [showUploadButton]="false" [showCancelButton]="false"
                     url="./upload.php" accept="image/*" (onUpload)="onBasicUpload($event)"></p-fileUpload>
@@ -90,7 +101,7 @@
                             <td>
                                 <button type="button" pButton pRipple [pRowToggler]="customer"
                                     class="p-button-text p-button-rounded p-button-plain"
-                                    [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                                    [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" [disabled]="!customer.withPhoto"></button>
                             </td>
                             <td colspan="6">
                                 {{customer.title}}
@@ -99,14 +110,14 @@
                                 <p-checkbox [formControlName]=customer.formControlName></p-checkbox>
                             </td>
                             <td colspan="2" style="text-align:center">
-                                не загружено
+                                <p *ngIf="customer.withPhoto">не загружено</p>
                             </td>
                         </tr>
                     </ng-template>
 
                     <ng-template pTemplate="rowexpansion" let-customer>
                         <tr>
-                            <td colspan="10">
+                            <td colspan="10">   
                                 <div class="p-p-3">
                                     <p-fileUpload name="demo[]" [multiple]="false" [showUploadButton]="false"
                                         [showCancelButton]="false" url="./upload.php" accept="image/*"

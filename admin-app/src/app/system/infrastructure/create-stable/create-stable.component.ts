@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 
 
 interface City {
@@ -50,8 +50,8 @@ export class CreateStableComponent implements OnInit {
 
       this.material = [
         {title: "деревянная", id: "1"},
-        {title: "каменная", id: "2"},
-        {title: "бетонная", id: "3"},
+        {title: "кирпичная", id: "2"},
+        {title: "пеноблочная", id: "3"},
       ]
 
       this.stableTypesP = [
@@ -74,17 +74,22 @@ export class CreateStableComponent implements OnInit {
       winterwash: new FormControl(null),
       solarium: new FormControl(null),
       placeforclearning1: new FormControl(null),
-      placeforclearning2: new FormControl(null)
+      placeforclearning2: new FormControl(null),
+      bal: new FormControl(null)
     })
 
 
     this.customers = [
-      { title: "Автопоилки", groupTitle: "Оснащение конюшни", formControlName: "autodrinker" },
-      { title: "Медленные кормушки", groupTitle: "Оснащение конюшни", formControlName: "slowfeeder" },
-      { title: "Конная мойка в здании конюшни", groupTitle: "Оснащение конюшни", formControlName: "winterwash" },
-      { title: "Солярий", groupTitle: "Оснащение конюшни", formControlName: "solarium" },
-      { title: "Развязки в коридоре", groupTitle: "Оснащение конюшни", formControlName: "placeforclearning1" },
-      { title: "Место для сбора лошади", groupTitle: "Оснащение конюшни", formControlName: "placeforclearning2" },
+      { title: "Автопоилки", groupTitle: "Оснащение конюшни", formControlName: "autodrinker", withPhoto: false},
+      { title: "Естественная система вентиляции", groupTitle: "Оснащение конюшни", formControlName: "slowfeeder", withPhoto: false},
+      { title: "Принудительная система вентиляции", groupTitle: "Оснащение конюшни", formControlName: "slowfeeder", withPhoto: false},
+      { title: "Отопление денников", groupTitle: "Оснащение конюшни", formControlName: "slowfeeder", withPhoto: false},
+      { title: "Медленные кормушки", groupTitle: "Оснащение конюшни", formControlName: "slowfeeder", withPhoto: false},
+      { title: "Конная мойка в здании конюшни", groupTitle: "Оснащение конюшни", formControlName: "winterwash", withPhoto: true},
+      { title: "Кормовая", groupTitle: "Оснащение конюшни", formControlName: "winterwash", withPhoto: true},
+      { title: "Солярий", groupTitle: "Оснащение конюшни", formControlName: "solarium", withPhoto: true},
+      { title: "Развязки в коридоре", groupTitle: "Оснащение конюшни", formControlName: "placeforclearning1", withPhoto: true},
+      { title: "Место для сбора лошади", groupTitle: "Оснащение конюшни", formControlName: "placeforclearning2", withPhoto: true},
 
 
       { title: "Переодевалка", groupTitle: "Инфраструктура для всадников", formControlName: "autodrinker" },
@@ -96,8 +101,8 @@ export class CreateStableComponent implements OnInit {
       { title: "Гостевая комната", groupTitle: "Инфраструктура для всадников", formControlName: "placeforclearning2" },
     ]
 
-    this.rowGroupMetadata["Оснащение конюшни"] = {index: 0, size: 6}
-    this.rowGroupMetadata["Инфраструктура для всадников"] = {index: 6, size: 9}
+    this.rowGroupMetadata["Оснащение конюшни"] = {index: 0, size: 9}
+    this.rowGroupMetadata["Инфраструктура для всадников"] = {index: 9, size: 9}
   
   
   

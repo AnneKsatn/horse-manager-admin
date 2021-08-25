@@ -55,6 +55,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {TabViewModule} from 'primeng/tabview';
 import { StablesComponent } from './infrastructure/stables/stables.component';
 import { StableListComponent } from './infrastructure/stables/stable-list/stable-list.component';
+import {CardModule} from 'primeng/card';
+import { ManegesComponent } from './infrastructure/maneges/maneges.component';
+import { CreateManegeComponent } from './infrastructure/create-manege/create-manege.component';
+import { PasturesComponent } from './infrastructure/pastures/pastures.component';
+import { GeneralComponent } from './infrastructure/general/general.component';
+import { EnvironmentComponent } from './infrastructure/environment/environment.component';
+import { CreateEnvironmentComponent } from './infrastructure/create-environment/create-environment.component';
 
 
 @NgModule({
@@ -69,7 +76,7 @@ import { StableListComponent } from './infrastructure/stables/stable-list/stable
     MatSelectModule,
     DragDropModule, MatTableModule, MatSortModule, MatSidenavModule, MatTreeModule, SidebarModule, DropdownModule,
     FormsModule,
-     InputNumberModule, CheckboxModule, MatCheckboxModule, FileUploadModule, HttpClientModule, TabViewModule],
+     InputNumberModule, CheckboxModule, MatCheckboxModule, FileUploadModule, HttpClientModule, TabViewModule, CardModule],
     
   declarations: 
   [AnimalUnitComponent, 
@@ -89,7 +96,7 @@ import { StableListComponent } from './infrastructure/stables/stable-list/stable
     InspectionsComponent, 
     CreateVetInspectionComponent,
     EditVetInspectionComponent, InfoVetInspectionComponent, 
-    CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent, FeedComponent, InfrastructureComponent, CreateStableComponent, StablesComponent, StableListComponent],
+    CreateCategoryComponent, EditCategoryComponent, CreateCategoryServiceComponent, CategoryComponent, FeedComponent, InfrastructureComponent, CreateStableComponent, StablesComponent, StableListComponent, ManegesComponent, CreateManegeComponent, PasturesComponent, GeneralComponent, EnvironmentComponent, CreateEnvironmentComponent],
 })
 
 export class SystemModule {}

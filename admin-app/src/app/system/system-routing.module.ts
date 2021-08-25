@@ -22,6 +22,8 @@ import { CategoryComponent } from './category/category.component';
 import { FeedComponent } from './feed/feed.component';
 import { InfrastructureComponent } from './infrastructure/infrastructure.component';
 import { CreateStableComponent } from './infrastructure/create-stable/create-stable.component';
+import { CreateManegeComponent } from './infrastructure/create-manege/create-manege.component';
+import { CreateEnvironmentComponent } from './infrastructure/create-environment/create-environment.component';
 
 const routes: Routes = [
   {path: '', component: SystemComponent,  children: [
@@ -46,7 +48,9 @@ const routes: Routes = [
     {path: 'category', component: CategoryComponent},
     {path: 'feed', component: FeedComponent},
     {path: 'create-stable', component: CreateStableComponent},
-    {path: 'infrastructure', component: InfrastructureComponent}
+    {path: 'create-manege', component: CreateManegeComponent},
+    {path: 'infrastructure', component: InfrastructureComponent},
+    {path: 'create-environment', component: CreateEnvironmentComponent}
   ]}
 ];
 
